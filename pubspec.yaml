@@ -17,3 +17,40 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - lib/assets/icons/arrow-right.svg
+    - lib/assets/icons/bag.svg
+    - lib/assets/icons/bill.svg
+    - lib/assets/icons/car.svg
+    - lib/assets/icons/chart.svg
+    - lib/assets/icons/empty-wallet.svg
+    - lib/assets/icons/eye-slash.svg
+    - lib/assets/icons/heart.svg
+    - lib/assets/icons/home-2.svg
+    - lib/assets/icons/logo.svg
+    - lib/assets/icons/money.svg
+    - lib/assets/icons/more-circle.svg
+    - lib/assets/icons/receipt.svg
+    - lib/assets/icons/status-up.svg
+    - lib/assets/icons/sun.svg
+    - lib/assets/icons/tick-circle.svg
+    - lib/assets/icons/trash.svg
+    - lib/assets/icons/trending_up.svg
+    - lib/assets/icons/trending_down.svg
+    - lib/assets/icons/wallet-money-1.svg
+    - lib/assets/icons/wallet-money-2.svg
+    - lib/assets/icons/wallet-money.svg
+    
+
+  fonts:
+    - family: Qanelas
+      fonts:
+        - asset: lib/assets/fonts/Qanelas-Regular.otf
+          weight: 400
+        - asset: lib/assets/fonts/Qanelas-Medium.otf
+          weight: 500
+        - asset: lib/assets/fonts/Qanelas-SemiBold.otf
+          weight: 600
+        - asset: lib/assets/fonts/Qanelas-Bold.otf
+          weight: 700
