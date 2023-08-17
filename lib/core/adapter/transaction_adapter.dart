@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:elevo/core/entity/transaction.dart';
 
 class TransactionAdapter {
-  Map<String, dynamic> toMap(TransactionEntity transaction) {
+  static Map<String, dynamic> toMap(TransactionEntity transaction) {
     return <String, dynamic>{
       'id': transaction.id,
       'value': transaction.value,
@@ -15,7 +15,7 @@ class TransactionAdapter {
     };
   }
 
-  static fromMap(Map<String, dynamic> map) {
+  static TransactionEntity fromMap(Map<String, dynamic> map) {
     return TransactionEntity(
       id: map['id'] as String,
       value: map['value'] as double,
