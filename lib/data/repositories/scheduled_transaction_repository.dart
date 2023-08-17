@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:elevo/core/dto/scheduled_transaction.dto.dart';
-import 'package:elevo/core/exception/custom_exception.dart';
+import 'package:elevo/domain/exception/custom_exception.dart';
 import 'package:elevo/data/sql/sql_config.dart';
 import 'package:elevo/data/sql/sql_helper.dart';
 import 'package:result_dart/result_dart.dart';

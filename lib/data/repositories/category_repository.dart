@@ -1,5 +1,5 @@
-import 'package:elevo/core/entity/category.dart';
-import 'package:elevo/core/exception/custom_exception.dart';
+import 'package:elevo/domain/entity/category.dart';
+import 'package:elevo/domain/exception/custom_exception.dart';
 import 'package:flutter/material.dart';
 import 'package:result_dart/result_dart.dart';
 

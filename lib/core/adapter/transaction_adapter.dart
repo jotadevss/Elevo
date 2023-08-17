@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:elevo/core/entity/transaction.dart';
+import 'package:elevo/domain/entity/transaction.dart';
 
 class TransactionAdapter {
   static Map<String, dynamic> toMap(TransactionEntity transaction) {
