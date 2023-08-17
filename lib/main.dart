@@ -1,7 +1,10 @@
+import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Elevo());
+  runApp(
+    const RxRoot(child: Elevo()),
+  );
 }
 
 class Elevo extends StatelessWidget {
