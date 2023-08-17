@@ -4,8 +4,8 @@ import 'package:elevo/data/repositories/scheduled_transaction_repository.dart';
 import 'package:elevo/data/repositories/transaction_repository.dart';
 import 'package:result_dart/result_dart.dart';
 
-class Scheduler {
-  Scheduler({
+class SchedulerLogic {
+  SchedulerLogic({
     required this.scheduledTransactionRepository,
     required this.transactionRepository,
   });
