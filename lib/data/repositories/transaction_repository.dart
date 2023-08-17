@@ -29,7 +29,7 @@ class TransactionRepositoryImpl implements ITransactionRepository {
       return Success(transaction);
     } catch (e) {
       log(e.toString());
-      return Failure(CustomException());
+      return Failure(CustomException(message: e.toString()));
     }
   }
 
@@ -40,7 +40,7 @@ class TransactionRepositoryImpl implements ITransactionRepository {
       return const Success('Success');
     } catch (e) {
       log(e.toString());
-      return Failure(CustomException());
+      return Failure(CustomException(message: e.toString()));
     }
   }
 
@@ -57,7 +57,7 @@ class TransactionRepositoryImpl implements ITransactionRepository {
       return Success(transaction);
     } catch (e) {
       log(e.toString());
-      return Failure(CustomException());
+      return Failure(CustomException(message: e.toString()));
     }
   }
 
@@ -69,7 +69,7 @@ class TransactionRepositoryImpl implements ITransactionRepository {
       return Success(transaction);
     } catch (e) {
       log(e.toString());
-      return Failure(CustomException());
+      return Failure(CustomException(message: e.toString()));
     }
   }
 
@@ -80,7 +80,7 @@ class TransactionRepositoryImpl implements ITransactionRepository {
       return Success(updatedTransaction);
     } catch (e) {
       log(e.toString());
-      return Failure(CustomException());
+      return Failure(CustomException(message: e.toString()));
     }
   }
 }

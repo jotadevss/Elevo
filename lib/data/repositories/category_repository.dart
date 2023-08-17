@@ -13,7 +13,7 @@ class CategoryRepository implements ICategoryRepository {
     try {
       return Success(_allConstantsCategories);
     } catch (e) {
-      return Failure(CustomException());
+      return Failure(CustomException(message: e.toString()));
     }
   }
 

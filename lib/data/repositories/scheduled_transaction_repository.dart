@@ -28,7 +28,7 @@ class ScheduledTransactionRepository implements IScheduledTransactionRepository 
       return Success(dto);
     } catch (e) {
       log(e.toString());
-      return Failure(CustomException());
+      return Failure(CustomException(message: e.toString()));
     }
   }
 
@@ -39,7 +39,7 @@ class ScheduledTransactionRepository implements IScheduledTransactionRepository 
       return Success(reference);
     } catch (e) {
       log(e.toString());
-      return Failure(CustomException());
+      return Failure(CustomException(message: e.toString()));
     }
   }
 }
