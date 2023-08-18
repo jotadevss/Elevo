@@ -1,7 +1,7 @@
 import 'package:cron/cron.dart';
-import 'package:elevo/domain/enums/frequency_enum.dart';
-import 'package:elevo/data/repositories/scheduled_transaction_repository.dart';
-import 'package:elevo/data/repositories/transaction_repository.dart';
+import 'package:elevo/src/domain/enums/frequency_enum.dart';
+import 'package:elevo/src/data/repositories/scheduled_transaction_repository.dart';
+import 'package:elevo/src/data/repositories/transaction_repository.dart';
 import 'package:result_dart/result_dart.dart';
 
 class SchedulerLogic {
