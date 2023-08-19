@@ -43,7 +43,6 @@ class SQLTransactionRepositoryImpl implements ITransactionRepository {
       await _database.saveDataQuery(transaction.toMap());
       return Success(transaction);
     } on SQLException catch (e) {
-      log(e.toString());
       return Failure(e);
     }
   }
@@ -58,7 +57,6 @@ class SQLTransactionRepositoryImpl implements ITransactionRepository {
       await _database.deleteDataQuery(id);
       return const Success('Success');
     } on SQLException catch (e) {
-      log(e.toString());
       return Failure(e);
     }
   }
@@ -77,7 +75,6 @@ class SQLTransactionRepositoryImpl implements ITransactionRepository {
       );
       return Success(transactions);
     } on SQLException catch (e) {
-      log(e.toString());
       return Failure(e);
     }
   }
@@ -93,7 +90,6 @@ class SQLTransactionRepositoryImpl implements ITransactionRepository {
       final transaction = TransactionEntity.fromMap(data);
       return Success(transaction);
     } on SQLException catch (e) {
-      log(e.toString());
       return Failure(e);
     }
   }
@@ -108,7 +104,6 @@ class SQLTransactionRepositoryImpl implements ITransactionRepository {
       await _database.updateDataQuery(updatedTransaction.toMap());
       return Success(updatedTransaction);
     } on SQLException catch (e) {
-      log(e.toString());
       return Failure(e);
     }
   }
