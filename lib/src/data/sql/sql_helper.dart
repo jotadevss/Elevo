@@ -1,3 +1,5 @@
+import 'package:elevo/src/domain/enums/sql_error_keys_enums.dart';
+import 'package:elevo/src/domain/exception/sql_exception.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -23,9 +25,7 @@ class SQLHelper {
       version: 1,
       onCreate: (Database database, int version) async {
         // Create the table in the database based on the provided table name and properties.
-        database.execute('''
-          CREATE TABLE $tableName ($props)
-          ''');
+        database.execute(''' CREATE TABLE $tableName ($props) ''');
       },
     );
 
@@ -76,7 +76,11 @@ class SQLHelper {
     final db = await initializeDatabase();
     // Return all data from the table in the database.
     final data = await db.query(tableName);
-    return data;
+    if (data.isEmpty) {
+      throw SQLException(error: SQLError.isEmpty);
+    } else {
+      return data;
+    }
   }
 
   // Method to get data from the database based on the provided ID.
@@ -84,7 +88,11 @@ class SQLHelper {
     final db = await initializeDatabase();
     // Return the data from the table based on the provided ID.
     final data = await db.query(tableName, where: 'id = ?', whereArgs: [id]);
-    return data[0];
+    if (data.isEmpty) {
+      throw SQLException(error: SQLError.notFound);
+    } else {
+      return data[0];
+    }
   }
 
   // Method to get data from the database based on a specific property and its value.

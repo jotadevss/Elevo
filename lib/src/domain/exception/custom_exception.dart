@@ -9,8 +9,7 @@ class CustomException implements Exception {
 
   @override
   String toString() {
-    var text = 'Message: $message';
-    if (stacktrace != null || stacktrace!.isNotEmpty) return '$text | Stacktrace: $stacktrace';
+    var text = 'Message: $message | stacktrace: $stacktrace';
     return text;
   }
 }

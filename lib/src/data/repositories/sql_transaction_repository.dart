@@ -1,10 +1,9 @@
 import 'dart:developer';
-
-import 'package:elevo/src/core/adapter/transaction_adapter.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
-import 'package:elevo/src/domain/exception/custom_exception.dart';
+import 'package:elevo/src/domain/enums/sql_error_keys_enums.dart';
 import 'package:elevo/src/data/sql/sql_config.dart';
 import 'package:elevo/src/data/sql/sql_helper.dart';
+import 'package:elevo/src/domain/exception/sql_exception.dart';
 import 'package:result_dart/result_dart.dart';
 
 abstract class ITransactionRepository {
@@ -15,8 +14,8 @@ abstract class ITransactionRepository {
   Future<Result<TransactionEntity, Exception>> updateTransaction(TransactionEntity updatedTransaction);
 }
 
-class TransactionRepositoryImpl implements ITransactionRepository {
-  SQLHelper database = SQLHelper(
+class SQLTransactionRepositoryImpl implements ITransactionRepository {
+  final SQLHelper _database = SQLHelper(
     databaseName: SQLConfig.transactionDatabaseName,
     tableName: SQLConfig.transactionTableName,
     props: SQLConfig.transactionProperty,
@@ -25,62 +24,60 @@ class TransactionRepositoryImpl implements ITransactionRepository {
   @override
   Future<Result<TransactionEntity, Exception>> createTransaction(TransactionEntity transaction) async {
     try {
-      await database.saveDataQuery(TransactionAdapter.toMap(transaction));
+      await _database.saveDataQuery(transaction.toMap());
       return Success(transaction);
-    } catch (e) {
+    } on SQLException catch (e) {
       log(e.toString());
-      return Failure(CustomException(message: e.toString()));
+      return Failure(e);
     }
   }
 
   @override
   Future<Result<String, Exception>> deleteTransaction(String id) async {
     try {
-      await database.deleteDataQuery(id);
+      await _database.deleteDataQuery(id);
       return const Success('Success');
-    } catch (e) {
+    } on SQLException catch (e) {
       log(e.toString());
-      return Failure(CustomException(message: e.toString()));
+      return Failure(e);
     }
   }
 
   @override
   Future<Result<List<TransactionEntity>, Exception>> getAllTransactions() async {
     try {
-      final data = await database.getDataQuery();
+      final data = await _database.getDataQuery();
       final transaction = List.generate(
         data.length,
-        (i) => TransactionAdapter.fromMap(
-          data[i],
-        ),
+        (i) => TransactionEntity.fromMap(data[i]),
       );
       return Success(transaction);
-    } catch (e) {
+    } on SQLException catch (e) {
       log(e.toString());
-      return Failure(CustomException(message: e.toString()));
+      return Failure(e);
     }
   }
 
   @override
   Future<Result<TransactionEntity, Exception>> getTransaction(String id) async {
     try {
-      final data = await database.getByIdDataQuery(id);
-      final transaction = TransactionAdapter.fromMap(data);
+      final data = await _database.getByIdDataQuery(id);
+      final transaction = TransactionEntity.fromMap(data);
       return Success(transaction);
-    } catch (e) {
+    } on SQLException catch (e) {
       log(e.toString());
-      return Failure(CustomException(message: e.toString()));
+      return Failure(e);
     }
   }
 
   @override
   Future<Result<TransactionEntity, Exception>> updateTransaction(TransactionEntity updatedTransaction) async {
     try {
-      await database.updateDataQuery(TransactionAdapter.toMap(updatedTransaction));
+      await _database.updateDataQuery(updatedTransaction.toMap());
       return Success(updatedTransaction);
-    } catch (e) {
+    } on SQLException catch (e) {
       log(e.toString());
-      return Failure(CustomException(message: e.toString()));
+      return Failure(e);
     }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class CategoryEntity {
   final String id;
@@ -29,4 +31,28 @@ class CategoryEntity {
       hexColor: hexColor ?? this.hexColor,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'title': title,
+      'type': type,
+      'iconPath': iconPath,
+      'hexColor': hexColor,
+    };
+  }
+
+  factory CategoryEntity.fromMap(Map<String, dynamic> map) {
+    return CategoryEntity(
+      id: map['id'] as String,
+      title: map['title'] as String,
+      type: map['type'] as String,
+      iconPath: map['iconPath'] as String,
+      hexColor: map['hexColor'] as int,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory CategoryEntity.fromJson(String source) => CategoryEntity.fromMap(json.decode(source) as Map<String, dynamic>);
 }
