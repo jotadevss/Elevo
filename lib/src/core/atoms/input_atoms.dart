@@ -21,3 +21,5 @@ final isCategoryError = Atom<bool>(false);
 
 // Actions
 final submitTransactionAction = Atom<InputTransactionDTO?>(inputDataAtom.value);
+final selectCategoryAction = Atom<String?>(null);
+final selectFrequencyAction = Atom<String?>(null);
