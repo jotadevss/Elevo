@@ -1,5 +1,6 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/main.dart';
+import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/core/dto/input_transaction_dto.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
@@ -16,6 +17,8 @@ class InputReducer extends Reducer {
 
   /// Handles the submission of a transaction.
   Future<void> submit() async {
+    isLoadingState.value = true;
+
     final input = submitTransactionAction.value!;
     final isValid = validate(input); // call validator data input function
 
@@ -34,6 +37,8 @@ class InputReducer extends Reducer {
         ///  Navigate to [Error] page with [error]...
       },
     );
+
+    isLoadingState.value = false;
   }
 
   // Validates the input transaction data.
