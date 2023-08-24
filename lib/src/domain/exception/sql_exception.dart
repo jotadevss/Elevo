@@ -1,4 +1,4 @@
-import 'package:elevo/src/domain/enums/sql_error_keys_enums.dart';
+import 'package:elevo/src/domain/enums/sql_error_enums.dart';
 
 class SQLException implements Exception {
   SQLException({this.error});

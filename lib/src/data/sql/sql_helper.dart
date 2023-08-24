@@ -1,4 +1,4 @@
-import 'package:elevo/src/domain/enums/sql_error_keys_enums.dart';
+import 'package:elevo/src/domain/enums/sql_error_enums.dart';
 import 'package:elevo/src/domain/exception/sql_exception.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';

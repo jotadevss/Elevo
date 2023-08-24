@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/data/sql/sql_config.dart';
 import 'package:elevo/src/data/sql/sql_helper.dart';
