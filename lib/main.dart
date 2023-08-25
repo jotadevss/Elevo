@@ -1,4 +1,5 @@
 import 'package:asp/asp.dart';
+import 'package:elevo/src/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -15,6 +16,8 @@ class Elevo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return MaterialApp(
+      theme: appTheme,
+    );
   }
 }
