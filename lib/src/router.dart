@@ -1,10 +1,9 @@
 import 'package:elevo/src/core/atoms/transaction_atoms.dart';
-import 'package:elevo/src/ui/deleted/deleted_page.dart';
-import 'package:elevo/src/ui/empty/empty_page.dart';
-import 'package:elevo/src/ui/error/error_page.dart';
-import 'package:elevo/src/ui/home/home_page.dart';
-import 'package:elevo/src/ui/splash/splash_page.dart';
-import 'package:elevo/src/ui/success/success_page.dart';
+import 'package:elevo/src/ui/pages/deleted/deleted_page.dart';
+import 'package:elevo/src/ui/pages/empty/empty_page.dart';
+import 'package:elevo/src/ui/pages/home/home_page.dart';
+import 'package:elevo/src/ui/pages/splash/splash_page.dart';
+import 'package:elevo/src/ui/pages/success/success_page.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -30,13 +29,19 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: AppRouter.EMPTY_PAGE_ROUTER,
       builder: (context, state) {
-        return SuccessPage();
+        return EmptyPage();
       },
     ),
     GoRoute(
       path: AppRouter.DELETED_PAGE_ROUTER,
       builder: (context, state) {
         return DeletedPage();
+      },
+    ),
+    GoRoute(
+      path: AppRouter.INPUT_SUCCESS_PAGE_ROUTER,
+      builder: (context, state) {
+        return SuccessPage();
       },
     ),
   ],

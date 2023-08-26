@@ -70,6 +70,5 @@ class SuccessPage extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
