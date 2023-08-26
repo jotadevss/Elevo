@@ -1,12 +1,15 @@
-import 'package:elevo/src/core/atoms/app_atoms.dart';
+import 'package:elevo/src/core/atoms/transaction_atoms.dart';
+import 'package:elevo/src/ui/deleted/deleted_page.dart';
 import 'package:elevo/src/ui/empty/empty_page.dart';
+import 'package:elevo/src/ui/error/error_page.dart';
 import 'package:elevo/src/ui/home/home_page.dart';
 import 'package:elevo/src/ui/splash/splash_page.dart';
+import 'package:elevo/src/ui/success/success_page.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
   redirect: (context, state) {
-    if (isEmptyAppState.value == true) {
+    if (isEmptyTransactionState.value) {
       return AppRouter.EMPTY_PAGE_ROUTER;
     }
     return null;
@@ -27,7 +30,13 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: AppRouter.EMPTY_PAGE_ROUTER,
       builder: (context, state) {
-        return EmptyPage();
+        return SuccessPage();
+      },
+    ),
+    GoRoute(
+      path: AppRouter.DELETED_PAGE_ROUTER,
+      builder: (context, state) {
+        return DeletedPage();
       },
     ),
   ],
