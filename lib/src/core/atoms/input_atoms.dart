@@ -4,12 +4,12 @@ import 'package:elevo/src/domain/enums/type_enum.dart';
 
 // Default value
 InputTransactionDTO input = InputTransactionDTO(
-  value: 0.0,
+  value: 10.0,
   type: TypeTransaction.incomes.name,
-  category: '',
+  category: 'other',
   createAt: DateTime.now(),
-  frequency: null,
-  description: null,
+  frequency: '',
+  description: '',
 );
 
 // Atoms

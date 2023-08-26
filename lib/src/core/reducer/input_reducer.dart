@@ -1,5 +1,4 @@
 import 'package:asp/asp.dart';
-import 'package:elevo/main.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/core/atoms/transaction_atoms.dart';
@@ -18,10 +17,9 @@ class InputReducer extends Reducer {
 
     final input = submitTransactionAction.value!;
     final isValid = validate(input);
-
     if (!isValid) return;
 
-    final id = uuid.v4();
+    final id = '1';
     final transaction = InputTransactionDTO.toTransaction(id, input);
 
     final result = await repository.createTransaction(transaction);

@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:asp/asp.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/transaction_atoms.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
+import 'package:elevo/src/domain/enums/sql_error_enums.dart';
+import 'package:elevo/src/domain/exception/sql_exception.dart';
 
 class TransactionReducer extends Reducer {
   final ITransactionRepository repository;
@@ -15,7 +19,9 @@ class TransactionReducer extends Reducer {
   Future<void> getAll() async {
     isLoadingState.value = true;
 
-    final result = await repository.getAllTransactions();
+    final result = await Future.delayed(Duration(seconds: 5), () async {
+      return await repository.getAllTransactions();
+    });
 
     result.fold(
       (transactions) {
@@ -24,6 +30,8 @@ class TransactionReducer extends Reducer {
       },
       (error) {},
     );
+
+    checkTransactionStatus();
 
     isLoadingState.value = false;
   }
@@ -38,7 +46,7 @@ class TransactionReducer extends Reducer {
       (transaction) {
         final index = listTransactionAtom.value.indexWhere((tr) => tr.id == id);
         listTransactionAtom.value.removeAt(index);
-        selectedTransaction.value = transaction;
+        selectedTransactionAtom.value = transaction;
       },
       (error) {},
     );
@@ -64,5 +72,13 @@ class TransactionReducer extends Reducer {
     );
 
     isLoadingState.value = false;
+  }
+
+  void checkTransactionStatus() {
+    if (transactions.length <= 0) {
+      isEmptyTransactionState.value = true;
+    } else {
+      isEmptyTransactionState.value = false;
+    }
   }
 }

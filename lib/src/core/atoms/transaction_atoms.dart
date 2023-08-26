@@ -1,23 +1,15 @@
 import 'package:asp/asp.dart';
-import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/dto/summary_transaction_dto.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 
 // Atoms
 final listTransactionAtom = Atom(<TransactionEntity>[]);
-final selectedTransaction = Atom<TransactionEntity?>(null);
+final selectedTransactionAtom = Atom<TransactionEntity?>(null);
+final isEmptyTransactionState = Atom<bool>(true);
 
 // Getters
-List<TransactionEntity> get transactions {
-  if (listTransactionAtom.value.isNotEmpty) {
-    isFirstRunAppState.value = false;
-    return [...listTransactionAtom.value];
-  } else {
-    isFirstRunAppState.value = true;
-    return [];
-  }
-}
+List<TransactionEntity> get transactions => [...listTransactionAtom.value];
 
 int get totalTransactions => transactions.length;
 
