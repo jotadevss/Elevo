@@ -36,6 +36,7 @@ flutter:
     - lib/assets/icons/refresh-2.svg
     - lib/assets/icons/bill.svg
     - lib/assets/icons/tick-circle.svg
+    - lib/assets/icons/logo.svg
 
   fonts:
     - family: Qanelas

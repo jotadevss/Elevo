@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:elevo/src/ui/common/components/button.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,36 +39,12 @@ class EmptyPage extends StatelessWidget {
               ),
             ),
             Gap(height: 25),
-            InkWell(
+            ButtonWidget(
+              iconAssetName: 'lib/assets/icons/wallet-money.svg',
+              title: 'Add transaction',
+              color: kPrimaryColor,
               onTap: () {},
-              borderRadius: BorderRadius.circular(100),
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: kPrimaryColor.withOpacity(0.1),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      'lib/assets/icons/wallet-money.svg',
-                      height: 20,
-                    ),
-                    Gap(width: 10),
-                    Text(
-                      'Add transaction',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: kPrimaryColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
+            ),
           ],
         ),
       ),

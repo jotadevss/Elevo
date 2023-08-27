@@ -1,6 +1,8 @@
 import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/atoms/transaction_atoms.dart';
+import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -22,8 +24,13 @@ class _SplashPageState extends State<SplashPage> {
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 50),
-          child: LinearProgressIndicator(
-            color: kPrimaryColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('lib/assets/icons/logo.svg', height: 50),
+              Gap(height: 80),
+              CircularProgressIndicator(color: kPrimaryColor),
+            ],
           ),
         ),
       ),

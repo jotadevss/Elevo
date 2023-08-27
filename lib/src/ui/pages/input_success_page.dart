@@ -1,10 +1,11 @@
 import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/ui/common/components/button.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SuccessPage extends StatelessWidget {
-  const SuccessPage({super.key});
+class InputSuccessPage extends StatelessWidget {
+  const InputSuccessPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,36 +37,19 @@ class SuccessPage extends StatelessWidget {
               ),
             ),
             Gap(height: 25),
-            InkWell(
+            ButtonWidget(
+              iconAssetName: 'lib/assets/icons/bill.svg',
+              title: 'Go to Historic',
+              color: kPrimaryColor,
               onTap: () {},
-              borderRadius: BorderRadius.circular(100),
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: kPrimaryColor.withOpacity(0.1),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      'lib/assets/icons/bill.svg',
-                      height: 20,
-                    ),
-                    Gap(width: 10),
-                    Text(
-                      'Go to Historic',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: kPrimaryColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
+            ),
+            Gap(height: 12),
+            ButtonWidget(
+              iconAssetName: null,
+              title: 'Back to Home',
+              color: kGrayColor,
+              onTap: () {},
+            ),
           ],
         ),
       ),
