@@ -36,7 +36,7 @@ class _InputPageState extends State<InputPage> {
         padding: EdgeInsets.only(top: statusBar + 10, left: kMarginHorizontal, right: kMarginHorizontal),
         child: Column(
           children: [
-            ElevoAppBar(size: size, assetName: 'lib/assets/icons/close.svg', enableAction: true),
+            const ElevoAppBar(assetName: 'lib/assets/icons/close.svg', enableAction: true),
             const Gap(height: 25),
             const Text(
               'Insert amount',
@@ -51,7 +51,7 @@ class _InputPageState extends State<InputPage> {
               expandedWith: expandedWith,
               insertAmountController: _insertAmountController,
             ),
-            Gap(height: 20),
+            const Gap(height: 20),
             InputSlider(
               items: [
                 ItemSlider(

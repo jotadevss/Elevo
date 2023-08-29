@@ -16,8 +16,8 @@ class ErrorPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset('lib/assets/icons/forbidden-2.svg'),
-            Gap(height: 20),
-            Text(
+            const Gap(height: 20),
+            const Text(
               'Oops! An error has\noccurred...',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -26,8 +26,8 @@ class ErrorPage extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            Gap(height: 20),
-            Text(
+            const Gap(height: 20),
+            const Text(
               'An unknown error occurred\nplease try again',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -36,7 +36,7 @@ class ErrorPage extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Gap(height: 25),
+            const Gap(height: 25),
             ButtonWidget(
               iconAssetName: 'lib/assets/icons/refresh-2.svg',
               title: 'Try Again',

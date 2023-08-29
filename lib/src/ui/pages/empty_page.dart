@@ -18,8 +18,8 @@ class EmptyPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset('lib/assets/icons/empty-wallet.svg'),
-            Gap(height: 20),
-            Text(
+            const Gap(height: 20),
+            const Text(
               'No transaction\nregistered!',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -28,8 +28,8 @@ class EmptyPage extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            Gap(height: 20),
-            Text(
+            const Gap(height: 20),
+            const Text(
               'Add your first transaction and\nstart managing your finances',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -38,7 +38,7 @@ class EmptyPage extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Gap(height: 25),
+            const Gap(height: 25),
             ButtonWidget(
               iconAssetName: 'lib/assets/icons/wallet-money.svg',
               title: 'Add transaction',

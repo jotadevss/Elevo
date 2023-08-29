@@ -28,8 +28,8 @@ class _SplashPageState extends State<SplashPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset('lib/assets/icons/logo.svg', height: 50),
-              Gap(height: 80),
-              CircularProgressIndicator(color: kPrimaryColor),
+              const Gap(height: 80),
+              const CircularProgressIndicator(color: kPrimaryColor),
             ],
           ),
         ),

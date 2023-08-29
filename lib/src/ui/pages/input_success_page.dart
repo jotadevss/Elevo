@@ -16,8 +16,8 @@ class InputSuccessPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset('lib/assets/icons/tick-circle.svg'),
-            Gap(height: 20),
-            Text(
+            const Gap(height: 20),
+            const Text(
               'Transaction added\nsuccessfully!',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -26,8 +26,8 @@ class InputSuccessPage extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            Gap(height: 20),
-            Text(
+            const Gap(height: 20),
+            const Text(
               'Your transaction was successfully added,\nto access it, just access the history.',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -36,14 +36,14 @@ class InputSuccessPage extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Gap(height: 25),
+            const Gap(height: 25),
             ButtonWidget(
               iconAssetName: 'lib/assets/icons/bill.svg',
               title: 'Go to Historic',
               color: kPrimaryColor,
               onTap: () {},
             ),
-            Gap(height: 12),
+            const Gap(height: 12),
             ButtonWidget(
               iconAssetName: null,
               title: 'Back to Home',

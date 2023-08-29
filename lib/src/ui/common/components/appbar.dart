@@ -6,17 +6,16 @@ import 'package:flutter_svg/svg.dart';
 class ElevoAppBar extends StatelessWidget {
   const ElevoAppBar({
     Key? key,
-    required this.size,
     this.assetName,
     required this.enableAction,
   }) : super(key: key);
 
-  final Size size;
   final String? assetName;
   final bool enableAction;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
