@@ -17,8 +17,8 @@ class DeletedPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset('lib/assets/icons/trash.svg'),
-            Gap(height: 20),
-            Text(
+            const Gap(height: 20),
+            const Text(
               'Transaction deleted!',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -27,8 +27,8 @@ class DeletedPage extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            Gap(height: 20),
-            Text(
+            const Gap(height: 20),
+            const Text(
               'Your transaction has been\npermanently deleted.',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -37,7 +37,7 @@ class DeletedPage extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Gap(height: 25),
+            const Gap(height: 25),
             ButtonWidget(
               iconAssetName: 'lib/assets/icons/home.svg',
               title: 'Back to Home',

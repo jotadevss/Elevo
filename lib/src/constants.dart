@@ -19,3 +19,4 @@ const Color kGrayColor = Color(0xFF919191);
 
 // Constants values
 const double kBorderRadius = 20.0;
+const double kMarginHorizontal = 10.0;

@@ -17,6 +17,7 @@ dependencies:
   uuid: ^3.0.7
   go_router: ^10.1.0
   flutter_svg: ^2.0.7
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
@@ -37,6 +38,7 @@ flutter:
     - lib/assets/icons/bill.svg
     - lib/assets/icons/tick-circle.svg
     - lib/assets/icons/logo.svg
+    - lib/assets/icons/close.svg
 
   fonts:
     - family: Qanelas
