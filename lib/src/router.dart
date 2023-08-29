@@ -1,6 +1,5 @@
 import 'package:elevo/src/core/atoms/transaction_atoms.dart';
 import 'package:elevo/src/ui/pages/deleted_page.dart';
-import 'package:elevo/src/ui/pages/empty_page.dart';
 import 'package:elevo/src/ui/pages/home/home_page.dart';
 import 'package:elevo/src/ui/pages/input/input_page.dart';
 import 'package:elevo/src/ui/pages/splash_page.dart';
