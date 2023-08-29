@@ -1,3 +1,4 @@
+import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
@@ -8,15 +9,16 @@ import 'package:flutter/services.dart';
 class InputInsertAmount extends StatelessWidget {
   const InputInsertAmount({
     super.key,
-    required this.expandedWith,
     required TextEditingController insertAmountController,
+    this.onChanged,
   }) : _insertAmountController = insertAmountController;
 
-  final bool expandedWith;
   final TextEditingController _insertAmountController;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
+    final expandedWith = context.select(() => expandWidthAtom.value);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -55,9 +57,7 @@ class InputInsertAmount extends StatelessWidget {
                   fontSize: 36,
                 ),
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                onChanged: (value) {
-                  observerTextLengthAction.value = value;
-                },
+                onChanged: onChanged,
               ),
             ),
             Gap(),

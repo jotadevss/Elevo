@@ -15,4 +15,10 @@ class CurrencyFormatter extends TextInputFormatter {
 
     return newValue.copyWith(text: newText, selection: TextSelection.collapsed(offset: newText.length));
   }
+
+  static double unformat(String text) {
+    final formatter = NumberFormat("#,##0.00", "pt_BR");
+    final result = formatter.parse(text).toDouble();
+    return result;
+  }
 }

@@ -7,7 +7,7 @@ abstract class ICategoryRepository {
   Future<Result<List<CategoryEntity>, Exception>> getAllCategories();
 }
 
-class CategoryRepository implements ICategoryRepository {
+class LocalCategoryRepository implements ICategoryRepository {
   @override
   Future<Result<List<CategoryEntity>, Exception>> getAllCategories() async {
     try {

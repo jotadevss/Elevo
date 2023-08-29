@@ -23,7 +23,9 @@ class ItemSlider extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(100),
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 400),
+        curve: Curves.ease,
         height: 50,
         alignment: Alignment.center,
         width: (size.width - 40) / 2.2,
