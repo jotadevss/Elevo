@@ -1,20 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:asp/asp.dart';
+import 'package:elevo/src/ui/pages/input/components/input_category.dart';
+import 'package:flutter/material.dart';
+import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/category_atom.dart';
 import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
+import 'package:elevo/src/ui/common/components/appbar.dart';
+import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/ui/pages/input/components/input_bottom_sheet.dart';
+import 'package:elevo/src/ui/pages/input/components/input_insert_amount.dart';
 import 'package:elevo/src/ui/pages/input/components/input_slider.dart';
 import 'package:elevo/src/ui/pages/input/components/item_slider.dart';
 import 'package:elevo/src/ui/pages/input/controller/slider_select_type_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/ui/common/components/appbar.dart';
-import 'package:elevo/src/ui/common/components/gap.dart';
-import 'package:elevo/src/ui/pages/input/components/input_insert_amount.dart';
 import 'package:elevo/src/ui/pages/input/controller/width_insert_amount_controller.dart';
-import 'package:flutter_svg/svg.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -48,7 +49,6 @@ class _InputPageState extends State<InputPage> {
     final statusBar = MediaQuery.of(context).viewPadding.top;
     final isLoading = context.select(() => isLoadingState.value);
     final selectedType = context.select(() => selectedTypeAtom.value);
-    final category = context.select(() => categoryAtom.value);
 
     return Scaffold(
       body: (isLoading)
@@ -102,58 +102,7 @@ class _InputPageState extends State<InputPage> {
                       ],
                     ),
                     Gap(height: 22),
-                    InkWell(
-                      onTap: () => showCategories(typeAtom.value),
-                      splashColor: kGrayColor.withOpacity(0.1),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 14),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Category',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 19,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                Gap(height: 6),
-                                const Text(
-                                  'Select the category',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: kGrayColor,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            (category == null)
-                                ? IconButton(
-                                    onPressed: () => showCategories(typeAtom.value),
-                                    color: kPrimaryColor,
-                                    icon: SvgPicture.asset(
-                                      'lib/assets/icons/arrow-down.svg',
-                                      height: 20,
-                                    ),
-                                  )
-                                : IconButton(
-                                    onPressed: () => showCategories(typeAtom.value),
-                                    icon: CircleAvatar(
-                                      backgroundColor: kPrimaryColor.withOpacity(0.1),
-                                      child: SvgPicture.asset(categoryAtom.value!.iconPath),
-                                    ),
-                                  ),
-                          ],
-                        ),
-                      ),
-                    )
+                    InputCategoryWidget(onTap: () => showCategories(typeAtom.value))
                   ],
                 ),
               ),
