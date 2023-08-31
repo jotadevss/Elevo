@@ -15,9 +15,7 @@ class TransactionReducer extends Reducer {
   Future<void> getAll() async {
     isLoadingState.value = true;
 
-    final result = await Future.delayed(Duration(seconds: 5), () async {
-      return await repository.getAllTransactions();
-    });
+    final result = await repository.getAllTransactions();
 
     result.fold(
       (transactions) {

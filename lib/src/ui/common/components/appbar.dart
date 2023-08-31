@@ -2,6 +2,7 @@ import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class ElevoAppBar extends StatelessWidget {
   const ElevoAppBar({
@@ -23,7 +24,9 @@ class ElevoAppBar extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                context.pop();
+              },
               borderRadius: BorderRadius.circular(100),
               child: Container(
                 padding: EdgeInsets.all(14),
