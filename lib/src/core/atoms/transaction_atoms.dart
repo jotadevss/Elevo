@@ -14,7 +14,7 @@ List<TransactionEntity> get transactions => [...listTransactionAtom.value];
 int get totalTransactions => transactions.length;
 
 TransactionSummaryDTO get allIncomes {
-  final listOfAllIncomes = transactions.where((tr) => tr.type == TypeTransaction.incomes.name).toList();
+  final listOfAllIncomes = transactions.where((tr) => tr.type == TypeTransaction.income.name).toList();
   final totalSumIncomes = listOfAllIncomes.fold(0.0, (previousValue, transaction) => previousValue + transaction.value);
   return TransactionSummaryDTO(totalAmount: totalSumIncomes, transactions: listOfAllIncomes);
 }

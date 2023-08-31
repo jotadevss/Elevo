@@ -2,7 +2,7 @@ import 'package:asp/asp.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 
 // Atoms
-final selectedTypeAtom = Atom<TypeTransaction>(TypeTransaction.incomes);
+final selectedTypeAtom = Atom<TypeTransaction>(TypeTransaction.income);
 
 // Action
 final changeTypeAction = Atom<TypeTransaction?>(null);
@@ -13,5 +13,5 @@ class SliderSelectTypeReducer extends Reducer {
     on(() => [changeTypeAction], change);
   }
 
-  void change() => selectedTypeAtom.value = changeTypeAction.value ?? TypeTransaction.incomes;
+  void change() => selectedTypeAtom.value = changeTypeAction.value ?? TypeTransaction.income;
 }
