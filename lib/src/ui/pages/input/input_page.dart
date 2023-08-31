@@ -3,7 +3,6 @@ import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/category_atom.dart';
 import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
-import 'package:elevo/src/domain/entity/category.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 import 'package:elevo/src/ui/pages/input/components/input_bottom_sheet.dart';
 import 'package:elevo/src/ui/pages/input/components/input_slider.dart';
