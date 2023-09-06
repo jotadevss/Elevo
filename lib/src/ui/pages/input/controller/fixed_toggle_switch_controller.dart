@@ -13,7 +13,7 @@ class ToggleSwitchIsFixedReducer extends Reducer {
   ToggleSwitchIsFixedReducer() {
     on(() => [toggleSwitchIsFixedAction], () {
       valueSwitchIsFixedAtom.value = toggleSwitchIsFixedAction.value;
-      (valueSwitchIsFixedAtom.value) ? frequencyAtom.value = Frequency.daily.name : frequencyAtom.value = null;
+      if (valueSwitchIsFixedAtom.value) frequencyAtom.value = Frequency.daily.name;
     });
   }
 }
