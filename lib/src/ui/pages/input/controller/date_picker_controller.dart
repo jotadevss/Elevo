@@ -22,8 +22,8 @@ String get formattedDate {
 final showDatePickerAction = Atom<BuildContext?>(null);
 
 // Reducer
-class DatePickerReducer extends Reducer {
-  DatePickerReducer() {
+class DatePickerController extends Reducer {
+  DatePickerController() {
     on(() => [showDatePickerAction], () async {
       final context = showDatePickerAction.value!;
       dateSelectedAtom.value = await showDatePicker(

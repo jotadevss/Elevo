@@ -9,8 +9,8 @@ final selectedTypeAtom = Atom<TypeTransaction>(TypeTransaction.income);
 final changeTypeAction = Atom<TypeTransaction?>(null);
 
 // Reducer
-class SliderSelectTypeReducer extends Reducer {
-  SliderSelectTypeReducer() {
+class SliderSelectTypeController extends Reducer {
+  SliderSelectTypeController() {
     on(() => [changeTypeAction], change);
   }
 

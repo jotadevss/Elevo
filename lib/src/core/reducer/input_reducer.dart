@@ -4,6 +4,9 @@ import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/core/atoms/transaction_atoms.dart';
 import 'package:elevo/src/core/dto/input_transaction_dto.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
+import 'package:uuid/uuid.dart';
+
+var uuid = const Uuid();
 
 class InputReducer extends Reducer {
   final ITransactionRepository repository;

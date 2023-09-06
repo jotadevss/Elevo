@@ -7,8 +7,8 @@ final expandWidthAtom = Atom<bool>(false);
 final observerTextLengthAction = Atom<String?>(null);
 
 // Reducer
-class WidthInsertAmountReducer extends Reducer {
-  WidthInsertAmountReducer() {
+class WidthInsertAmountController extends Reducer {
+  WidthInsertAmountController() {
     on(() => [observerTextLengthAction], handlerWidth);
   }
 
