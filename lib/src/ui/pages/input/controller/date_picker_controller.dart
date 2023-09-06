@@ -1,4 +1,5 @@
 import 'package:asp/asp.dart';
+import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -32,6 +33,7 @@ class DatePickerReducer extends Reducer {
             lastDate: DateTime(2099),
           ) ??
           DateTime.now();
+      createAtAtom.value = dateSelectedAtom.value;
     });
   }
 }

@@ -1,6 +1,7 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/ui/pages/input/components/input_category.dart';
 import 'package:elevo/src/ui/pages/input/components/input_date_widget.dart';
+import 'package:elevo/src/ui/pages/input/components/input_frequency_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/sheet/input_frequency_bottom_sheet.dart';
 import 'package:elevo/src/ui/pages/input/components/toggle_switch_widget.dart';
 import 'package:elevo/src/ui/pages/input/controller/date_picker_controller.dart';
@@ -65,8 +66,6 @@ class _InputPageState extends State<InputPage> {
     final isLoading = context.select(() => isLoadingState.value);
     final selectedType = context.select(() => selectedTypeAtom.value);
     final isFixed = context.select(() => valueSwitchIsFixedAtom.value);
-    final frequencySelected = context.select(() => frequencyAtom.value);
-    final frequencyLabel = frequencies.where((f) => f['id'] == frequencySelected).toList();
 
     return Scaffold(
       body: (isLoading)
@@ -129,60 +128,7 @@ class _InputPageState extends State<InputPage> {
                     ),
                     Gap(height: 10),
                     ToggleSwitchWidget(isFixed: isFixed),
-                    if (isFixed)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 26),
-                        child: InkWell(
-                          onTap: showFrequencies,
-                          hoverColor: Colors.grey.withOpacity(0.05),
-                          splashColor: Colors.grey.withOpacity(0.05),
-                          borderRadius: BorderRadius.circular(10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                "Frequency",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: "Qanelas",
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              SizedBox(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      frequencySelected == null ? 'Daily' : frequencyLabel[0]['title'].toString(),
-                                      style: TextStyle(
-                                        color: kPrimaryColor,
-                                        fontFamily: "Qanelas",
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 30,
-                                      width: 1,
-                                      color: Colors.grey.withOpacity(0.5),
-                                      margin: const EdgeInsets.only(left: 15),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      color: kPrimaryColor,
-                                      icon: Icon(
-                                        Icons.arrow_downward,
-                                        color: kPrimaryColor,
-                                        size: 20,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      )
+                    if (isFixed) InputFrequencyWidget(onTap: showFrequencies),
                   ],
                 ),
               ),
