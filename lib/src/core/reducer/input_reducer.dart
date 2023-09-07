@@ -60,11 +60,15 @@ class InputReducer extends Reducer {
     if (input.value <= 0) {
       containsError = true;
       isValueError.value = true;
+    } else {
+      isValueError.value = false;
     }
 
     if (input.category.isEmpty || input.category == '') {
       containsError = true;
       isCategoryError.value = true;
+    } else {
+      isCategoryError.value = false;
     }
 
     return !containsError;
@@ -85,6 +89,10 @@ class InputReducer extends Reducer {
     dateSelectedAtom.value = DateTime.now();
 
     // Clear errors
+    clearErrors();
+  }
+
+  void clearErrors() {
     isCategoryError.value = false;
     isValueError.value = false;
   }
