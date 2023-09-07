@@ -6,7 +6,11 @@ import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/core/atoms/transaction_atoms.dart';
 import 'package:elevo/src/core/dto/input_transaction_dto.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
+import 'package:elevo/src/domain/enums/type_enum.dart';
 import 'package:elevo/src/router.dart';
+import 'package:elevo/src/ui/pages/input/controller/date_picker_controller.dart';
+import 'package:elevo/src/ui/pages/input/controller/fixed_toggle_switch_controller.dart';
+import 'package:elevo/src/ui/pages/input/controller/slider_select_type_controller.dart';
 import 'package:uuid/uuid.dart';
 
 var uuid = const Uuid();
@@ -16,6 +20,7 @@ class InputReducer extends Reducer {
 
   InputReducer({required this.repository}) {
     on(() => [submitTransactionAction], submit);
+    on(() => [clearAction], clear);
   }
 
   Future<void> submit() async {
@@ -45,7 +50,7 @@ class InputReducer extends Reducer {
         log(error.toString());
       },
     );
-
+    clearAction.call();
     isLoadingState.value = false;
   }
 
@@ -63,5 +68,24 @@ class InputReducer extends Reducer {
     }
 
     return !containsError;
+  }
+
+  void clear() {
+    // Clear data input
+    valueAtom.value = 0.0;
+    categoryAtom.value = null;
+    typeAtom.value = TypeTransaction.income.name;
+    createAtAtom.value = DateTime.now();
+    frequencyAtom.value = null;
+    descriptionAtom.value = null;
+
+    // Clear controllers
+    selectedTypeAtom.value = TypeTransaction.income;
+    valueSwitchIsFixedAtom.value = false;
+    dateSelectedAtom.value = DateTime.now();
+
+    // Clear errors
+    isCategoryError.value = false;
+    isValueError.value = false;
   }
 }

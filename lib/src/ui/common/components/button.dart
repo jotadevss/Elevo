@@ -23,7 +23,7 @@ class ButtonWidget extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(100),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
           color: color.withOpacity(0.1),
@@ -36,13 +36,13 @@ class ButtonWidget extends StatelessWidget {
                 ? Container()
                 : SvgPicture.asset(
                     iconAssetName!,
-                    height: 20,
+                    height: 25,
                   ),
             Gap(width: 10),
             Text(
               title,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 14,
                 color: color,
                 fontWeight: FontWeight.w500,
               ),

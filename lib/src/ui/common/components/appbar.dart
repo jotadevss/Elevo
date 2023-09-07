@@ -1,4 +1,5 @@
 import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,6 +26,7 @@ class ElevoAppBar extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
+                clearAction.call();
                 context.pop();
               },
               borderRadius: BorderRadius.circular(100),

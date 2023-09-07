@@ -39,3 +39,4 @@ final isCategoryError = Atom<bool>(false);
 final submitTransactionAction = Atom.action();
 final selectCategoryAction = Atom<String?>(null);
 final selectFrequencyAction = Atom<String?>(null);
+final clearAction = Atom.action();
