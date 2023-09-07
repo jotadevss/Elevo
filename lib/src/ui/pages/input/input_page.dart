@@ -41,28 +41,6 @@ class _InputPageState extends State<InputPage> {
   final TextEditingController _insertAmountController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
 
-  void showCategories(String type) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) {
-        final categories = context.select(() => (type == TypeTransaction.income.name) ? incomesCategories : expensesCategories);
-        return InputCategoryBottomSheet(items: categories);
-      },
-    );
-  }
-
-  void showFrequencies() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) {
-        final size = MediaQuery.of(context).size;
-        return InputFrequencyBottomSheet(size: size);
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final statusBar = MediaQuery.of(context).viewPadding.top;
@@ -143,6 +121,28 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
             ),
+    );
+  }
+
+  void showCategories(String type) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        final categories = context.select(() => (type == TypeTransaction.income.name) ? incomesCategories : expensesCategories);
+        return InputCategoryBottomSheet(items: categories);
+      },
+    );
+  }
+
+  void showFrequencies() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        final size = MediaQuery.of(context).size;
+        return InputFrequencyBottomSheet(size: size);
+      },
     );
   }
 }
