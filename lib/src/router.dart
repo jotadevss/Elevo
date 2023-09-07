@@ -3,7 +3,7 @@ import 'package:elevo/src/ui/pages/empty_page.dart';
 import 'package:elevo/src/ui/pages/home/home_page.dart';
 import 'package:elevo/src/ui/pages/input/input_page.dart';
 import 'package:elevo/src/ui/pages/splash_page.dart';
-import 'package:elevo/src/ui/pages/input_success_page.dart';
+import 'package:elevo/src/ui/pages/input/input_success_page.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
