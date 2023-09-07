@@ -46,7 +46,7 @@ class InputSuccessPage extends StatelessWidget {
             const Gap(height: 12),
             ButtonWidget(
               iconAssetName: null,
-              title: 'Back to Home',
+              title: '  Back to Home  ',
               color: kGrayColor,
               onTap: () {},
             ),
