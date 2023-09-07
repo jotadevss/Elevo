@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 class SubmitWidget extends StatelessWidget {
   const SubmitWidget({
     super.key,
+    required this.onTap,
   });
+
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,7 @@ class SubmitWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 50, bottom: 70),
       child: InkWell(
         borderRadius: BorderRadius.circular(100),
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           width: double.infinity,
           height: 80,

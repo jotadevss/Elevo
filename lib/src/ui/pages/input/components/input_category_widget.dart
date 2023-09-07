@@ -9,9 +9,11 @@ class InputCategoryWidget extends StatelessWidget {
   const InputCategoryWidget({
     Key? key,
     required this.onTap,
+    required this.subtitle,
   }) : super(key: key);
 
   final void Function() onTap;
+  final Widget subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +39,7 @@ class InputCategoryWidget extends StatelessWidget {
                   ),
                 ),
                 Gap(height: 6),
-                const Text(
-                  'Select the category',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: kGrayColor,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                subtitle,
               ],
             ),
             (category == null)

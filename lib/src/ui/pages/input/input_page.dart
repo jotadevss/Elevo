@@ -47,6 +47,7 @@ class _InputPageState extends State<InputPage> {
     final isLoading = context.select(() => isLoadingState.value);
     final selectedType = context.select(() => selectedTypeAtom.value);
     final isFixed = context.select(() => valueSwitchIsFixedAtom.value);
+    final ([valueError, categoryError] as List<bool>) = context.select(() => [isValueError.value, isCategoryError.value]);
 
     return Scaffold(
       body: (isLoading)
@@ -58,12 +59,12 @@ class _InputPageState extends State<InputPage> {
                   children: [
                     const ElevoAppBar(assetName: 'lib/assets/icons/close.svg', enableAction: true),
                     const Gap(height: 25),
-                    const Text(
+                    Text(
                       'Insert amount',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
-                        color: kGrayColor,
+                        color: (valueError) ? kErrorColor : kGrayColor,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -100,7 +101,18 @@ class _InputPageState extends State<InputPage> {
                       ],
                     ),
                     Gap(height: 26),
-                    InputCategoryWidget(onTap: () => showCategories(typeAtom.value)),
+                    InputCategoryWidget(
+                      onTap: () => showCategories(typeAtom.value),
+                      subtitle: Text(
+                        'Select the category',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: (categoryError) ? kErrorColor : kGrayColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Divider(color: kGrayColor.withOpacity(0.1)),
@@ -116,7 +128,7 @@ class _InputPageState extends State<InputPage> {
                       child: Divider(color: kGrayColor.withOpacity(0.1)),
                     ),
                     InputDescriptionWidget(descriptionController: _descriptionController),
-                    SubmitWidget()
+                    SubmitWidget(onTap: () => submitTransactionAction.call()),
                   ],
                 ),
               ),

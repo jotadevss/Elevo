@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:asp/asp.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/core/atoms/transaction_atoms.dart';
 import 'package:elevo/src/core/dto/input_transaction_dto.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
+import 'package:elevo/src/router.dart';
 import 'package:uuid/uuid.dart';
 
 var uuid = const Uuid();
@@ -18,9 +21,13 @@ class InputReducer extends Reducer {
   Future<void> submit() async {
     isLoadingState.value = true;
 
-    final input = submitTransactionAction.value!;
+    final input = inputDTO;
     final isValid = validate(input);
-    if (!isValid) return;
+
+    if (!isValid) {
+      isLoadingState.value = false;
+      return;
+    }
 
     final id = '1';
     final transaction = InputTransactionDTO.toTransaction(id, input);
@@ -29,8 +36,14 @@ class InputReducer extends Reducer {
     result.fold(
       (transaction) {
         listTransactionAtom.value.add(transaction);
+        log(
+          '${transaction.id} | ${transaction.value} |${transaction.type} |${transaction.createAt} |${transaction.frequency} |${transaction.description}',
+        );
+        router.go(AppRouter.INPUT_SUCCESS_PAGE_ROUTER);
       },
-      (error) {},
+      (error) {
+        log(error.toString());
+      },
     );
 
     isLoadingState.value = false;
@@ -44,7 +57,7 @@ class InputReducer extends Reducer {
       isValueError.value = true;
     }
 
-    if (input.category.isEmpty) {
+    if (input.category.isEmpty || input.category == '') {
       containsError = true;
       isCategoryError.value = true;
     }
