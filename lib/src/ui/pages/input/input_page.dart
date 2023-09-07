@@ -1,9 +1,10 @@
 import 'package:asp/asp.dart';
-import 'package:elevo/src/ui/pages/input/components/input_category.dart';
+import 'package:elevo/src/ui/pages/input/components/input_category_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/input_date_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/input_description_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/input_frequency_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/sheet/input_frequency_bottom_sheet.dart';
+import 'package:elevo/src/ui/pages/input/components/submit_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/toggle_switch_widget.dart';
 import 'package:elevo/src/ui/pages/input/controller/date_picker_controller.dart';
 import 'package:elevo/src/ui/pages/input/controller/fixed_toggle_switch_controller.dart';
@@ -17,9 +18,9 @@ import 'package:elevo/src/domain/enums/type_enum.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/ui/pages/input/components/sheet/input_category_bottom_sheet.dart';
-import 'package:elevo/src/ui/pages/input/components/input_insert_amount.dart';
-import 'package:elevo/src/ui/pages/input/components/input_slider.dart';
-import 'package:elevo/src/ui/pages/input/components/item_slider.dart';
+import 'package:elevo/src/ui/pages/input/components/input_insert_amount_widget.dart';
+import 'package:elevo/src/ui/pages/input/components/input_slider_widget.dart';
+import 'package:elevo/src/ui/pages/input/components/item_slider_widget.dart';
 import 'package:elevo/src/ui/pages/input/controller/slider_select_type_controller.dart';
 import 'package:elevo/src/ui/pages/input/controller/width_insert_amount_controller.dart';
 
@@ -136,7 +137,8 @@ class _InputPageState extends State<InputPage> {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Divider(color: kGrayColor.withOpacity(0.1)),
                     ),
-                    InputDescriptionWidget(descriptionController: _descriptionController)
+                    InputDescriptionWidget(descriptionController: _descriptionController),
+                    SubmitWidget()
                   ],
                 ),
               ),
