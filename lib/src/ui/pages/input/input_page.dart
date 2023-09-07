@@ -1,6 +1,7 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/ui/pages/input/components/input_category.dart';
 import 'package:elevo/src/ui/pages/input/components/input_date_widget.dart';
+import 'package:elevo/src/ui/pages/input/components/input_description_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/input_frequency_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/sheet/input_frequency_bottom_sheet.dart';
 import 'package:elevo/src/ui/pages/input/components/toggle_switch_widget.dart';
@@ -37,6 +38,7 @@ class _InputPageState extends State<InputPage> {
   }
 
   final TextEditingController _insertAmountController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
 
   void showCategories(String type) {
     showModalBottomSheet(
@@ -120,15 +122,21 @@ class _InputPageState extends State<InputPage> {
                     ),
                     Gap(height: 26),
                     InputCategoryWidget(onTap: () => showCategories(typeAtom.value)),
-                    Gap(height: 20),
-                    Divider(color: kGrayColor.withOpacity(0.1)),
-                    Gap(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Divider(color: kGrayColor.withOpacity(0.1)),
+                    ),
                     InputDateWidget(
                       onTap: () => showDatePickerAction.value = context,
                     ),
                     Gap(height: 10),
                     ToggleSwitchWidget(isFixed: isFixed),
                     if (isFixed) InputFrequencyWidget(onTap: showFrequencies),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Divider(color: kGrayColor.withOpacity(0.1)),
+                    ),
+                    InputDescriptionWidget(descriptionController: _descriptionController)
                   ],
                 ),
               ),
