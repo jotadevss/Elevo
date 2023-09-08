@@ -1,4 +1,5 @@
 import 'package:asp/asp.dart';
+import 'package:elevo/src/ui/common/components/error_message.dart';
 import 'package:elevo/src/ui/pages/input/components/input_category_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/input_date_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/input_description_widget.dart';
@@ -128,42 +129,8 @@ class _InputPageState extends State<InputPage> {
                       child: Divider(color: kGrayColor.withOpacity(0.1)),
                     ),
                     InputDescriptionWidget(descriptionController: _descriptionController),
-                    if (valueError)
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 14),
-                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                        decoration: BoxDecoration(
-                          color: kErrorColor.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          'Value not entered. Please enter it before proceeding.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: kErrorColor,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    if (categoryError)
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 14),
-                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                        decoration: BoxDecoration(
-                          color: kErrorColor.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          'Category not selected. Please choose one before proceeding.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: kErrorColor,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
+                    if (valueError) ErrorMessage(message: 'Value not entered. Please enter it before proceeding.'),
+                    if (categoryError) ErrorMessage(message: 'Category not selected. Please choose one before proceeding.'),
                     SubmitWidget(onTap: () => submitTransactionAction.call()),
                   ],
                 ),
