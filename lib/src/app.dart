@@ -1,6 +1,6 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/atoms/transaction_atoms.dart';
+import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/router.dart';
 import 'package:flutter/material.dart';
 

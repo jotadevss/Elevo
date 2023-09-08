@@ -1,6 +1,6 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
-import 'package:elevo/src/core/atoms/transaction_atoms.dart';
+import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
 
 class TransactionReducer extends Reducer {

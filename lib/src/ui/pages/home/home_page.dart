@@ -1,7 +1,9 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
-import 'package:elevo/src/core/atoms/transaction_atoms.dart';
+import 'package:elevo/src/core/atoms/transaction/expenses_transaction.dart';
+import 'package:elevo/src/core/atoms/transaction/incomes_transaction.dart';
+import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/core/usecase/refresh_transaction_usecase.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
 import 'package:elevo/src/router.dart';
@@ -101,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: BorderRadius.circular(100),
                             ),
                             child: const Text(
-                              'This Week',
+                              'This Month',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 12,
@@ -127,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                               isVisible: isVisible,
                               color: kPrimaryColor,
                               label: 'Incomes',
-                              value: 2456.77,
+                              value: IncomesTransactions.totalCurrentMonthIncomesValue,
                               icon: Icon(
                                 Icons.trending_up_rounded,
                                 size: 20,
@@ -138,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                               isVisible: isVisible,
                               color: kErrorColor,
                               label: 'Expenses',
-                              value: 2456.77,
+                              value: ExpensesTransactions.totalCurrentMonthExpensesValue,
                               icon: Icon(
                                 Icons.trending_down_rounded,
                                 size: 20,
