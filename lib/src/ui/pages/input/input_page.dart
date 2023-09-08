@@ -128,7 +128,11 @@ class _InputPageState extends State<InputPage> {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Divider(color: kGrayColor.withOpacity(0.1)),
                     ),
-                    InputDescriptionWidget(descriptionController: _descriptionController),
+                    InputDescriptionWidget(
+                        descriptionController: _descriptionController,
+                        onChanged: (text) {
+                          descriptionAtom.value = text;
+                        }),
                     if (valueError) ErrorMessage(message: 'Value not entered. Please enter it before proceeding.'),
                     if (categoryError) ErrorMessage(message: 'Category not selected. Please choose one before proceeding.'),
                     SubmitWidget(onTap: () => submitTransactionAction.call()),

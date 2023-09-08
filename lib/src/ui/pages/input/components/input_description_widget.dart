@@ -1,5 +1,4 @@
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +6,11 @@ class InputDescriptionWidget extends StatelessWidget {
   const InputDescriptionWidget({
     super.key,
     required TextEditingController descriptionController,
+    this.onChanged,
   }) : _descriptionController = descriptionController;
 
   final TextEditingController _descriptionController;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class InputDescriptionWidget extends StatelessWidget {
                 hintText: 'Write here...',
                 border: InputBorder.none,
               ),
-              onChanged: (text) => descriptionAtom.value = text,
+              onChanged: onChanged,
             ),
           ),
         ],

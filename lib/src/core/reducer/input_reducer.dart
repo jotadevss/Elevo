@@ -26,7 +26,15 @@ class InputReducer extends Reducer {
   Future<void> submit() async {
     isLoadingState.value = true;
 
-    final input = inputDTO;
+    final input = InputTransactionDTO(
+      value: valueAtom.value,
+      type: typeAtom.value,
+      category: categoryAtom.value!.id,
+      createAt: createAtAtom.value,
+      frequency: frequencyAtom.value,
+      description: descriptionAtom.value,
+    );
+
     final isValid = validate(input);
 
     if (!isValid) {
@@ -38,12 +46,9 @@ class InputReducer extends Reducer {
     final transaction = InputTransactionDTO.toTransaction(id, input);
 
     final result = await repository.createTransaction(transaction);
-    result.fold(
-      (transaction) {
-        listTransactionAtom.value.add(transaction);
-        log(
-          '${transaction.id} | ${transaction.value} |${transaction.type} |${transaction.createAt} |${transaction.frequency} |${transaction.description}',
-        );
+    await result.fold(
+      (success) {
+        listTransactionAtom.value.add(success);
         router.go(AppRouter.INPUT_SUCCESS_PAGE_ROUTER);
       },
       (error) {

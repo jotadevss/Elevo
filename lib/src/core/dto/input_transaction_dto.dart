@@ -45,6 +45,8 @@ class InputTransactionDTO {
       type: dto.type,
       category: dto.category,
       createAt: dto.createAt,
+      frequency: dto.frequency,
+      description: dto.description,
     );
   }
 
