@@ -11,13 +11,15 @@ final toggleSwitchIsFixedAction = Atom<bool>(false);
 // Reducer
 class ToggleSwitchIsFixedController extends Reducer {
   ToggleSwitchIsFixedController() {
-    on(() => [toggleSwitchIsFixedAction], () {
-      valueSwitchIsFixedAtom.value = toggleSwitchIsFixedAction.value;
-      if (valueSwitchIsFixedAtom.value) {
-        frequencyAtom.value = Frequency.daily.name;
-      } else {
-        frequencyAtom.value = null;
-      }
-    });
+    on(() => [toggleSwitchIsFixedAction], toggle);
+  }
+
+  void toggle() {
+    valueSwitchIsFixedAtom.value = toggleSwitchIsFixedAction.value;
+    if (valueSwitchIsFixedAtom.value) {
+      frequencyAtom.value = Frequency.daily.name;
+    } else {
+      frequencyAtom.value = null;
+    }
   }
 }

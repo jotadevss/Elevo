@@ -46,7 +46,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     final isLoading = context.select(() => isLoadingState.value);
     final selectedType = context.select(() => selectedTypeAtom.value);
-    final isFixed = context.select(() => valueSwitchIsFixedAtom.value);
+    final isFixed = context.select(() => toggleSwitchIsFixedAction.value);
     final ([valueError, categoryError] as List<bool>) = context.select(() => [isValueError.value, isCategoryError.value]);
 
     return Scaffold(
@@ -121,7 +121,11 @@ class _InputPageState extends State<InputPage> {
                       onTap: () => showDatePickerAction.value = context,
                     ),
                     Gap(height: 10),
-                    ToggleSwitchWidget(isFixed: isFixed),
+                    ToggleSwitchWidget(
+                      onChanged: (newValue) {
+                        toggleSwitchIsFixedAction.value = newValue;
+                      },
+                    ),
                     if (isFixed) InputFrequencyWidget(onTap: showFrequencies),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),

@@ -24,7 +24,7 @@ class CurrencyFormatter extends TextInputFormatter {
 
   static double unformat(String text) {
     final formatter = NumberFormat("#,##0.00", "pt_BR");
-    final result = formatter.parse(text).toDouble();
+    final result = formatter.parse(text).toDouble() * 10;
     return result;
   }
 }

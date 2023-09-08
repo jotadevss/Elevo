@@ -1,5 +1,7 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/core/atoms/app_atoms.dart';
+import 'package:elevo/src/core/atoms/transaction_atoms.dart';
 import 'package:elevo/src/core/usecase/refresh_transaction_usecase.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
 import 'package:elevo/src/router.dart';
@@ -12,8 +14,19 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'components/home_card_total_balance.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    getAllTransactionAction.call();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,120 +35,124 @@ class HomePage extends StatelessWidget {
     final double itemWidth = size.width / 2;
 
     final isVisible = context.select(() => isVisibleAtom.value);
+    final balance = context.select(() => totalBalance);
+    final isLoading = context.select(() => isLoadingState.value);
 
-    final usecase = RefreshTransactionUsecase(repository: SQLTransactionRepositoryImpl());
+    final refresh = RefreshTransactionUsecase(repository: SQLTransactionRepositoryImpl());
 
     return Scaffold(
       body: RefreshIndicator.adaptive(
         onRefresh: () async {
-          await usecase.call();
+          await refresh.call();
         },
         color: kSecondaryColor,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(top: getStatusBar(context) + 10, left: kMarginHorizontal + 8, right: kMarginHorizontal + 8),
-            child: Column(
-              children: [
-                ElevoAppBar(enableAction: false, isCenter: true),
-                Gap(height: 32),
-                CardTotalBalance(
-                  isVisible: isVisible,
-                  value: 14235.66,
-                  onTap: () {
-                    context.push(AppRouter.INPUT_DATA_PAGE_ROUTER);
-                  },
-                ),
-                Gap(height: 32),
-                CustomTileItem(
-                  iconPath: 'lib/assets/icons/bill.svg',
-                  label: "Historic",
-                  description: "Access all registered transactions",
-                  color: kPrimaryColor,
-                  onTap: () {},
-                ),
-                Gap(height: 12),
-                CustomTileItem(
-                  iconPath: 'lib/assets/icons/chart.svg',
-                  label: "Dashboard",
-                  description: "Check graphs for your analysis",
-                  color: kPrimaryColor,
-                  onTap: () {},
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 32),
-                  child: Divider(color: kGrayColor.withOpacity(0.1)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Your Wallet',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 19,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: kGrayColor.withOpacity(0.05),
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: const Text(
-                        'This Week',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: kGrayColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                Gap(height: 12),
-                SizedBox(
-                  height: 280,
-                  child: GridView.count(
-                    scrollDirection: Axis.vertical,
-                    crossAxisCount: 2,
-                    controller: new ScrollController(keepScrollOffset: false),
-                    childAspectRatio: (itemWidth / itemHeight) + (itemWidth / itemHeight) / 1.5,
-                    crossAxisSpacing: 12,
-                    shrinkWrap: false,
+        child: (isLoading)
+            ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
+            : SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.only(top: getStatusBar(context) + 10, left: kMarginHorizontal + 8, right: kMarginHorizontal + 8),
+                  child: Column(
                     children: [
-                      WalletStatusCardItemWidget(
+                      ElevoAppBar(enableAction: false, isCenter: true),
+                      Gap(height: 32),
+                      CardTotalBalance(
                         isVisible: isVisible,
+                        value: balance,
+                        onTap: () {
+                          context.push(AppRouter.INPUT_DATA_PAGE_ROUTER);
+                        },
+                      ),
+                      Gap(height: 32),
+                      CustomTileItem(
+                        iconPath: 'lib/assets/icons/bill.svg',
+                        label: "Historic",
+                        description: "Access all registered transactions",
                         color: kPrimaryColor,
-                        label: 'Incomes',
-                        value: 2456.77,
-                        icon: Icon(
-                          Icons.trending_up_rounded,
-                          size: 20,
-                          color: kPrimaryColor,
+                        onTap: () {},
+                      ),
+                      Gap(height: 12),
+                      CustomTileItem(
+                        iconPath: 'lib/assets/icons/chart.svg',
+                        label: "Dashboard",
+                        description: "Check graphs for your analysis",
+                        color: kPrimaryColor,
+                        onTap: () {},
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 32),
+                        child: Divider(color: kGrayColor.withOpacity(0.1)),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Your Wallet',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 19,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: kGrayColor.withOpacity(0.05),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: const Text(
+                              'This Week',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: kGrayColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Gap(height: 12),
+                      SizedBox(
+                        height: 280,
+                        child: GridView.count(
+                          scrollDirection: Axis.vertical,
+                          crossAxisCount: 2,
+                          controller: new ScrollController(keepScrollOffset: false),
+                          childAspectRatio: (itemWidth / itemHeight) + (itemWidth / itemHeight) / 1.5,
+                          crossAxisSpacing: 12,
+                          shrinkWrap: false,
+                          children: [
+                            WalletStatusCardItemWidget(
+                              isVisible: isVisible,
+                              color: kPrimaryColor,
+                              label: 'Incomes',
+                              value: 2456.77,
+                              icon: Icon(
+                                Icons.trending_up_rounded,
+                                size: 20,
+                                color: kPrimaryColor,
+                              ),
+                            ),
+                            WalletStatusCardItemWidget(
+                              isVisible: isVisible,
+                              color: kErrorColor,
+                              label: 'Expenses',
+                              value: 2456.77,
+                              icon: Icon(
+                                Icons.trending_down_rounded,
+                                size: 20,
+                                color: kErrorColor,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      WalletStatusCardItemWidget(
-                        isVisible: isVisible,
-                        color: kErrorColor,
-                        label: 'Expenses',
-                        value: 2456.77,
-                        icon: Icon(
-                          Icons.trending_down_rounded,
-                          size: 20,
-                          color: kErrorColor,
-                        ),
-                      ),
+                      Gap(height: 32),
                     ],
                   ),
                 ),
-                Gap(height: 32),
-              ],
-            ),
-          ),
-        ),
+              ),
       ),
     );
   }

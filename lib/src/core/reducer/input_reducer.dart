@@ -42,7 +42,7 @@ class InputReducer extends Reducer {
       return;
     }
 
-    final id = '1';
+    final id = uuid.v4();
     final transaction = InputTransactionDTO.toTransaction(id, input);
 
     final result = await repository.createTransaction(transaction);
@@ -91,6 +91,7 @@ class InputReducer extends Reducer {
     // Clear controllers
     selectedTypeAtom.value = TypeTransaction.income;
     valueSwitchIsFixedAtom.value = false;
+    toggleSwitchIsFixedAction.value = false;
     dateSelectedAtom.value = DateTime.now();
 
     // Clear errors
