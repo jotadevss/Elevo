@@ -1,8 +1,10 @@
 import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/button.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class InputSuccessPage extends StatelessWidget {
   const InputSuccessPage({super.key});
@@ -46,9 +48,11 @@ class InputSuccessPage extends StatelessWidget {
             const Gap(height: 12),
             ButtonWidget(
               iconAssetName: null,
-              title: '  Back to Home  ',
+              title: '  Go to Home  ',
               color: kGrayColor,
-              onTap: () {},
+              onTap: () {
+                context.replace(AppRouter.HOME_PAGE_ROUTER);
+              },
             ),
           ],
         ),

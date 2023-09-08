@@ -51,7 +51,7 @@ class InputFrequencyWidget extends StatelessWidget {
                     margin: const EdgeInsets.only(left: 15),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: onTap,
                     color: kPrimaryColor,
                     icon: Icon(
                       Icons.arrow_downward,
