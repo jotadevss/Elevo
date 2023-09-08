@@ -128,6 +128,42 @@ class _InputPageState extends State<InputPage> {
                       child: Divider(color: kGrayColor.withOpacity(0.1)),
                     ),
                     InputDescriptionWidget(descriptionController: _descriptionController),
+                    if (valueError)
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 14),
+                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                        decoration: BoxDecoration(
+                          color: kErrorColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          'Value not entered. Please enter it before proceeding.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: kErrorColor,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    if (categoryError)
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 14),
+                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                        decoration: BoxDecoration(
+                          color: kErrorColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          'Category not selected. Please choose one before proceeding.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: kErrorColor,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
                     SubmitWidget(onTap: () => submitTransactionAction.call()),
                   ],
                 ),
