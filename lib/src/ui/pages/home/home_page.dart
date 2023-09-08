@@ -1,6 +1,5 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/formatters/currency_formatter.dart';
 import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';
 import 'package:elevo/src/ui/common/components/custom_tile_item.dart';

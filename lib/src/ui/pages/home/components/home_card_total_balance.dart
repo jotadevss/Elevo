@@ -2,7 +2,6 @@ import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/ui/pages/home/controller/toggle_visibility_controller.dart';
-import 'package:elevo/src/ui/pages/input/controller/fixed_toggle_switch_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
