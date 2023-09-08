@@ -19,8 +19,8 @@ class TransactionReducer extends Reducer {
 
     result.fold(
       (transactions) {
-        listTransactionAtom.value.clear();
-        listTransactionAtom.value = transactions;
+        cacheTransaction.value.clear();
+        cacheTransaction.value = transactions;
       },
       (error) {},
     );
@@ -38,8 +38,8 @@ class TransactionReducer extends Reducer {
 
     result.fold(
       (transaction) {
-        final index = listTransactionAtom.value.indexWhere((tr) => tr.id == id);
-        listTransactionAtom.value.removeAt(index);
+        final index = cacheTransaction.value.indexWhere((tr) => tr.id == id);
+        cacheTransaction.value.removeAt(index);
         selectedTransactionAtom.value = transaction;
       },
       (error) {},
@@ -52,16 +52,16 @@ class TransactionReducer extends Reducer {
     isLoadingState.value = true;
 
     final id = deleteTransactionAction.value!;
-    final index = listTransactionAtom.value.indexWhere((tr) => tr.id == id);
-    final saved = listTransactionAtom.value[index];
+    final index = cacheTransaction.value.indexWhere((tr) => tr.id == id);
+    final saved = cacheTransaction.value[index];
 
-    listTransactionAtom.value.removeAt(index);
+    cacheTransaction.value.removeAt(index);
 
     final result = await repository.deleteTransaction(id);
     result.fold(
       (_) {},
       (error) {
-        listTransactionAtom.value[index] = saved;
+        cacheTransaction.value[index] = saved;
       },
     );
 

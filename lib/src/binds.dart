@@ -9,12 +9,14 @@ import 'package:elevo/src/ui/pages/input/controller/fixed_toggle_switch_controll
 import 'package:elevo/src/ui/pages/input/controller/slider_select_type_controller.dart';
 import 'package:elevo/src/ui/pages/input/controller/width_insert_amount_controller.dart';
 
+// Reducers
 var reducers = [
   TransactionReducer(repository: SQLTransactionRepositoryImpl()),
   InputReducer(repository: SQLTransactionRepositoryImpl()),
   CategoryReducer(repository: LocalCategoryRepository()),
 ];
 
+// Controllers
 var controllers = [
   DatePickerController(),
   ToggleSwitchIsFixedController(),

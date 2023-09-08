@@ -48,7 +48,7 @@ class InputReducer extends Reducer {
     final result = await repository.createTransaction(transaction);
     await result.fold(
       (success) {
-        listTransactionAtom.value.add(success);
+        cacheTransaction.value.add(success);
         router.go(AppRouter.INPUT_SUCCESS_PAGE_ROUTER);
       },
       (error) {

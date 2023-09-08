@@ -4,12 +4,12 @@ import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 
 // Atoms
-final listTransactionAtom = Atom(<TransactionEntity>[]);
+final cacheTransaction = Atom(<TransactionEntity>[]);
 final selectedTransactionAtom = Atom<TransactionEntity?>(null);
 final isEmptyTransactionState = Atom<bool>(false);
 
 // Getters
-List<TransactionEntity> get transactions => [...listTransactionAtom.value];
+List<TransactionEntity> get transactions => [...cacheTransaction.value];
 
 int get totalTransactions => transactions.length;
 
