@@ -40,7 +40,7 @@ flutter:
     - lib/assets/icons/logo.svg
     - lib/assets/icons/close.svg
     - lib/assets/icons/arrow-down.svg
-    
+    - lib/assets/icons/wallet-money_white.svg
     - lib/assets/icons/bag.svg
     - lib/assets/icons/car.svg
     - lib/assets/icons/heart.svg
@@ -50,6 +50,7 @@ flutter:
     - lib/assets/icons/receipt.svg
     - lib/assets/icons/status-up.svg
     - lib/assets/icons/sun.svg
+    - lib/assets/icons/chart.svg
 
   fonts:
     - family: Qanelas

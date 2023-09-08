@@ -10,16 +10,18 @@ class ElevoAppBar extends StatelessWidget {
     Key? key,
     this.assetName,
     required this.enableAction,
+    required this.isCenter,
   }) : super(key: key);
 
   final String? assetName;
   final bool enableAction;
+  final bool isCenter;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: isCenter ? MainAxisAlignment.center : MainAxisAlignment.spaceBetween,
       children: [
         if (enableAction)
           Padding(
@@ -58,7 +60,7 @@ class ElevoAppBar extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            Gap(width: (size.width / 2.5) - kMarginHorizontal),
+            Gap(width: (isCenter) ? 0 : ((size.width / 2.5) - kMarginHorizontal)),
           ],
         ),
       ],

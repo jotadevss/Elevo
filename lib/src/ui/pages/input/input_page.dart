@@ -44,7 +44,6 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    final statusBar = MediaQuery.of(context).viewPadding.top;
     final isLoading = context.select(() => isLoadingState.value);
     final selectedType = context.select(() => selectedTypeAtom.value);
     final isFixed = context.select(() => valueSwitchIsFixedAtom.value);
@@ -55,10 +54,10 @@ class _InputPageState extends State<InputPage> {
           ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
           : SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.only(top: statusBar + 10, left: kMarginHorizontal, right: kMarginHorizontal),
+                padding: EdgeInsets.only(top: getStatusBar(context) + 10, left: kMarginHorizontal, right: kMarginHorizontal),
                 child: Column(
                   children: [
-                    const ElevoAppBar(assetName: 'lib/assets/icons/close.svg', enableAction: true),
+                    const ElevoAppBar(assetName: 'lib/assets/icons/close.svg', enableAction: true, isCenter: false),
                     const Gap(height: 25),
                     Text(
                       'Insert amount',

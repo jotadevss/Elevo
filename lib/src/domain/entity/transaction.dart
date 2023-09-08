@@ -59,7 +59,7 @@ class TransactionEntity {
       type: map['type'] as String,
       category: map['category'] as String,
       createAt: DateTime.fromMillisecondsSinceEpoch(map['createAt'] as int),
-      frequency: map['frequency'] as String,
+      frequency: map['frequency'] != null ? map['frequency'] as String : null,
       description: map['description'] != null ? map['description'] as String : null,
     );
   }

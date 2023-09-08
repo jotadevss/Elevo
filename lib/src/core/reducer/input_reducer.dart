@@ -29,7 +29,7 @@ class InputReducer extends Reducer {
     final input = InputTransactionDTO(
       value: valueAtom.value,
       type: typeAtom.value,
-      category: categoryAtom.value!.id,
+      category: categoryAtom.value?.id ?? '',
       createAt: createAtAtom.value,
       frequency: frequencyAtom.value,
       description: descriptionAtom.value,
