@@ -1,9 +1,7 @@
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 
 class ElevoAppBar extends StatelessWidget {
   const ElevoAppBar({
@@ -11,11 +9,13 @@ class ElevoAppBar extends StatelessWidget {
     this.assetName,
     required this.enableAction,
     required this.isCenter,
+    this.action,
   }) : super(key: key);
 
   final String? assetName;
   final bool enableAction;
   final bool isCenter;
+  final void Function()? action;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,7 @@ class ElevoAppBar extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
-              onTap: () {
-                clearAction.call();
-                context.pop();
-              },
+              onTap: action,
               borderRadius: BorderRadius.circular(100),
               child: Container(
                 padding: EdgeInsets.all(14),

@@ -51,6 +51,7 @@ flutter:
     - lib/assets/icons/status-up.svg
     - lib/assets/icons/sun.svg
     - lib/assets/icons/chart.svg
+    - lib/assets/icons/arrow-left.svg
 
   fonts:
     - family: Qanelas

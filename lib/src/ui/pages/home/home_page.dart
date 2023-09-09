@@ -5,7 +5,6 @@ import 'package:elevo/src/core/atoms/transaction/expenses_transaction.dart';
 import 'package:elevo/src/core/atoms/transaction/incomes_transaction.dart';
 import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/core/usecase/refresh_transaction_usecase.dart';
-import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
 import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';
 import 'package:elevo/src/ui/common/components/custom_tile_item.dart';
@@ -40,8 +39,6 @@ class _HomePageState extends State<HomePage> {
     final balance = context.select(() => totalBalance);
     final isLoading = context.select(() => isLoadingState.value);
 
-    final refresh = RefreshTransactionUsecase(repository: SQLTransactionRepositoryImpl());
-
     return Scaffold(
       body: RefreshIndicator.adaptive(
         onRefresh: () async {
@@ -70,7 +67,9 @@ class _HomePageState extends State<HomePage> {
                         label: "Historic",
                         description: "Access all registered transactions",
                         color: kPrimaryColor,
-                        onTap: () {},
+                        onTap: () {
+                          context.push(AppRouter.HISTORIC_PAGE_ROUTER);
+                        },
                       ),
                       Gap(height: 12),
                       CustomTileItem(

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:asp/asp.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/input_atoms.dart';
@@ -11,6 +10,7 @@ import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/pages/input/controller/date_picker_controller.dart';
 import 'package:elevo/src/ui/pages/input/controller/fixed_toggle_switch_controller.dart';
 import 'package:elevo/src/ui/pages/input/controller/slider_select_type_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
 var uuid = const Uuid();
@@ -24,7 +24,9 @@ class InputReducer extends Reducer {
   }
 
   Future<void> submit() async {
-    isLoadingState.value = true;
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+      isLoadingState.value = true;
+    });
 
     final input = InputTransactionDTO(
       value: valueAtom.value,
@@ -38,7 +40,9 @@ class InputReducer extends Reducer {
     final isValid = validate(input);
 
     if (!isValid) {
-      isLoadingState.value = false;
+      WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+        isLoadingState.value = false;
+      });
       return;
     }
 

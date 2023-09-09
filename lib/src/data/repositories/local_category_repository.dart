@@ -27,9 +27,16 @@ class LocalCategoryRepository implements ICategoryRepository {
       hexColor: kPrimaryColor.value,
     ),
     CategoryEntity(
-      id: 'content-investment',
+      id: 'content-investment-incomes',
       title: 'Investment',
       type: 'income',
+      iconPath: 'lib/assets/icons/status-up.svg',
+      hexColor: kPrimaryColor.value,
+    ),
+    CategoryEntity(
+      id: 'content-investment-expense',
+      title: 'Investment',
+      type: 'expense',
       iconPath: 'lib/assets/icons/status-up.svg',
       hexColor: kPrimaryColor.value,
     ),

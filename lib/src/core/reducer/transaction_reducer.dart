@@ -2,6 +2,7 @@ import 'package:asp/asp.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
+import 'package:flutter/material.dart';
 
 class TransactionReducer extends Reducer {
   final ITransactionRepository repository;
@@ -13,7 +14,9 @@ class TransactionReducer extends Reducer {
   }
 
   Future<void> getAll() async {
-    isLoadingState.value = true;
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+      isLoadingState.value = true;
+    });
 
     final result = await repository.getAllTransactions();
 
@@ -31,7 +34,9 @@ class TransactionReducer extends Reducer {
   }
 
   Future<void> getById() async {
-    isLoadingState.value = true;
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+      isLoadingState.value = true;
+    });
 
     final id = getByIdTransactionAction.value!;
     final result = await repository.getTransaction(id);
@@ -49,7 +54,9 @@ class TransactionReducer extends Reducer {
   }
 
   Future<void> delete() async {
-    isLoadingState.value = true;
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+      isLoadingState.value = true;
+    });
 
     final id = deleteTransactionAction.value!;
     final index = cacheTransaction.value.indexWhere((tr) => tr.id == id);

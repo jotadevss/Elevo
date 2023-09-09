@@ -7,11 +7,11 @@ import 'package:intl/intl.dart';
 final dateSelectedAtom = Atom<DateTime>(DateTime.now());
 
 String get formattedDate {
-  if (dateSelectedAtom.value.day == DateTime.now().day) {
+  if (dateSelectedAtom.value == DateTime.now().day) {
     return 'Today';
-  } else if (dateSelectedAtom.value.day == DateTime.now().day + 1) {
+  } else if (dateSelectedAtom.value == DateTime.now().day + 1) {
     return 'Tomorrow';
-  } else if (dateSelectedAtom.value.day == DateTime.now().day - 1) {
+  } else if (dateSelectedAtom.value == DateTime.now().day - 1) {
     return 'Yesterday';
   } else {
     return DateFormat('dd/MM/yyyy').format(dateSelectedAtom.value);

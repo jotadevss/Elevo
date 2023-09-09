@@ -1,5 +1,6 @@
 import 'package:elevo/src/ui/pages/deleted_page.dart';
 import 'package:elevo/src/ui/pages/empty_page.dart';
+import 'package:elevo/src/ui/pages/historic/historic_page.dart';
 import 'package:elevo/src/ui/pages/home/home_page.dart';
 import 'package:elevo/src/ui/pages/input/input_page.dart';
 import 'package:elevo/src/ui/pages/splash_page.dart';
@@ -44,6 +45,12 @@ final GoRouter router = GoRouter(
         return InputPage();
       },
     ),
+    GoRoute(
+      path: AppRouter.HISTORIC_PAGE_ROUTER,
+      builder: (context, state) {
+        return HistoricPage();
+      },
+    ),
   ],
 );
 
@@ -55,4 +62,5 @@ class AppRouter {
   static const String ERROR_PAGE_ROUTER = '/error';
   static const String INPUT_DATA_PAGE_ROUTER = '/input-data';
   static const String INPUT_SUCCESS_PAGE_ROUTER = '/input-success';
+  static const String HISTORIC_PAGE_ROUTER = '/historic';
 }

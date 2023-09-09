@@ -16,3 +16,5 @@ class RefreshTransactionUsecase {
     }, (_) => null);
   }
 }
+
+final refresh = RefreshTransactionUsecase(repository: SQLTransactionRepositoryImpl());

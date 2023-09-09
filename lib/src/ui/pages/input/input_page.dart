@@ -24,6 +24,7 @@ import 'package:elevo/src/ui/pages/input/components/input_slider_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/item_slider_widget.dart';
 import 'package:elevo/src/ui/pages/input/controller/slider_select_type_controller.dart';
 import 'package:elevo/src/ui/pages/input/controller/width_insert_amount_controller.dart';
+import 'package:go_router/go_router.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -57,7 +58,15 @@ class _InputPageState extends State<InputPage> {
                 padding: EdgeInsets.only(top: getStatusBar(context) + 10, left: kMarginHorizontal, right: kMarginHorizontal),
                 child: Column(
                   children: [
-                    const ElevoAppBar(assetName: 'lib/assets/icons/close.svg', enableAction: true, isCenter: false),
+                    ElevoAppBar(
+                      assetName: 'lib/assets/icons/close.svg',
+                      enableAction: true,
+                      isCenter: false,
+                      action: () {
+                        clearAction.call();
+                        context.pop();
+                      },
+                    ),
                     const Gap(height: 25),
                     Text(
                       'Insert amount',
