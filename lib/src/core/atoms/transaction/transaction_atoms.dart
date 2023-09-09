@@ -15,6 +15,8 @@ int get totalTransactions => transactions.length;
 
 double get totalBalance => IncomesTransactions.totalIncomesValue - ExpensesTransactions.totalExpensesValue;
 
+bool get isNegative => totalBalance < 0;
+
 // Actions
 final getAllTransactionAction = Atom.action();
 final getByIdTransactionAction = Atom<String?>(null);

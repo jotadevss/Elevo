@@ -1,4 +1,5 @@
 import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/ui/pages/home/controller/toggle_visibility_controller.dart';
@@ -39,9 +40,13 @@ class CardTotalBalance extends StatelessWidget {
           ),
           Gap(height: 12),
           Text(
-            (isVisible) ? '\$' + CurrencyFormatter.format(value.toString()) : "*****",
+            (isVisible)
+                ? isNegative
+                    ? ('-' + '\$' + CurrencyFormatter.format(value.toString()))
+                    : ('\$' + CurrencyFormatter.format(value.toString()))
+                : "*****",
             style: TextStyle(
-              color: Colors.black,
+              color: isNegative ? kSecondaryColor : Colors.black,
               fontWeight: FontWeight.w700,
               fontSize: 32,
             ),
