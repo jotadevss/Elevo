@@ -3,17 +3,15 @@ import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/core/dto/category_props_dto.dart';
-import 'package:elevo/src/core/formatters/date_formatter.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';
 import 'package:elevo/src/ui/common/components/button.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
+import 'package:elevo/src/ui/pages/historic/components/card_transaction_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../core/formatters/currency_formatter.dart';
 
 class HistoricDetailPage extends StatelessWidget {
   const HistoricDetailPage({super.key, required this.transaction, required this.categoryProps});
@@ -61,166 +59,7 @@ class HistoricDetailPage extends StatelessWidget {
                       ),
                     ),
                     Gap(height: 32),
-                    Container(
-                      padding: EdgeInsets.all(32),
-                      margin: EdgeInsets.symmetric(horizontal: 8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        border: Border.all(
-                          color: kGrayColor.withOpacity(0.2),
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                categoryProps.label,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              Text(
-                                '\$' + CurrencyFormatter.format(transaction.value.toString()),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: (TypeTransaction.income.name == transaction.type) ? kPrimaryColor : kErrorColor,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Gap(height: 32),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Transaction ID',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              Gap(height: 6),
-                              Text(
-                                transaction.id,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: kGrayColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 14),
-                            child: Divider(
-                              color: kGrayColor.withOpacity(0.1),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Creation Date',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Gap(height: 6),
-                                  Text(
-                                    DateFormatter.format(transaction.createAt),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: kGrayColor,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Gap(width: size.width / 6),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Frequency',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Gap(height: 6),
-                                  Text(
-                                    transaction.type,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: kGrayColor,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 14),
-                            child: Divider(
-                              color: kGrayColor.withOpacity(0.1),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Description',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Gap(height: 6),
-                                  Text(
-                                    transaction.description ?? 'No Description',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: kGrayColor,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                    CardTransactionDetails(categoryProps: categoryProps, transaction: transaction, size: size),
                     Gap(height: 32),
                     ButtonWidget(
                       iconAssetName: 'lib/assets/icons/trash.svg',
