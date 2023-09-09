@@ -66,7 +66,9 @@ class TransactionReducer extends Reducer {
 
     final result = await repository.deleteTransaction(id);
     result.fold(
-      (_) {},
+      (_) {
+        checkTransactionStatus();
+      },
       (error) {
         cacheTransaction.value[index] = saved;
       },

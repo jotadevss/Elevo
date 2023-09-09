@@ -3,8 +3,10 @@ import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/atoms/app_atoms.dart';
 import 'package:elevo/src/core/atoms/category_atom.dart';
 import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
+import 'package:elevo/src/core/dto/category_props_dto.dart';
 import 'package:elevo/src/core/formatters/date_formatter.dart';
 import 'package:elevo/src/core/usecase/refresh_transaction_usecase.dart';
+import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/ui/pages/historic/components/header_transaction_info.dart';
@@ -66,9 +68,12 @@ class _HistoricPageState extends State<HistoricPage> {
 
                           final label = category[0].title;
                           final iconPath = category[0].iconPath;
+                          final props = CategoryProsDTO(label: label, iconPath: iconPath);
+
                           final transactionDate = DateFormatter.format(item.createAt);
                           final fixedTransaction = item.frequency ?? 'unique';
                           final value = item.value;
+
                           return TransactionCardItem(
                             iconPath: iconPath,
                             label: label,
@@ -76,7 +81,12 @@ class _HistoricPageState extends State<HistoricPage> {
                             value: value,
                             transactionDate: transactionDate,
                             fixedTransaction: fixedTransaction,
-                            onTap: () {},
+                            onTap: () {
+                              context.push(
+                                AppRouter.HISTORIC_DETAIL_PAGE_ROUTER,
+                                extra: {'transaction': item, 'categoryProps': props},
+                              );
+                            },
                           );
                         },
                       ),

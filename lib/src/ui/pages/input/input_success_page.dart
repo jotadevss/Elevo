@@ -43,7 +43,9 @@ class InputSuccessPage extends StatelessWidget {
               iconAssetName: 'lib/assets/icons/bill.svg',
               title: 'Go to Historic',
               color: kPrimaryColor,
-              onTap: () {},
+              onTap: () {
+                context.replace(AppRouter.HISTORIC_PAGE_ROUTER);
+              },
             ),
             const Gap(height: 12),
             ButtonWidget(
