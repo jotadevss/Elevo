@@ -8,7 +8,7 @@ class IncomesTransactions {
   }
 
   static double get totalIncomesValue {
-    return allIncomes.fold(0.0, (previousValue, transaction) => previousValue + transaction.value);
+    return (allIncomes.fold(0.0, (previousValue, transaction) => previousValue + transaction.value)).roundToDouble();
   }
 
   static List<TransactionEntity> get currentMonthIncomes {
@@ -17,6 +17,6 @@ class IncomesTransactions {
   }
 
   static double get totalCurrentMonthIncomesValue {
-    return currentMonthIncomes.fold(0.0, (previousValue, transaction) => previousValue + transaction.value);
+    return (currentMonthIncomes.fold(0.0, (previousValue, transaction) => previousValue + transaction.value)).roundToDouble();
   }
 }
