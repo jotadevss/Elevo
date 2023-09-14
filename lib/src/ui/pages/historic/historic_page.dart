@@ -6,6 +6,7 @@ import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/core/dto/category_props_dto.dart';
 import 'package:elevo/src/core/formatters/date_formatter.dart';
 import 'package:elevo/src/core/usecase/refresh_transaction_usecase.dart';
+import 'package:elevo/src/domain/entity/category.dart';
 import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
@@ -58,25 +59,25 @@ class _HistoricPageState extends State<HistoricPage> {
                     const Gap(height: 24),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: totalTransactions,
+                        itemCount: listOfAllTransactions.length,
                         itemBuilder: (context, index) {
                           final item = listOfAllTransactions.reversed.toList()[index];
 
-                          final category = categories.where((ct) {
+                          final List<CategoryEntity?> category = categories.where((ct) {
                             return ct.id == item.category;
                           }).toList();
 
-                          final label = category[0].title;
-                          final iconPath = category[0].iconPath;
-                          final props = CategoryProsDTO(label: label, iconPath: iconPath);
+                          final String? label = category[0]?.title;
+                          final String? iconPath = category[0]?.iconPath;
+                          final props = CategoryProsDTO(label: label ?? '', iconPath: iconPath ?? '');
 
                           final transactionDate = DateFormatter.format(item.createAt);
                           final fixedTransaction = item.frequency ?? 'unique';
                           final value = item.value;
 
                           return TransactionCardItem(
-                            iconPath: iconPath,
-                            label: label,
+                            iconPath: iconPath ?? '',
+                            label: label ?? '',
                             item: item,
                             value: value,
                             transactionDate: transactionDate,

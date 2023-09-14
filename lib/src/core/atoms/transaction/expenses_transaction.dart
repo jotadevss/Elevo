@@ -19,4 +19,12 @@ class ExpensesTransactions {
   static double get totalCurrentMonthExpensesValue {
     return (currentMonthExpenses.fold(0.0, (previousValue, transaction) => previousValue + transaction.value)).roundToDouble();
   }
+
+  static List<TransactionEntity> get untilDayExpenses {
+    return allExpenses.where((tr) => tr.createAt.day <= DateTime.now().day).toList();
+  }
+
+  static double get untilDayExpensesValue {
+    return (untilDayExpenses.fold(0.0, (previousValue, transaction) => previousValue + transaction.value)).roundToDouble();
+  }
 }

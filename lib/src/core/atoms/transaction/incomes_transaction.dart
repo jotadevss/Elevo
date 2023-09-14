@@ -19,4 +19,12 @@ class IncomesTransactions {
   static double get totalCurrentMonthIncomesValue {
     return (currentMonthIncomes.fold(0.0, (previousValue, transaction) => previousValue + transaction.value)).roundToDouble();
   }
+
+  static List<TransactionEntity> get untilDayIncomes {
+    return allIncomes.where((tr) => tr.createAt.day <= DateTime.now().day).toList();
+  }
+
+  static double get untilDayIncomesValue {
+    return (untilDayIncomes.fold(0.0, (previousValue, transaction) => previousValue + transaction.value)).roundToDouble();
+  }
 }

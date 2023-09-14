@@ -13,7 +13,7 @@ List<TransactionEntity> get transactions => [...cacheTransaction.value];
 
 int get totalTransactions => transactions.length;
 
-double get totalBalance => (IncomesTransactions.totalIncomesValue - ExpensesTransactions.totalExpensesValue).roundToDouble();
+double get totalBalance => (IncomesTransactions.untilDayIncomesValue - ExpensesTransactions.untilDayExpensesValue).roundToDouble();
 
 bool get isNegative => totalBalance < 0;
 
