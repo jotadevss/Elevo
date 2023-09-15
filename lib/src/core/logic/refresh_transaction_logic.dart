@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
-
-import '../atoms/transaction/transaction_atoms.dart';
 
 class RefreshTransactionUsecase {
   RefreshTransactionUsecase({required this.repository});

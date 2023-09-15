@@ -1,5 +1,6 @@
 import 'package:elevo/src/core/dto/category_props_dto.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
+import 'package:elevo/src/ui/pages/dashboard/dashboard_page.dart';
 import 'package:elevo/src/ui/pages/deleted_page.dart';
 import 'package:elevo/src/ui/pages/empty_page.dart';
 import 'package:elevo/src/ui/pages/historic/historic_detail_page.dart';
@@ -55,6 +56,12 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
+      path: AppRouter.DASHBOARD_PAGE_ROUTER,
+      builder: (context, state) {
+        return DashboardPage();
+      },
+    ),
+    GoRoute(
       path: AppRouter.HISTORIC_DETAIL_PAGE_ROUTER,
       builder: (context, state) {
         final args = state.extra as Map<String, dynamic>;
@@ -77,4 +84,5 @@ class AppRouter {
   static const String INPUT_SUCCESS_PAGE_ROUTER = '/input-success';
   static const String HISTORIC_PAGE_ROUTER = '/historic';
   static const String HISTORIC_DETAIL_PAGE_ROUTER = '/historic-detail';
+  static const String DASHBOARD_PAGE_ROUTER = '/dashboard';
 }

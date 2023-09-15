@@ -1,6 +1,7 @@
-import 'package:elevo/src/core/reducer/category_reducer.dart';
-import 'package:elevo/src/core/reducer/input_reducer.dart';
-import 'package:elevo/src/core/reducer/transaction_reducer.dart';
+import 'package:elevo/src/core/logic/category_logic.dart';
+import 'package:elevo/src/core/logic/dashboard_logic.dart';
+import 'package:elevo/src/core/logic/input_logic.dart';
+import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
 import 'package:elevo/src/data/repositories/local_category_repository.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
 import 'package:elevo/src/ui/pages/home/controller/toggle_visibility_controller.dart';
@@ -14,6 +15,7 @@ var reducers = [
   TransactionReducer(repository: SQLTransactionRepositoryImpl()),
   InputReducer(repository: SQLTransactionRepositoryImpl()),
   CategoryReducer(repository: LocalCategoryRepository()),
+  DashboardReducer(),
 ];
 
 // Controllers

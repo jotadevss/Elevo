@@ -1,4 +1,7 @@
 import 'package:asp/asp.dart';
+import 'package:elevo/src/core/logic/app_logic.dart';
+import 'package:elevo/src/core/logic/category_logic.dart';
+import 'package:elevo/src/core/logic/input_logic.dart';
 import 'package:elevo/src/ui/common/components/error_message.dart';
 import 'package:elevo/src/ui/pages/input/components/input_category_widget.dart';
 import 'package:elevo/src/ui/pages/input/components/input_date_widget.dart';
@@ -11,9 +14,6 @@ import 'package:elevo/src/ui/pages/input/controller/date_picker_controller.dart'
 import 'package:elevo/src/ui/pages/input/controller/fixed_toggle_switch_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/atoms/app_atoms.dart';
-import 'package:elevo/src/core/atoms/category_atom.dart';
-import 'package:elevo/src/core/atoms/input_atoms.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';

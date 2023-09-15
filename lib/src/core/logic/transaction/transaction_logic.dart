@@ -1,8 +1,33 @@
+// Atoms
 import 'package:asp/asp.dart';
-import 'package:elevo/src/core/atoms/app_atoms.dart';
-import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
+import 'package:elevo/src/core/logic/app_logic.dart';
+import 'package:elevo/src/core/logic/transaction/expenses_logic.dart';
+import 'package:elevo/src/core/logic/transaction/incomes_logic.dart';
 import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
-import 'package:flutter/material.dart';
+import 'package:elevo/src/domain/entity/transaction.dart';
+import 'package:flutter/widgets.dart';
+
+final cacheTransaction = Atom(<TransactionEntity>[]);
+final selectedTransactionAtom = Atom<TransactionEntity?>(null);
+final isEmptyTransactionState = Atom<bool>(false);
+
+// Getters
+List<TransactionEntity> get transactions => [...cacheTransaction.value];
+
+int get totalTransactions => transactions.length;
+
+double get totalTransactionsValue {
+  return transactions.fold(0.0, (previousValue, transaction) => previousValue + transaction.value).roundToDouble();
+}
+
+double get totalBalance => (IncomesTransactions.untilDayIncomesValue - ExpensesTransactions.untilDayExpensesValue).roundToDouble();
+
+bool get isNegative => totalBalance < 0;
+
+// Actions
+final getAllTransactionAction = Atom.action();
+final getByIdTransactionAction = Atom<String?>(null);
+final deleteTransactionAction = Atom<String?>(null);
 
 class TransactionReducer extends Reducer {
   final ITransactionRepository repository;

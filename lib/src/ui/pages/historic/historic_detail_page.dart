@@ -1,8 +1,8 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/atoms/app_atoms.dart';
-import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/core/dto/category_props_dto.dart';
+import 'package:elevo/src/core/logic/app_logic.dart';
+import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';

@@ -1,4 +1,4 @@
-import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
+import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 

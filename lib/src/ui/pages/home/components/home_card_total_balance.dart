@@ -1,6 +1,6 @@
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
+import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/ui/pages/home/controller/toggle_visibility_controller.dart';
 import 'package:flutter/material.dart';

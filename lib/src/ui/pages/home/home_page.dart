@@ -1,10 +1,10 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/atoms/app_atoms.dart';
-import 'package:elevo/src/core/atoms/transaction/expenses_transaction.dart';
-import 'package:elevo/src/core/atoms/transaction/incomes_transaction.dart';
-import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
-import 'package:elevo/src/core/usecase/refresh_transaction_usecase.dart';
+import 'package:elevo/src/core/logic/app_logic.dart';
+import 'package:elevo/src/core/logic/transaction/expenses_logic.dart';
+import 'package:elevo/src/core/logic/transaction/incomes_logic.dart';
+import 'package:elevo/src/core/logic/refresh_transaction_logic.dart';
+import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
 import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';
 import 'package:elevo/src/ui/common/components/custom_tile_item.dart';
@@ -77,7 +77,9 @@ class _HomePageState extends State<HomePage> {
                         label: "Dashboard",
                         description: "Check graphs for your analysis",
                         color: kPrimaryColor,
-                        onTap: () {},
+                        onTap: () {
+                          context.push(AppRouter.DASHBOARD_PAGE_ROUTER);
+                        },
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 32),

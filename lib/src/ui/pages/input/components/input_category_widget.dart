@@ -1,6 +1,6 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/atoms/input_atoms.dart';
+import 'package:elevo/src/core/logic/input_logic.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

@@ -1,11 +1,11 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
-import 'package:elevo/src/core/atoms/app_atoms.dart';
-import 'package:elevo/src/core/atoms/category_atom.dart';
-import 'package:elevo/src/core/atoms/transaction/transaction_atoms.dart';
+import 'package:elevo/src/core/logic/app_logic.dart';
+import 'package:elevo/src/core/logic/category_logic.dart';
 import 'package:elevo/src/core/dto/category_props_dto.dart';
 import 'package:elevo/src/core/formatters/date_formatter.dart';
-import 'package:elevo/src/core/usecase/refresh_transaction_usecase.dart';
+import 'package:elevo/src/core/logic/refresh_transaction_logic.dart';
+import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
 import 'package:elevo/src/domain/entity/category.dart';
 import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';
