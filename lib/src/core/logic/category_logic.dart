@@ -6,12 +6,13 @@ import 'package:elevo/src/domain/entity/category.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 import 'package:flutter/widgets.dart';
 
-final allCateroiesAtom = Atom<List<CategoryEntity>>([]);
+// Atoms
+final allCategoriesAtom = Atom<List<CategoryEntity>>([]);
 
 // Getters
-List<CategoryEntity> get categories => [...allCateroiesAtom.value];
-List<CategoryEntity> get incomesCategories => allCateroiesAtom.value.where((c) => c.type == TypeTransaction.income.name).toList();
-List<CategoryEntity> get expensesCategories => allCateroiesAtom.value.where((c) => c.type == TypeTransaction.expense.name).toList();
+List<CategoryEntity> get getAllCategories => [...allCategoriesAtom.value];
+List<CategoryEntity> get getIncomesCategories => allCategoriesAtom.value.where((c) => c.type == TypeTransaction.income.name).toList();
+List<CategoryEntity> get getExpensesCategories => allCategoriesAtom.value.where((c) => c.type == TypeTransaction.expense.name).toList();
 
 // Actions
 final loadAllCategoriesAction = Atom.action();
@@ -21,22 +22,31 @@ class CategoryReducer extends Reducer {
   final ICategoryRepository repository;
 
   CategoryReducer({required this.repository}) {
+    // Handle actions
     on(() => [loadAllCategoriesAction], loadCategories);
   }
 
+  // This method load all categories
+  /// Every time the [action] [loadAllCategoriesAction] is called
   Future<void> loadCategories() async {
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+    // This method ensures the function called after build the state
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((_) {
       isLoadingState.value = true;
     });
 
+    // Requesting the categories by repository and handle the data from result...s
     final result = await repository.getAllCategories();
     result.fold(
+      /// [categories] returns categories fetched from database
+      /// [error] return a message or exception when happens any problem in request
       (categories) {
-        allCateroiesAtom.value = categories;
+        // assigns the fetched categories in atom to share to app
+        allCategoriesAtom.value = categories;
       },
       (error) {},
     );
 
+    // Turn off the loading state
     isLoadingState.value = false;
   }
 }
