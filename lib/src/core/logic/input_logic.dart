@@ -54,7 +54,6 @@ class InputReducer extends Reducer {
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
       isLoadingState.value = true;
     });
-
     final input = InputTransactionDTO(
       value: valueAtom.value.roundToDouble(),
       type: typeAtom.value,
@@ -63,19 +62,15 @@ class InputReducer extends Reducer {
       frequency: frequencyAtom.value,
       description: descriptionAtom.value,
     );
-
     final isValid = validate(input);
-
     if (!isValid) {
       WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
         isLoadingState.value = false;
       });
       return;
     }
-
     final id = uuid.v4();
     final transaction = InputTransactionDTO.toTransaction(id, input);
-
     final result = await repository.createTransaction(transaction);
     await result.fold(
       (success) {
@@ -92,21 +87,18 @@ class InputReducer extends Reducer {
 
   bool validate(InputTransactionDTO input) {
     bool containsError = false;
-
     if (input.value <= 0) {
       containsError = true;
       isValueError.value = true;
     } else {
       isValueError.value = false;
     }
-
     if (input.category.isEmpty || input.category == '') {
       containsError = true;
       isCategoryError.value = true;
     } else {
       isCategoryError.value = false;
     }
-
     return !containsError;
   }
 
@@ -118,13 +110,11 @@ class InputReducer extends Reducer {
     createAtAtom.value = DateTime.now();
     frequencyAtom.value = null;
     descriptionAtom.value = null;
-
     // Clear controllers
     selectedTypeAtom.value = TypeTransaction.income;
     valueSwitchIsFixedAtom.value = false;
     toggleSwitchIsFixedAction.value = false;
     dateSelectedAtom.value = DateTime.now();
-
     // Clear errors
     clearErrors();
   }

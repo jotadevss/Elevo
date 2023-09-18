@@ -37,17 +37,14 @@ class DashboardReducer extends Reducer {
           final value = (data.id == TypeTransaction.income.name)
               ? calcPercent(totalTransactionsValue, IncomesTransactions.totalCurrentMonthIncomesValue)
               : calcPercent(totalTransactionsValue, ExpensesTransactions.totalCurrentMonthExpensesValue);
-
           final updatedValue = overviewDtoAtom.value[index].copyWith(percent: value.round());
           overviewDtoAtom.value[index] = updatedValue;
-
           final section = PieChartSectionData(
             color: data.color,
             radius: 12,
             titleStyle: TextStyle(color: Colors.transparent),
             value: value,
           );
-
           return MapEntry(index, section);
         })
         .values

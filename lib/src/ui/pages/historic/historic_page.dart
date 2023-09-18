@@ -63,7 +63,7 @@ class _HistoricPageState extends State<HistoricPage> {
                         itemBuilder: (context, index) {
                           final item = listOfAllTransactions.reversed.toList()[index];
 
-                          final List<CategoryEntity?> category = categories.where((ct) {
+                          final List<CategoryEntity?> category = getAllCategories.where((ct) {
                             return ct.id == item.category;
                           }).toList();
 

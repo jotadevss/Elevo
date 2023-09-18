@@ -160,7 +160,7 @@ class _InputPageState extends State<InputPage> {
       context: context,
       isScrollControlled: true,
       builder: (context) {
-        final categories = context.select(() => (type == TypeTransaction.income.name) ? incomesCategories : expensesCategories);
+        final categories = context.select(() => (type == TypeTransaction.income.name) ? getIncomesCategories : getExpensesCategories);
         return InputCategoryBottomSheet(items: categories);
       },
     );
