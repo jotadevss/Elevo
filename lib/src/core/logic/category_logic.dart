@@ -4,7 +4,6 @@ import 'package:elevo/src/core/logic/app_logic.dart';
 import 'package:elevo/src/data/repositories/local_category_repository.dart';
 import 'package:elevo/src/domain/entity/category.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
-import 'package:flutter/widgets.dart';
 
 // Atoms
 final allCategoriesAtom = Atom<List<CategoryEntity>>([]);
@@ -33,10 +32,10 @@ List<CategoryEntity> get getExpensesCategories {
 final loadAllCategoriesAction = Atom.action();
 
 // Reducer
-class CategoryReducer extends Reducer {
+class CategoryLogic extends Reducer {
   final ICategoryRepository repository;
 
-  CategoryReducer({required this.repository}) {
+  CategoryLogic({required this.repository}) {
     // Handle actions
     on(() => [loadAllCategoriesAction], loadCategories);
   }
@@ -44,10 +43,8 @@ class CategoryReducer extends Reducer {
   // This method load all categories
   /// Every time the [action] [loadAllCategoriesAction] is called
   Future<void> loadCategories() async {
-    // This method ensures the function called after build the state
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((_) {
-      isLoadingState.value = true;
-    });
+    /// Start the loading state [isLoadingState]
+    startLoadingAction.call();
 
     // Requesting the categories by repository and handle the data from result...
     final result = await repository.getAllCategories();
@@ -62,6 +59,6 @@ class CategoryReducer extends Reducer {
     );
 
     // Turn off the loading state
-    isLoadingState.value = false;
+    stopLoadingAction.call();
   }
 }

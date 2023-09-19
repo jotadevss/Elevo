@@ -21,8 +21,8 @@ final expensesDtosAtom = Atom<List<PieChartDTO>>([]);
 // Actions
 final loadDashboardAction = Atom.action();
 
-class DashboardReducer extends Reducer {
-  DashboardReducer() {
+class DashboardLogic extends Reducer {
+  DashboardLogic() {
     on(() => [loadDashboardAction], loadDashboard);
   }
 

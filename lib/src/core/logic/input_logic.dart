@@ -51,10 +51,10 @@ final clearDataAction = Atom.action();
 // Generator of Uuid for transactions
 var uuid = const Uuid();
 
-class InputReducer extends Reducer {
+class InputLogic extends Reducer {
   final ITransactionRepository repository;
 
-  InputReducer({required this.repository}) {
+  InputLogic({required this.repository}) {
     // Handle Actions
     on(() => [submitTransactionAction], submit);
     on(() => [clearDataAction], clear);

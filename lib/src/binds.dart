@@ -13,11 +13,11 @@ import 'package:elevo/src/ui/pages/input/controller/width_insert_amount_controll
 
 // Reducers
 var reducers = [
-  TransactionReducer(repository: SQLTransactionRepositoryImpl()),
-  InputReducer(repository: SQLTransactionRepositoryImpl()),
-  CategoryReducer(repository: LocalCategoryRepository()),
-  DashboardReducer(),
-  AppReducer(),
+  TransactionLogic(repository: SQLTransactionRepositoryImpl()),
+  InputLogic(repository: SQLTransactionRepositoryImpl()),
+  CategoryLogic(repository: LocalCategoryRepository()),
+  DashboardLogic(),
+  AppLogic(),
 ];
 
 // Controllers
