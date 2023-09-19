@@ -10,9 +10,24 @@ import 'package:flutter/widgets.dart';
 final allCategoriesAtom = Atom<List<CategoryEntity>>([]);
 
 // Getters
-List<CategoryEntity> get getAllCategories => [...allCategoriesAtom.value];
-List<CategoryEntity> get getIncomesCategories => allCategoriesAtom.value.where((c) => c.type == TypeTransaction.income.name).toList();
-List<CategoryEntity> get getExpensesCategories => allCategoriesAtom.value.where((c) => c.type == TypeTransaction.expense.name).toList();
+List<CategoryEntity> get getAllCategories {
+  /// Returns a copy of [allCategoriesAtom] value
+  return [...allCategoriesAtom.value];
+}
+
+List<CategoryEntity> get getIncomesCategories {
+  return allCategoriesAtom // Filter by Incomes
+      .value
+      .where((c) => c.type == TypeTransaction.income.name)
+      .toList();
+}
+
+List<CategoryEntity> get getExpensesCategories {
+  return allCategoriesAtom // Filter by Expense
+      .value
+      .where((c) => c.type == TypeTransaction.expense.name)
+      .toList();
+}
 
 // Actions
 final loadAllCategoriesAction = Atom.action();
@@ -34,7 +49,7 @@ class CategoryReducer extends Reducer {
       isLoadingState.value = true;
     });
 
-    // Requesting the categories by repository and handle the data from result...s
+    // Requesting the categories by repository and handle the data from result...
     final result = await repository.getAllCategories();
     result.fold(
       /// [categories] returns categories fetched from database

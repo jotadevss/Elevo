@@ -53,16 +53,16 @@ class InputFrequencyBottomSheet extends StatelessWidget {
           Gap(height: 20),
           Expanded(
             child: ListView.separated(
-              itemCount: frequencies.length,
+              itemCount: mapFrequency.length,
               separatorBuilder: (context, index) => const Divider(),
               itemBuilder: (context, index) {
-                final frequency = frequencies[index];
+                final frequency = mapFrequency[index];
                 final title = frequency['title'];
                 final description = frequency['description'];
 
                 return InkWell(
                   onTap: () {
-                    frequencyAtom.value = frequency['id'];
+                    frequencyDataState.value = frequency['id'];
                     router.pop();
                   },
                   borderRadius: BorderRadius.circular(100),

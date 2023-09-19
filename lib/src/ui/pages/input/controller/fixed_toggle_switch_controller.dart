@@ -17,9 +17,9 @@ class ToggleSwitchIsFixedController extends Reducer {
   void toggle() {
     valueSwitchIsFixedAtom.value = toggleSwitchIsFixedAction.value;
     if (valueSwitchIsFixedAtom.value) {
-      frequencyAtom.value = Frequency.daily.name;
+      frequencyDataState.value = Frequency.daily.name;
     } else {
-      frequencyAtom.value = null;
+      frequencyDataState.value = null;
     }
   }
 }

@@ -48,7 +48,7 @@ class _InputPageState extends State<InputPage> {
     final isLoading = context.select(() => isLoadingState.value);
     final selectedType = context.select(() => selectedTypeAtom.value);
     final isFixed = context.select(() => toggleSwitchIsFixedAction.value);
-    final ([valueError, categoryError] as List<bool>) = context.select(() => [isValueError.value, isCategoryError.value]);
+    final ([valueError, categoryError] as List<bool>) = context.select(() => [isValueErrorState.value, isCategoryErrorState.value]);
 
     return Scaffold(
       body: (isLoading)
@@ -63,7 +63,7 @@ class _InputPageState extends State<InputPage> {
                       enableAction: true,
                       isCenter: false,
                       action: () {
-                        clearAction.call();
+                        clearDataAction.call();
                         context.pop();
                       },
                     ),
@@ -81,7 +81,7 @@ class _InputPageState extends State<InputPage> {
                       insertAmountController: _insertAmountController,
                       onChanged: (text) {
                         observerTextLengthAction.value = text;
-                        valueAtom.value = CurrencyFormatter.unformat(text);
+                        valueDataState.value = CurrencyFormatter.unformat(text);
                       },
                     ),
                     const Gap(height: 20),
@@ -94,7 +94,7 @@ class _InputPageState extends State<InputPage> {
                           onTap: () {
                             final type = TypeTransaction.income;
                             changeTypeAction.value = type;
-                            typeAtom.value = type.name;
+                            typeDataState.value = type.name;
                           },
                         ),
                         ItemSlider(
@@ -104,14 +104,14 @@ class _InputPageState extends State<InputPage> {
                           onTap: () {
                             final type = TypeTransaction.expense;
                             changeTypeAction.value = type;
-                            typeAtom.value = type.name;
+                            typeDataState.value = type.name;
                           },
                         ),
                       ],
                     ),
                     Gap(height: 26),
                     InputCategoryWidget(
-                      onTap: () => showCategories(typeAtom.value),
+                      onTap: () => showCategories(typeDataState.value),
                       subtitle: Text(
                         'Select the category',
                         textAlign: TextAlign.center,
@@ -143,7 +143,7 @@ class _InputPageState extends State<InputPage> {
                     InputDescriptionWidget(
                         descriptionController: _descriptionController,
                         onChanged: (text) {
-                          descriptionAtom.value = text;
+                          descriptionDataState.value = text;
                         }),
                     if (valueError) ErrorMessage(message: 'Value not entered. Please enter it before proceeding.'),
                     if (categoryError) ErrorMessage(message: 'Category not selected. Please choose one before proceeding.'),

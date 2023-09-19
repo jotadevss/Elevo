@@ -1,3 +1,4 @@
+import 'package:elevo/src/core/logic/app_logic.dart';
 import 'package:elevo/src/core/logic/category_logic.dart';
 import 'package:elevo/src/core/logic/dashboard_logic.dart';
 import 'package:elevo/src/core/logic/input_logic.dart';
@@ -16,6 +17,7 @@ var reducers = [
   InputReducer(repository: SQLTransactionRepositoryImpl()),
   CategoryReducer(repository: LocalCategoryRepository()),
   DashboardReducer(),
+  AppReducer(),
 ];
 
 // Controllers

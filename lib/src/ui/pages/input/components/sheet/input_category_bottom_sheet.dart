@@ -65,7 +65,7 @@ class InputCategoryBottomSheet extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
-                    categoryAtom.value = category;
+                    categoryDataState.value = category;
                     router.pop();
                   },
                   borderRadius: BorderRadius.circular(100),

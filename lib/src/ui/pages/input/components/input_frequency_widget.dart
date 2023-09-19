@@ -10,8 +10,8 @@ class InputFrequencyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final frequencySelected = context.select(() => frequencyAtom.value);
-    final frequencyLabel = frequencies.where((f) => f['id'] == frequencySelected).toList();
+    final frequencySelected = context.select(() => frequencyDataState.value);
+    final frequencyLabel = mapFrequency.where((f) => f['id'] == frequencySelected).toList();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 26),

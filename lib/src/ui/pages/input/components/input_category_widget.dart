@@ -17,7 +17,7 @@ class InputCategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final category = context.select(() => categoryAtom.value);
+    final category = context.select(() => categoryDataState.value);
     return InkWell(
       onTap: onTap,
       splashColor: kGrayColor.withOpacity(0.1),
@@ -55,7 +55,7 @@ class InputCategoryWidget extends StatelessWidget {
                     onPressed: onTap,
                     icon: CircleAvatar(
                       backgroundColor: kPrimaryColor.withOpacity(0.1),
-                      child: SvgPicture.asset(categoryAtom.value!.iconPath),
+                      child: SvgPicture.asset(categoryDataState.value!.iconPath),
                     ),
                   ),
           ],

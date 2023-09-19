@@ -16,7 +16,7 @@ class SliderSelectTypeController extends Reducer {
 
   void change() {
     if (selectedTypeAtom.value != changeTypeAction.value) {
-      categoryAtom.value = null;
+      categoryDataState.value = null;
     }
     selectedTypeAtom.value = changeTypeAction.value ?? TypeTransaction.income;
   }

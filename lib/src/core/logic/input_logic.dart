@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:asp/asp.dart';
 import 'package:elevo/src/core/dto/input_transaction_dto.dart';
 import 'package:elevo/src/core/logic/app_logic.dart';
@@ -12,115 +11,143 @@ import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/pages/input/controller/date_picker_controller.dart';
 import 'package:elevo/src/ui/pages/input/controller/fixed_toggle_switch_controller.dart';
 import 'package:elevo/src/ui/pages/input/controller/slider_select_type_controller.dart';
-import 'package:flutter/widgets.dart';
 import 'package:uuid/uuid.dart';
 
 // Constants
-final frequencies = [
-  {'title': 'Daily', 'description': 'Will be updated daily', 'id': Frequency.daily.name},
-  {'title': 'Monthly', 'description': 'Will be updated monthly', 'id': Frequency.monthly.name},
-  {'title': 'Yearly', 'description': 'Will be updated yearly', 'id': Frequency.yearly.name},
+final mapFrequency = [
+  {
+    'title': 'Daily',
+    'description': 'Will be updated daily',
+    'id': Frequency.daily.name,
+  },
+  {
+    'title': 'Monthly',
+    'description': 'Will be updated monthly',
+    'id': Frequency.monthly.name,
+  },
+  {
+    'title': 'Yearly',
+    'description': 'Will be updated yearly',
+    'id': Frequency.yearly.name,
+  },
 ];
 
-// Data
-final valueAtom = Atom<double>(0.0);
-final typeAtom = Atom<String>(TypeTransaction.income.name);
-final categoryAtom = Atom<CategoryEntity?>(null);
-final createAtAtom = Atom<DateTime>(DateTime.now());
-final frequencyAtom = Atom<String?>(null);
-final descriptionAtom = Atom<String?>(null);
+// Atoms Data
+final valueDataState = Atom<double>(0.0);
+final typeDataState = Atom<String>(TypeTransaction.income.name);
+final categoryDataState = Atom<CategoryEntity?>(null);
+final createAtDataState = Atom<DateTime>(DateTime.now());
+final frequencyDataState = Atom<String?>(null);
+final descriptionDataState = Atom<String?>(null);
 
-// Errors
-final isValueError = Atom<bool>(false);
-final isCategoryError = Atom<bool>(false);
+// Atoms Errors
+final isValueErrorState = Atom<bool>(false);
+final isCategoryErrorState = Atom<bool>(false);
 
 // Actions
 final submitTransactionAction = Atom.action();
-final selectCategoryAction = Atom<String?>(null);
-final selectFrequencyAction = Atom<String?>(null);
-final clearAction = Atom.action();
+final clearDataAction = Atom.action();
 
+// Generator of Uuid for transactions
 var uuid = const Uuid();
 
 class InputReducer extends Reducer {
   final ITransactionRepository repository;
 
   InputReducer({required this.repository}) {
+    // Handle Actions
     on(() => [submitTransactionAction], submit);
-    on(() => [clearAction], clear);
+    on(() => [clearDataAction], clear);
   }
 
+  // Submit method valid and create a new transaction in storage
   Future<void> submit() async {
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
-      isLoadingState.value = true;
-    });
+    /// Start the loading state [isLoadingState]
+    startLoadingAction.call();
+
+    // Takes datas from the user and converting in a DTO
+    /// and model the data to DTO [InputTransactionDTO]
     final input = InputTransactionDTO(
-      value: valueAtom.value.roundToDouble(),
-      type: typeAtom.value,
-      category: categoryAtom.value?.id ?? '',
-      createAt: createAtAtom.value,
-      frequency: frequencyAtom.value,
-      description: descriptionAtom.value,
+      value: valueDataState.value.roundToDouble(),
+      type: typeDataState.value,
+      category: categoryDataState.value?.id ?? '',
+      createAt: createAtDataState.value,
+      frequency: frequencyDataState.value,
+      description: descriptionDataState.value,
     );
+
+    // Call Validate input data value
     final isValid = validate(input);
+
+    // If there are errors in validation, the function will go to execution
     if (!isValid) {
-      WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
-        isLoadingState.value = false;
-      });
+      stopLoadingAction.call();
       return;
     }
+
+    // Generate the id for transaction
     final id = uuid.v4();
     final transaction = InputTransactionDTO.toTransaction(id, input);
+
+    // Requesting the add the transaction by repository and handle status from result...
     final result = await repository.createTransaction(transaction);
     await result.fold(
       (success) {
+        // If everything goes well, the data is stored in the cache
         cacheTransaction.value.add(success);
-        router.go(AppRouter.INPUT_SUCCESS_PAGE_ROUTER);
+        router.go(AppRouter.INPUT_SUCCESS_PAGE_ROUTER); // Go to Success Page
       },
       (error) {
         log(error.toString());
       },
     );
-    clearAction.call();
-    isLoadingState.value = false;
+
+    // CLear all data values
+    clearDataAction.call();
+
+    /// Stop the loading state [isLoadingState]
+    stopLoadingAction.call();
   }
 
   bool validate(InputTransactionDTO input) {
     bool containsError = false;
+
+    // Value validated condition
     if (input.value <= 0) {
       containsError = true;
-      isValueError.value = true;
+      isValueErrorState.value = true;
     } else {
-      isValueError.value = false;
+      isValueErrorState.value = false;
     }
+
+    // Category validated condition
     if (input.category.isEmpty || input.category == '') {
       containsError = true;
-      isCategoryError.value = true;
+      isCategoryErrorState.value = true;
     } else {
-      isCategoryError.value = false;
+      isCategoryErrorState.value = false;
     }
+
     return !containsError;
   }
 
   void clear() {
     // Clear data input
-    valueAtom.value = 0.0;
-    categoryAtom.value = null;
-    typeAtom.value = TypeTransaction.income.name;
-    createAtAtom.value = DateTime.now();
-    frequencyAtom.value = null;
-    descriptionAtom.value = null;
+    valueDataState.value = 0.0;
+    categoryDataState.value = null;
+    typeDataState.value = TypeTransaction.income.name;
+    createAtDataState.value = DateTime.now();
+    frequencyDataState.value = null;
+    descriptionDataState.value = null;
+
     // Clear controllers
     selectedTypeAtom.value = TypeTransaction.income;
     valueSwitchIsFixedAtom.value = false;
     toggleSwitchIsFixedAction.value = false;
     dateSelectedAtom.value = DateTime.now();
-    // Clear errors
-    clearErrors();
-  }
 
-  void clearErrors() {
-    isCategoryError.value = false;
-    isValueError.value = false;
+    // Clear errors
+    isCategoryErrorState.value = false;
+    isValueErrorState.value = false;
   }
 }

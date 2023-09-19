@@ -33,7 +33,7 @@ class DatePickerController extends Reducer {
             lastDate: DateTime(2099),
           ) ??
           DateTime.now();
-      createAtAtom.value = dateSelectedAtom.value;
+      createAtDataState.value = dateSelectedAtom.value;
     });
   }
 }
