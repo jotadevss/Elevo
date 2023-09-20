@@ -1,6 +1,7 @@
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/logic/app_logic.dart';
+import 'package:elevo/src/core/logic/category_logic.dart';
 import 'package:elevo/src/core/logic/transaction/expenses_logic.dart';
 import 'package:elevo/src/core/logic/transaction/incomes_logic.dart';
 import 'package:elevo/src/core/logic/refresh_transaction_logic.dart';
@@ -25,6 +26,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
+    loadAllCategoriesAction.call();
     getAllTransactionAction.call();
     super.initState();
   }
