@@ -48,14 +48,14 @@ class _HomePageState extends State<HomePage> {
         },
         color: kSecondaryColor,
         child: (isLoading)
-            ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
+            ? const Center(child: CircularProgressIndicator(color: kPrimaryColor))
             : SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.only(top: getStatusBar(context) + 10, left: kMarginHorizontal + 8, right: kMarginHorizontal + 8),
                   child: Column(
                     children: [
-                      ElevoAppBar(enableAction: false, isCenter: true),
-                      Gap(height: 32),
+                      const ElevoAppBar(enableAction: false, isCenter: true),
+                      const Gap(height: 32),
                       CardTotalBalance(
                         isVisible: isVisible,
                         value: balance,
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                           context.push(AppRouter.INPUT_DATA_PAGE_ROUTER);
                         },
                       ),
-                      Gap(height: 32),
+                      const Gap(height: 32),
                       CustomTileItem(
                         iconPath: 'lib/assets/icons/bill.svg',
                         label: "Historic",
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                           context.push(AppRouter.HISTORIC_PAGE_ROUTER);
                         },
                       ),
-                      Gap(height: 12),
+                      const Gap(height: 12),
                       CustomTileItem(
                         iconPath: 'lib/assets/icons/chart.svg',
                         label: "Dashboard",
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: kGrayColor.withOpacity(0.05),
                               borderRadius: BorderRadius.circular(100),
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                           )
                         ],
                       ),
-                      Gap(height: 12),
+                      const Gap(height: 12),
                       SizedBox(
                         height: 280,
                         child: GridView.count(
@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                               color: kPrimaryColor,
                               label: 'Incomes',
                               value: IncomesTransactions.totalCurrentMonthIncomesValue,
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.trending_up_rounded,
                                 size: 20,
                                 color: kPrimaryColor,
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                               color: kErrorColor,
                               label: 'Expenses',
                               value: ExpensesTransactions.totalCurrentMonthExpensesValue,
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.trending_down_rounded,
                                 size: 20,
                                 color: kErrorColor,
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      Gap(height: 32),
+                      const Gap(height: 32),
                     ],
                   ),
                 ),

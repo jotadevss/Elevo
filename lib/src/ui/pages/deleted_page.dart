@@ -1,12 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
+import 'package:elevo/src/domain/entity/transaction.dart';
+import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class DeletedPage extends StatelessWidget {
-  const DeletedPage({super.key});
+  const DeletedPage({super.key, required this.transaction});
+
+  final TransactionEntity transaction;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class DeletedPage extends StatelessWidget {
             SvgPicture.asset('lib/assets/icons/trash.svg'),
             const Gap(height: 20),
             const Text(
-              'Transaction deleted!',
+              'Are you sure you want to\ndelete this item?',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 22,
@@ -29,7 +35,7 @@ class DeletedPage extends StatelessWidget {
             ),
             const Gap(height: 20),
             const Text(
-              'Your transaction has been\npermanently deleted.',
+              'Your transaction will be\npermanently deleted.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
@@ -37,13 +43,25 @@ class DeletedPage extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const Gap(height: 25),
+            const Gap(height: 26),
             ButtonWidget(
               iconAssetName: 'lib/assets/icons/home.svg',
-              title: 'Back to Home',
-              color: kPrimaryColor,
-              onTap: () {},
-            )
+              title: 'Yes, permanent delete',
+              color: kErrorColor,
+              onTap: () {
+                deleteTransactionAction.value = transaction.id;
+                context.go(AppRouter.HOME_PAGE_ROUTER);
+              },
+            ),
+            const Gap(height: 12),
+            ButtonWidget(
+              iconAssetName: null,
+              title: 'Go back',
+              color: kGrayColor,
+              onTap: () {
+                context.pop();
+              },
+            ),
           ],
         ),
       ),

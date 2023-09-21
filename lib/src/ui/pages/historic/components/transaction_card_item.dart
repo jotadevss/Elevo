@@ -2,6 +2,7 @@ import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
+import 'package:elevo/src/extensions.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -74,7 +75,7 @@ class TransactionCardItem extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(17),
-                          color: (TypeTransaction.income.name == item.type) ? kPrimaryColor.withOpacity(0.1) : kErrorColor.withOpacity(0.1),
+                          color: (TypeTransaction.income.name == item.type) ? kPrimaryColor.withOpacity(0.1) : kSecondaryColor.withOpacity(0.1),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -85,14 +86,14 @@ class TransactionCardItem extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 10,
-                                color: (TypeTransaction.income.name == item.type) ? kPrimaryColor : kErrorColor,
+                                color: (TypeTransaction.income.name == item.type) ? kPrimaryColor : kSecondaryColor,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             const Gap(width: 6),
                             Icon(
                               (TypeTransaction.income.name == item.type) ? Icons.trending_up_rounded : Icons.trending_down_rounded,
-                              color: (TypeTransaction.income.name == item.type) ? kPrimaryColor : kErrorColor,
+                              color: (TypeTransaction.income.name == item.type) ? kPrimaryColor : kSecondaryColor,
                               size: 11,
                             )
                           ],
@@ -154,7 +155,7 @@ class TransactionCardItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    fixedTransaction,
+                    fixedTransaction.capitalize(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 14,

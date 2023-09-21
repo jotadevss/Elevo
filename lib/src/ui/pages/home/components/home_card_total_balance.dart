@@ -23,10 +23,6 @@ class CardTotalBalance extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 38),
-      decoration: BoxDecoration(
-        color: const Color(0xffF9F9F9),
-        borderRadius: BorderRadius.circular(12),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

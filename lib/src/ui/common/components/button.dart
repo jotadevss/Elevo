@@ -37,6 +37,7 @@ class ButtonWidget extends StatelessWidget {
                 : SvgPicture.asset(
                     iconAssetName!,
                     height: 25,
+                    colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
                   ),
             const Gap(width: 10),
             Text(

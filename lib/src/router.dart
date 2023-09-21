@@ -11,6 +11,7 @@ import 'package:elevo/src/ui/pages/home/home_page.dart';
 import 'package:elevo/src/ui/pages/input/input_page.dart';
 import 'package:elevo/src/ui/pages/splash_page.dart';
 import 'package:elevo/src/ui/pages/input/input_success_page.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -29,64 +30,93 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: AppRouter.EMPTY_PAGE_ROUTER,
-      builder: (context, state) {
-        return const EmptyPage();
+      pageBuilder: (context, state) {
+        return buildSlideTransaction(const Offset(1, 0), const EmptyPage());
       },
     ),
     GoRoute(
       path: AppRouter.DELETED_PAGE_ROUTER,
-      builder: (context, state) {
-        return const DeletedPage();
+      pageBuilder: (context, state) {
+        final transactionArgs = state.extra as TransactionEntity;
+        return buildSlideTransaction(const Offset(1, 0), DeletedPage(transaction: transactionArgs));
       },
     ),
     GoRoute(
       path: AppRouter.INPUT_SUCCESS_PAGE_ROUTER,
-      builder: (context, state) {
-        return const InputSuccessPage();
+      pageBuilder: (context, state) {
+        return buildSlideTransaction(const Offset(1, 0), const InputSuccessPage());
       },
     ),
     GoRoute(
       path: AppRouter.INPUT_DATA_PAGE_ROUTER,
-      builder: (context, state) {
-        return const InputPage();
+      pageBuilder: (context, state) {
+        return buildSlideTransaction(const Offset(0, 1), const InputPage());
       },
     ),
     GoRoute(
       path: AppRouter.HISTORIC_PAGE_ROUTER,
-      builder: (context, state) {
-        return const HistoricPage();
+      pageBuilder: (context, state) {
+        return buildSlideTransaction(const Offset(1, 0), const HistoricPage());
       },
     ),
     GoRoute(
       path: AppRouter.DASHBOARD_PAGE_ROUTER,
-      builder: (context, state) {
-        return const DashboardPage();
+      pageBuilder: (context, state) {
+        return buildSlideTransaction(const Offset(1, 0), const DashboardPage());
       },
     ),
     GoRoute(
       path: AppRouter.INCOMES_DASHBOARD_PAGE_ROUTER,
-      builder: (context, state) {
-        return const IncomesDashboardPage();
+      pageBuilder: (context, state) {
+        return buildSlideTransaction(const Offset(1, 0), const IncomesDashboardPage());
       },
     ),
     GoRoute(
       path: AppRouter.EXPENSES_DASHBOARD_PAGE_ROUTER,
-      builder: (context, state) {
-        return const ExpensesDashboardPage();
+      pageBuilder: (context, state) {
+        return buildSlideTransaction(const Offset(1, 0), const ExpensesDashboardPage());
       },
     ),
     GoRoute(
       path: AppRouter.HISTORIC_DETAIL_PAGE_ROUTER,
-      builder: (context, state) {
+      pageBuilder: (context, state) {
         final args = state.extra as Map<String, dynamic>;
-        return HistoricDetailPage(
-          transaction: args['transaction'] as TransactionEntity,
-          categoryProps: args['categoryProps'] as CategoryProsDTO,
+        return CustomTransitionPage(
+          child: HistoricDetailPage(
+            transaction: args['transaction'] as TransactionEntity,
+            categoryProps: args['categoryProps'] as CategoryProsDTO,
+          ),
+          transitionDuration: const Duration(milliseconds: 200),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0, 1),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child,
+            );
+          },
         );
       },
     ),
   ],
 );
+
+CustomTransitionPage<dynamic> buildSlideTransaction(Offset begin, Widget child) {
+  return CustomTransitionPage(
+    child: child,
+    transitionDuration: const Duration(milliseconds: 300),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: begin,
+          end: Offset.zero,
+        ).animate(animation),
+        child: child,
+      );
+    },
+  );
+}
 
 class AppRouter {
   static const String SPLASH_PAGE_ROUTER = '/';

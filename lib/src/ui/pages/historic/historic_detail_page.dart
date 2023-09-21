@@ -5,6 +5,7 @@ import 'package:elevo/src/core/logic/app_logic.dart';
 import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
+import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/appbar.dart';
 import 'package:elevo/src/ui/common/components/button.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
@@ -42,10 +43,12 @@ class HistoricDetailPage extends StatelessWidget {
                     const Gap(height: 32),
                     CircleAvatar(
                       backgroundColor:
-                          (TypeTransaction.income.name == transaction.type) ? kPrimaryColor.withOpacity(0.1) : kErrorColor.withOpacity(0.1),
+                          (TypeTransaction.income.name == transaction.type) ? kPrimaryColor.withOpacity(0.1) : kSecondaryColor.withOpacity(0.1),
                       radius: 32,
                       child: SvgPicture.asset(
                         categoryProps.iconPath,
+                        colorFilter:
+                            ColorFilter.mode((TypeTransaction.income.name == transaction.type) ? kPrimaryColor : kSecondaryColor, BlendMode.srcIn),
                       ),
                     ),
                     const Gap(height: 16),
@@ -66,8 +69,7 @@ class HistoricDetailPage extends StatelessWidget {
                       title: 'Delete transaction',
                       color: kErrorColor,
                       onTap: () {
-                        deleteTransactionAction.value = transaction.id;
-                        context.pop();
+                        context.push(AppRouter.DELETED_PAGE_ROUTER, extra: transaction);
                       },
                     ),
                   ],

@@ -4,6 +4,7 @@ import 'package:elevo/src/core/formatters/currency_formatter.dart';
 import 'package:elevo/src/core/formatters/date_formatter.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
+import 'package:elevo/src/extensions.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +52,7 @@ class CardTransactionDetails extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18,
-                  color: (TypeTransaction.income.name == transaction.type) ? kPrimaryColor : kErrorColor,
+                  color: (TypeTransaction.income.name == transaction.type) ? kPrimaryColor : kSecondaryColor,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -131,7 +132,7 @@ class CardTransactionDetails extends StatelessWidget {
                   ),
                   const Gap(height: 6),
                   Text(
-                    transaction.type,
+                    transaction.type.capitalize(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 14,
@@ -144,7 +145,7 @@ class CardTransactionDetails extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 14),
+            padding: const EdgeInsets.symmetric(vertical: 14),
             child: Divider(
               color: kGrayColor.withOpacity(0.1),
             ),
@@ -155,7 +156,7 @@ class CardTransactionDetails extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Description',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -164,11 +165,11 @@ class CardTransactionDetails extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Gap(height: 6),
+                  const Gap(height: 6),
                   Text(
                     transaction.description ?? 'No Description',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: kGrayColor,
                       fontWeight: FontWeight.w500,
