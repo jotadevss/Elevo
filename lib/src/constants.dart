@@ -17,13 +17,13 @@ const Color kShadowColor = Color(0xff8194A3);
 const Color kErrorColor = Color(0xffEC273A);
 const Color kGrayColor = Color(0xFF919191);
 final chartColors = [
-  Color(0xff2171D2),
-  Color(0xFF33629B),
-  Color(0xFF71A4E4),
-  Color(0xffFFA800),
-  Color(0xFFFFC44E),
-  Color(0xFFFF9100),
-  Color(0xFFD458FA),
+  const Color(0xff2171D2),
+  const Color(0xFF33629B),
+  const Color(0xFF71A4E4),
+  const Color(0xffFFA800),
+  const Color(0xFFFFC44E),
+  const Color(0xFFFF9100),
+  const Color(0xFFD458FA),
   kGrayColor,
 ];
 

@@ -28,11 +28,11 @@ class IndicatorItem extends StatelessWidget {
               backgroundColor: color,
               radius: 6,
             ),
-            Gap(width: 12),
+            const Gap(width: 12),
             Text(
               label,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
@@ -45,18 +45,18 @@ class IndicatorItem extends StatelessWidget {
             Text(
               '\$' + CurrencyFormatter.format(value.toString()),
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            Gap(width: 8),
+            const Gap(width: 8),
             CircleAvatar(
               backgroundColor: kGrayColor.withOpacity(0.3),
               radius: 3,
             ),
-            Gap(width: 8),
+            const Gap(width: 8),
             Text(
               percent.toString() + '%',
               textAlign: TextAlign.center,

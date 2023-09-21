@@ -30,7 +30,7 @@ class ElevoAppBar extends StatelessWidget {
               onTap: action,
               borderRadius: BorderRadius.circular(100),
               child: Container(
-                padding: EdgeInsets.all(14),
+                padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: kGrayColor.withOpacity(0.2),
@@ -47,8 +47,8 @@ class ElevoAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset('lib/assets/icons/logo.svg'),
-            Gap(width: 10),
-            Text(
+            const Gap(width: 10),
+            const Text(
               'Elevo',
               textAlign: TextAlign.center,
               style: TextStyle(

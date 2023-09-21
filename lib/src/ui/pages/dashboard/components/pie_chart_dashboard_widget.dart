@@ -24,7 +24,7 @@ class PieChartDashboardWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: kGrayColor.withOpacity(0.2)),
@@ -44,7 +44,7 @@ class PieChartDashboardWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: kGrayColor.withOpacity(0.05),
                   borderRadius: BorderRadius.circular(100),
@@ -61,7 +61,7 @@ class PieChartDashboardWidget extends StatelessWidget {
               ),
             ],
           ),
-          Gap(height: 24),
+          const Gap(height: 24),
           SizedBox(
             height: 250,
             width: double.infinity,
@@ -83,13 +83,13 @@ class PieChartDashboardWidget extends StatelessWidget {
                     Text(
                       '\$' + CurrencyFormatter.format(value.toString()),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 24,
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Text(
+                    const Text(
                       'Total added',
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -98,19 +98,19 @@ class PieChartDashboardWidget extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    Gap(height: 12),
+                    const Gap(height: 12),
                   ],
                 ),
               ],
             ),
           ),
-          Gap(height: 36),
+          const Gap(height: 36),
           SizedBox(
             height: ((size.height / 36) * dtos.length) + ((dtos.length < 8) ? 50 : 110),
             child: ListView.builder(
               itemCount: dtos.length,
               controller: new ScrollController(keepScrollOffset: false),
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return Padding(

@@ -29,7 +29,7 @@ class WalletStatusCardItemWidget extends StatelessWidget {
           BoxShadow(
             color: kShadowColor.withOpacity(0.08),
             blurRadius: 20,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -40,7 +40,7 @@ class WalletStatusCardItemWidget extends StatelessWidget {
             backgroundColor: color.withOpacity(0.1),
             child: icon,
           ),
-          Gap(height: 18),
+          const Gap(height: 18),
           Text(
             label,
             textAlign: TextAlign.center,
@@ -50,7 +50,7 @@ class WalletStatusCardItemWidget extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          Gap(height: 8),
+          const Gap(height: 8),
           Text(
             (isVisible) ? '\$' + CurrencyFormatter.format(value.toString()) : '*****',
             textAlign: TextAlign.center,

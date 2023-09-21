@@ -30,7 +30,7 @@ class _IncomesDashboardPageState extends State<IncomesDashboardPage> {
     final dtos = context.select(() => incomesDtoAtom.value);
     return Scaffold(
       body: (isLoading)
-          ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
+          ? const Center(child: CircularProgressIndicator(color: kPrimaryColor))
           : SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.only(top: getStatusBar(context) + 10, left: kMarginHorizontal + 4, right: kMarginHorizontal + 4),
@@ -50,7 +50,7 @@ class _IncomesDashboardPageState extends State<IncomesDashboardPage> {
                       dtos: dtos,
                       value: IncomesTransactions.totalCurrentMonthIncomesValue,
                     ),
-                    Gap(height: 32),
+                    const Gap(height: 32),
                     InkWell(
                       onTap: () {},
                       borderRadius: BorderRadius.circular(99),
@@ -64,7 +64,7 @@ class _IncomesDashboardPageState extends State<IncomesDashboardPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
+                            const Row(
                               children: [
                                 Gap(width: 16),
                                 Column(
@@ -109,7 +109,7 @@ class _IncomesDashboardPageState extends State<IncomesDashboardPage> {
                         ),
                       ),
                     ),
-                    Gap(height: 64),
+                    const Gap(height: 64),
                   ],
                 ),
               ),

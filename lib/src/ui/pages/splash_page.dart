@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

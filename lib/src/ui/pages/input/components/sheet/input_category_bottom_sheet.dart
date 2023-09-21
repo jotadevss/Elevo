@@ -23,10 +23,10 @@ class InputCategoryBottomSheet extends StatelessWidget {
     return Container(
       height: size.height / 1.5,
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
       child: Column(
         children: [
-          Gap(height: 20),
+          const Gap(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -53,7 +53,7 @@ class InputCategoryBottomSheet extends StatelessWidget {
               ),
             ],
           ),
-          Gap(height: 20),
+          const Gap(height: 20),
           Expanded(
             child: ListView.separated(
               itemCount: items.length,
@@ -82,7 +82,7 @@ class InputCategoryBottomSheet extends StatelessWidget {
                               radius: 25,
                               child: SvgPicture.asset(icon),
                             ),
-                            Gap(width: 20),
+                            const Gap(width: 20),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

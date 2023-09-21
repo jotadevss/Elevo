@@ -12,7 +12,7 @@ class HeaderTransactionInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 18, horizontal: 24),
+      padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 24),
       decoration: BoxDecoration(
         color: kGrayColor.withOpacity(0.05),
         borderRadius: BorderRadius.circular(100),
@@ -23,7 +23,7 @@ class HeaderTransactionInfo extends StatelessWidget {
           RichText(
             text: TextSpan(
               children: [
-                TextSpan(
+                const TextSpan(
                   text: 'Total transaction: ',
                   style: TextStyle(
                     color: Colors.black,
@@ -34,7 +34,7 @@ class HeaderTransactionInfo extends StatelessWidget {
                 ),
                 TextSpan(
                   text: totalTransactions.toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
@@ -47,7 +47,7 @@ class HeaderTransactionInfo extends StatelessWidget {
           RichText(
             text: TextSpan(
               children: [
-                TextSpan(
+                const TextSpan(
                   text: 'Total balance: ',
                   style: TextStyle(
                     color: Colors.black,
@@ -58,7 +58,7 @@ class HeaderTransactionInfo extends StatelessWidget {
                 ),
                 TextSpan(
                   text: '\$' + CurrencyFormatter.format(totalBalance.toString()),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 12,
                     fontWeight: FontWeight.w600,

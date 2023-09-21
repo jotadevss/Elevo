@@ -45,7 +45,7 @@ class CustomTileItem extends StatelessWidget {
                     height: size ?? 20,
                   ),
                 ),
-                Gap(width: 18),
+                const Gap(width: 18),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

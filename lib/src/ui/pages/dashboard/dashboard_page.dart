@@ -34,7 +34,7 @@ class _DashboardPageState extends State<DashboardPage> {
     final dtos = context.select(() => overviewDtoAtom.value);
     return Scaffold(
       body: (isLoading)
-          ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
+          ? const Center(child: CircularProgressIndicator(color: kPrimaryColor))
           : SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.only(top: getStatusBar(context) + 10, left: kMarginHorizontal + 4, right: kMarginHorizontal + 4),
@@ -56,8 +56,8 @@ class _DashboardPageState extends State<DashboardPage> {
                       dtos: dtos,
                       value: totalTransactionsValue,
                     ),
-                    Gap(height: 44),
-                    Row(
+                    const Gap(height: 44),
+                    const Row(
                       children: [
                         const Text(
                           'Overview',
@@ -81,7 +81,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: [
                           CardNavigatorDashboardWidget(
                             label: "Incomes",
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.trending_up_rounded,
                               color: kPrimaryColor,
                             ),
@@ -91,7 +91,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           ),
                           CardNavigatorDashboardWidget(
                             label: "Expenses",
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.trending_down_rounded,
                               color: kErrorColor,
                             ),
@@ -102,7 +102,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         ],
                       ),
                     ),
-                    Gap(height: 64),
+                    const Gap(height: 64),
                   ],
                 ),
               ),

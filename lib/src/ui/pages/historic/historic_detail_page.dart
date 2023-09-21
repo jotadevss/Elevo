@@ -25,7 +25,7 @@ class HistoricDetailPage extends StatelessWidget {
     final isLoading = context.select(() => isLoadingState.value);
     return Scaffold(
       body: (isLoading)
-          ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
+          ? const Center(child: CircularProgressIndicator(color: kPrimaryColor))
           : SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.only(top: getStatusBar(context) + 10, left: kMarginHorizontal + 4, right: kMarginHorizontal + 4),
@@ -39,7 +39,7 @@ class HistoricDetailPage extends StatelessWidget {
                         context.pop();
                       },
                     ),
-                    Gap(height: 32),
+                    const Gap(height: 32),
                     CircleAvatar(
                       backgroundColor:
                           (TypeTransaction.income.name == transaction.type) ? kPrimaryColor.withOpacity(0.1) : kErrorColor.withOpacity(0.1),
@@ -48,19 +48,19 @@ class HistoricDetailPage extends StatelessWidget {
                         categoryProps.iconPath,
                       ),
                     ),
-                    Gap(height: 16),
+                    const Gap(height: 16),
                     Text(
                       categoryProps.label,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Gap(height: 32),
+                    const Gap(height: 32),
                     CardTransactionDetails(categoryProps: categoryProps, transaction: transaction, size: size),
-                    Gap(height: 32),
+                    const Gap(height: 32),
                     ButtonWidget(
                       iconAssetName: 'lib/assets/icons/trash.svg',
                       title: 'Delete transaction',

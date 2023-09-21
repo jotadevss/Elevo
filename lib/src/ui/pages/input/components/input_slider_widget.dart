@@ -20,7 +20,7 @@ class InputSlider extends StatelessWidget {
             height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Color(0xFFF3F3F3),
+              color: const Color(0xFFF3F3F3),
               borderRadius: BorderRadius.circular(100),
             ),
           ),

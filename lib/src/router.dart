@@ -18,61 +18,61 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: AppRouter.SPLASH_PAGE_ROUTER,
       builder: (context, state) {
-        return SplashPage();
+        return const SplashPage();
       },
     ),
     GoRoute(
       path: AppRouter.HOME_PAGE_ROUTER,
       builder: (context, state) {
-        return HomePage();
+        return const HomePage();
       },
     ),
     GoRoute(
       path: AppRouter.EMPTY_PAGE_ROUTER,
       builder: (context, state) {
-        return EmptyPage();
+        return const EmptyPage();
       },
     ),
     GoRoute(
       path: AppRouter.DELETED_PAGE_ROUTER,
       builder: (context, state) {
-        return DeletedPage();
+        return const DeletedPage();
       },
     ),
     GoRoute(
       path: AppRouter.INPUT_SUCCESS_PAGE_ROUTER,
       builder: (context, state) {
-        return InputSuccessPage();
+        return const InputSuccessPage();
       },
     ),
     GoRoute(
       path: AppRouter.INPUT_DATA_PAGE_ROUTER,
       builder: (context, state) {
-        return InputPage();
+        return const InputPage();
       },
     ),
     GoRoute(
       path: AppRouter.HISTORIC_PAGE_ROUTER,
       builder: (context, state) {
-        return HistoricPage();
+        return const HistoricPage();
       },
     ),
     GoRoute(
       path: AppRouter.DASHBOARD_PAGE_ROUTER,
       builder: (context, state) {
-        return DashboardPage();
+        return const DashboardPage();
       },
     ),
     GoRoute(
       path: AppRouter.INCOMES_DASHBOARD_PAGE_ROUTER,
       builder: (context, state) {
-        return IncomesDashboardPage();
+        return const IncomesDashboardPage();
       },
     ),
     GoRoute(
       path: AppRouter.EXPENSES_DASHBOARD_PAGE_ROUTER,
       builder: (context, state) {
-        return ExpensesDashboardPage();
+        return const ExpensesDashboardPage();
       },
     ),
     GoRoute(

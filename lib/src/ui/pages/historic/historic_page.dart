@@ -37,7 +37,7 @@ class _HistoricPageState extends State<HistoricPage> {
 
     return Scaffold(
       body: (isLoading)
-          ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
+          ? const Center(child: CircularProgressIndicator(color: kPrimaryColor))
           : RefreshIndicator.adaptive(
               onRefresh: () async {
                 await refresh.call();
@@ -56,7 +56,7 @@ class _HistoricPageState extends State<HistoricPage> {
                       },
                     ),
                     const Gap(height: 12),
-                    HeaderTransactionInfo(),
+                    const HeaderTransactionInfo(),
                     const Gap(height: 24),
                     Expanded(
                       child: ListView.builder(

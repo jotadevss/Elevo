@@ -22,15 +22,15 @@ class CardTotalBalance extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 38),
+      padding: const EdgeInsets.symmetric(vertical: 38),
       decoration: BoxDecoration(
-        color: Color(0xffF9F9F9),
+        color: const Color(0xffF9F9F9),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Total balance",
             style: TextStyle(
               fontSize: 16,
@@ -38,7 +38,7 @@ class CardTotalBalance extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-          Gap(height: 12),
+          const Gap(height: 12),
           Text(
             (isVisible)
                 ? isNegative
@@ -51,7 +51,7 @@ class CardTotalBalance extends StatelessWidget {
               fontSize: 32,
             ),
           ),
-          Gap(height: 18),
+          const Gap(height: 18),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -59,7 +59,7 @@ class CardTotalBalance extends StatelessWidget {
                 onTap: onTap,
                 borderRadius: BorderRadius.circular(100),
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                     color: kPrimaryColor,
@@ -72,8 +72,8 @@ class CardTotalBalance extends StatelessWidget {
                         'lib/assets/icons/wallet-money_white.svg',
                         height: 22,
                       ),
-                      Gap(width: 10),
-                      Text(
+                      const Gap(width: 10),
+                      const Text(
                         "Add Transaction",
                         style: TextStyle(
                           fontSize: 14,
@@ -85,13 +85,13 @@ class CardTotalBalance extends StatelessWidget {
                   ),
                 ),
               ),
-              Gap(width: 15),
+              const Gap(width: 15),
               InkWell(
                 onTap: () {
                   toggleVisibilityAction.call();
                 },
                 borderRadius: BorderRadius.circular(100),
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   backgroundColor: Colors.white,
                   radius: 24,
                   child: Icon(

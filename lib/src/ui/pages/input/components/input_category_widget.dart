@@ -38,7 +38,7 @@ class InputCategoryWidget extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Gap(height: 6),
+                const Gap(height: 6),
                 subtitle,
               ],
             ),

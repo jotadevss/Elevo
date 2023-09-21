@@ -35,7 +35,7 @@ class TransactionCardItem extends StatelessWidget {
         splashColor: kGrayColor.withOpacity(0.05),
         borderRadius: BorderRadius.circular(25),
         child: Container(
-          padding: EdgeInsets.all(22),
+          padding: const EdgeInsets.all(22),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
             border: Border.all(
@@ -57,11 +57,11 @@ class TransactionCardItem extends StatelessWidget {
                             iconPath,
                             width: 20,
                           ),
-                          Gap(width: 12),
+                          const Gap(width: 12),
                           Text(
                             label,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
                               color: Colors.black,
                               fontWeight: FontWeight.w600,
@@ -69,9 +69,9 @@ class TransactionCardItem extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Gap(height: 16, width: 0),
+                      const Gap(height: 16, width: 0),
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(17),
                           color: (TypeTransaction.income.name == item.type) ? kPrimaryColor.withOpacity(0.1) : kErrorColor.withOpacity(0.1),
@@ -79,7 +79,7 @@ class TransactionCardItem extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Gap(width: 4),
+                            const Gap(width: 4),
                             Text(
                               (TypeTransaction.income.name == item.type) ? 'Income' : 'Expense',
                               textAlign: TextAlign.center,
@@ -89,7 +89,7 @@ class TransactionCardItem extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Gap(width: 6),
+                            const Gap(width: 6),
                             Icon(
                               (TypeTransaction.income.name == item.type) ? Icons.trending_up_rounded : Icons.trending_down_rounded,
                               color: (TypeTransaction.income.name == item.type) ? kPrimaryColor : kErrorColor,
@@ -103,7 +103,7 @@ class TransactionCardItem extends StatelessWidget {
                   Text(
                     '\$' + CurrencyFormatter.format(value.toString()),
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.w600,
@@ -112,7 +112,7 @@ class TransactionCardItem extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 14),
+                padding: const EdgeInsets.symmetric(vertical: 14),
                 child: Divider(
                   color: kGrayColor.withOpacity(0.1),
                 ),
@@ -120,7 +120,7 @@ class TransactionCardItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Transaction date',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -132,7 +132,7 @@ class TransactionCardItem extends StatelessWidget {
                   Text(
                     transactionDate,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.black,
                       fontWeight: FontWeight.w600,
@@ -140,11 +140,11 @@ class TransactionCardItem extends StatelessWidget {
                   ),
                 ],
               ),
-              Gap(height: 8),
+              const Gap(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Fixed transaction',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -156,7 +156,7 @@ class TransactionCardItem extends StatelessWidget {
                   Text(
                     fixedTransaction,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.black,
                       fontWeight: FontWeight.w600,

@@ -23,7 +23,7 @@ class InputDateWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
@@ -56,7 +56,7 @@ class InputDateWidget extends StatelessWidget {
               child: Text(
                 dateText,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: kGrayColor,
                   fontWeight: FontWeight.w500,

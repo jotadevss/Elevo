@@ -18,7 +18,7 @@ class InputDescriptionWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 14),
       child: Column(
         children: [
-          Row(
+          const Row(
             children: [
               const Text(
                 'Description',

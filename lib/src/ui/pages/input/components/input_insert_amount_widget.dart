@@ -30,7 +30,7 @@ class InputInsertAmount extends StatelessWidget {
             fontSize: 36,
           ),
         ),
-        Gap(width: 5),
+        const Gap(width: 5),
         Column(
           children: [
             IntrinsicWidth(

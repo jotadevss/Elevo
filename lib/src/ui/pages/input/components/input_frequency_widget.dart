@@ -37,7 +37,7 @@ class InputFrequencyWidget extends StatelessWidget {
                 children: [
                   Text(
                     frequencySelected == null ? 'Daily' : frequencyLabel[0]['title'].toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: kPrimaryColor,
                       fontFamily: "Qanelas",
                       fontWeight: FontWeight.w600,
@@ -53,7 +53,7 @@ class InputFrequencyWidget extends StatelessWidget {
                   IconButton(
                     onPressed: onTap,
                     color: kPrimaryColor,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_downward,
                       color: kPrimaryColor,
                       size: 20,

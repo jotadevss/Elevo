@@ -22,8 +22,8 @@ class CardTransactionDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(32),
-      margin: EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.all(32),
+      margin: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
         border: Border.all(
@@ -40,7 +40,7 @@ class CardTransactionDetails extends StatelessWidget {
               Text(
                 categoryProps.label,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black,
                   fontWeight: FontWeight.w600,
@@ -57,12 +57,12 @@ class CardTransactionDetails extends StatelessWidget {
               ),
             ],
           ),
-          Gap(height: 32),
+          const Gap(height: 32),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Transaction ID',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -71,11 +71,11 @@ class CardTransactionDetails extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Gap(height: 6),
+              const Gap(height: 6),
               Text(
                 transaction.id,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 12,
                   color: kGrayColor,
                   fontWeight: FontWeight.w500,
@@ -84,7 +84,7 @@ class CardTransactionDetails extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 14),
+            padding: const EdgeInsets.symmetric(vertical: 14),
             child: Divider(
               color: kGrayColor.withOpacity(0.1),
             ),
@@ -95,7 +95,7 @@ class CardTransactionDetails extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Creation Date',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -104,11 +104,11 @@ class CardTransactionDetails extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Gap(height: 6),
+                  const Gap(height: 6),
                   Text(
                     DateFormatter.format(transaction.createAt),
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: kGrayColor,
                       fontWeight: FontWeight.w500,
@@ -120,7 +120,7 @@ class CardTransactionDetails extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Frequency',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -129,11 +129,11 @@ class CardTransactionDetails extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Gap(height: 6),
+                  const Gap(height: 6),
                   Text(
                     transaction.type,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: kGrayColor,
                       fontWeight: FontWeight.w500,

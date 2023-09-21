@@ -52,7 +52,7 @@ class _InputPageState extends State<InputPage> {
 
     return Scaffold(
       body: (isLoading)
-          ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
+          ? const Center(child: CircularProgressIndicator(color: kPrimaryColor))
           : SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.only(top: getStatusBar(context) + 10, left: kMarginHorizontal, right: kMarginHorizontal),
@@ -109,7 +109,7 @@ class _InputPageState extends State<InputPage> {
                         ),
                       ],
                     ),
-                    Gap(height: 26),
+                    const Gap(height: 26),
                     InputCategoryWidget(
                       onTap: () => showCategories(typeDataState.value),
                       subtitle: Text(
@@ -129,7 +129,7 @@ class _InputPageState extends State<InputPage> {
                     InputDateWidget(
                       onTap: () => showDatePickerAction.value = context,
                     ),
-                    Gap(height: 10),
+                    const Gap(height: 10),
                     ToggleSwitchWidget(
                       onChanged: (newValue) {
                         toggleSwitchIsFixedAction.value = newValue;
@@ -145,8 +145,8 @@ class _InputPageState extends State<InputPage> {
                         onChanged: (text) {
                           descriptionDataState.value = text;
                         }),
-                    if (valueError) ErrorMessage(message: 'Value not entered. Please enter it before proceeding.'),
-                    if (categoryError) ErrorMessage(message: 'Category not selected. Please choose one before proceeding.'),
+                    if (valueError) const ErrorMessage(message: 'Value not entered. Please enter it before proceeding.'),
+                    if (categoryError) const ErrorMessage(message: 'Category not selected. Please choose one before proceeding.'),
                     SubmitWidget(onTap: () => submitTransactionAction.call()),
                   ],
                 ),

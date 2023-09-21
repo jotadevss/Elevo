@@ -23,7 +23,7 @@ class ButtonWidget extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(100),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
           color: color.withOpacity(0.1),
@@ -38,7 +38,7 @@ class ButtonWidget extends StatelessWidget {
                     iconAssetName!,
                     height: 25,
                   ),
-            Gap(width: 10),
+            const Gap(width: 10),
             Text(
               title,
               style: TextStyle(

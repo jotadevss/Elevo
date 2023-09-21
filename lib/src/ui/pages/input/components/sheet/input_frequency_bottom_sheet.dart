@@ -20,10 +20,10 @@ class InputFrequencyBottomSheet extends StatelessWidget {
     return Container(
       height: size.height / 2,
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
       child: Column(
         children: [
-          Gap(height: 20),
+          const Gap(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -50,7 +50,7 @@ class InputFrequencyBottomSheet extends StatelessWidget {
               ),
             ],
           ),
-          Gap(height: 20),
+          const Gap(height: 20),
           Expanded(
             child: ListView.separated(
               itemCount: mapFrequency.length,
@@ -74,7 +74,7 @@ class InputFrequencyBottomSheet extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Gap(width: 20),
+                            const Gap(width: 20),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

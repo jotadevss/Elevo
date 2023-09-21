@@ -2,3 +2,4 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     ignore: constant_identifier_names
+    prefer_const_constructors: true

@@ -19,7 +19,7 @@ class CardNavigatorDashboardWidget extends StatelessWidget {
       onTap: func,
       borderRadius: BorderRadius.circular(24),
       child: Container(
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
           border: Border.all(color: kGrayColor.withOpacity(0.2)),
