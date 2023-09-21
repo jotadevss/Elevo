@@ -9,23 +9,29 @@ import 'package:elevo/src/domain/enums/type_enum.dart';
 final allCategoriesAtom = Atom<List<CategoryEntity>>([]);
 
 // Getters
+// This code provides three getter functions to get all categories, incomes categories, and expenses categories.
+//
+// The `getAllCategories` getter function returns a copy of the `allCategoriesAtom` state atom. The `allCategoriesAtom` state atom stores a list of all categories.
+//
+// The `getIncomesCategories` getter function returns a list of all incomes categories. It filters the `allCategoriesAtom` state atom to only include categories with the `TypeTransaction.income` type.
+//
+// The `getExpensesCategories` getter function returns a list of all expenses categories. It filters the `allCategoriesAtom` state atom to only include categories with the `TypeTransaction.expense` type.
+//
+// [Image of a pie chart with two slices, one for incomes and one for expenses.]
+
 List<CategoryEntity> get getAllCategories {
-  /// Returns a copy of [allCategoriesAtom] value
+  // Returns a copy of the `allCategoriesAtom` state atom.
   return [...allCategoriesAtom.value];
 }
 
 List<CategoryEntity> get getIncomesCategories {
-  return allCategoriesAtom // Filter by Incomes
-      .value
-      .where((c) => c.type == TypeTransaction.income.name)
-      .toList();
+  // Returns a list of all incomes categories.
+  return allCategoriesAtom.value.where((c) => c.type == TypeTransaction.income.name).toList();
 }
 
 List<CategoryEntity> get getExpensesCategories {
-  return allCategoriesAtom // Filter by Expense
-      .value
-      .where((c) => c.type == TypeTransaction.expense.name)
-      .toList();
+  // Returns a list of all expenses categories.
+  return allCategoriesAtom.value.where((c) => c.type == TypeTransaction.expense.name).toList();
 }
 
 // Actions

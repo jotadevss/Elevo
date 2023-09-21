@@ -33,6 +33,10 @@ class DashboardLogic extends Reducer {
   }
 
   void _generateOverviewDtos() {
+    // Creates a list of PieChartDTO objects for the overview dashboard.
+    //
+    // The PieChartDTO objects represent the different types of transactions
+    // and their respective values.
     final dtoList = [
       PieChartDTO(
         id: TypeTransaction.income.name,
@@ -49,7 +53,11 @@ class DashboardLogic extends Reducer {
         value: ExpensesTransactions.totalCurrentMonthExpensesValue,
       ),
     ];
+
+    // Sorts the PieChartDTO objects in descending order by value.
     dtoList.sort((a, b) => a.value.compareTo(b.value));
+
+    // Updates the overviewDtoAtom with the sorted PieChartDTO objects.
     overviewDtoAtom.value = dtoList.reversed.toList();
   }
 
@@ -130,18 +138,26 @@ class DashboardLogic extends Reducer {
   }
 
   void loadOverviewDashboard() {
+    // Starts the loading indicator.
     startLoadingAction.call();
+
+    // Generates a list of PieChartDTO objects for the overview dashboard.
     _generateOverviewDtos();
+
+    // Creates a list of PieChartSectionData objects, one for each PieChartDTO object.
     final sectionList = overviewDtoAtom.value
         .asMap()
         .map<int, PieChartSectionData>((index, data) {
+          // Calculates the percentage of the total transactions for the given transaction type.
           final value = (data.id == TypeTransaction.income.name)
               ? calcPercent(totalTransactionsValue, IncomesTransactions.totalCurrentMonthIncomesValue).round()
               : calcPercent(totalTransactionsValue, ExpensesTransactions.totalCurrentMonthExpensesValue).round();
 
+          // Updates the PieChartDTO object with the calculated percentage.
           final updatedValue = overviewDtoAtom.value[index].copyWith(percent: value.round());
           overviewDtoAtom.value[index] = updatedValue;
 
+          // Creates a PieChartSectionData object for the PieChartDTO object.
           final section = PieChartSectionData(
             color: data.color,
             radius: 12,
@@ -152,17 +168,29 @@ class DashboardLogic extends Reducer {
         })
         .values
         .toList();
+
+    // Updates the overviewSectionsAtom with the list of PieChartSectionData objects.
     overviewSectionsAtom.value = sectionList;
+
+    // Stops the loading indicator.
     stopLoadingAction.call();
   }
 
   void loadIncomesDashboard() {
+    // Starts the loading indicator.
     startLoadingAction.call();
+
+    // Generates a list of PieChartDTO objects for the incomes dashboard.
     _generateIncomesDtos();
+
+    // Creates a list of PieChartSectionData objects, one for each PieChartDTO object.
     final sectionList = incomesDtoAtom.value
         .asMap()
         .map<int, PieChartSectionData>((index, data) {
+          // Gets the percentage of the total incomes for the given income category.
           final value = data.percent;
+
+          // Creates a PieChartSectionData object for the PieChartDTO object.
           final section = PieChartSectionData(
             color: data.color,
             radius: 12,
@@ -174,17 +202,28 @@ class DashboardLogic extends Reducer {
         .values
         .toList();
 
+    // Updates the incomesSectionsAtom with the list of PieChartSectionData objects.
     incomesSectionsAtom.value = sectionList;
+
+    // Stops the loading indicator.
     stopLoadingAction.call();
   }
 
   void loadExpensesDashboard() {
+    // Starts the loading indicator.
     startLoadingAction.call();
+
+    // Generates a list of PieChartDTO objects for the expenses dashboard.
     _generateExpensesDtos();
+
+    // Creates a list of PieChartSectionData objects, one for each PieChartDTO object.
     final sectionList = expensesDtosAtom.value
         .asMap()
         .map<int, PieChartSectionData>((index, data) {
+          // Gets the percentage of the total expenses for the given expense category.
           final value = data.percent;
+
+          // Creates a PieChartSectionData object for the PieChartDTO object.
           final section = PieChartSectionData(
             color: data.color,
             radius: 12,
@@ -196,11 +235,23 @@ class DashboardLogic extends Reducer {
         .values
         .toList();
 
+    // Updates the expensesSectionAtom with the list of PieChartSectionData objects.
     expensesSectionAtom.value = sectionList;
+
+    // Stops the loading indicator.
     stopLoadingAction.call();
   }
 
   double calcPercent(double totalAmount, double value) {
+    // Calculates the percentage of `value` relative to `totalAmount`.
+    //
+    // Args:
+    //   totalAmount: The total value.
+    //   value: The value to calculate the percentage of.
+    //
+    // Returns:
+    //   The percentage of `value` relative to `totalAmount`.
+
     return (value / totalAmount) * 100;
   }
 }
