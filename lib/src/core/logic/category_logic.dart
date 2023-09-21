@@ -53,7 +53,6 @@ class CategoryLogic extends Reducer {
       /// [error] return a message or exception when happens any problem in request
       (categories) {
         // assigns the fetched categories in atom to share to app
-        allCategoriesAtom.value.clear();
         allCategoriesAtom.value = categories;
       },
       (error) {},

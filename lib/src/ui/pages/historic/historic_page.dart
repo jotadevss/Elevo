@@ -33,11 +33,12 @@ class _HistoricPageState extends State<HistoricPage> {
   Widget build(BuildContext context) {
     final isLoading = context.select(() => isLoadingState.value);
     final listOfAllTransactions = context.select(() => transactions);
+    final listOfAllCategories = context.select(() => getAllCategories);
 
-    return (isLoading)
-        ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
-        : Scaffold(
-            body: RefreshIndicator.adaptive(
+    return Scaffold(
+      body: (isLoading)
+          ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
+          : RefreshIndicator.adaptive(
               onRefresh: () async {
                 await refresh.call();
               },
@@ -63,12 +64,12 @@ class _HistoricPageState extends State<HistoricPage> {
                         itemBuilder: (context, index) {
                           final item = listOfAllTransactions.reversed.toList()[index];
 
-                          final List<CategoryEntity?> category = getAllCategories.where((ct) {
+                          final List<CategoryEntity?> category = listOfAllCategories.where((ct) {
                             return ct.id == item.category;
                           }).toList();
 
-                          final String? label = category[0]?.title;
-                          final String? iconPath = category[0]?.iconPath;
+                          final String? label = (category.isEmpty) ? "" : category[0]?.title;
+                          final String? iconPath = (category.isEmpty) ? "" : category[0]?.iconPath;
                           final props = CategoryProsDTO(label: label ?? '', iconPath: iconPath ?? '');
 
                           final transactionDate = DateFormatter.format(item.createAt);
@@ -96,6 +97,6 @@ class _HistoricPageState extends State<HistoricPage> {
                 ),
               ),
             ),
-          );
+    );
   }
 }

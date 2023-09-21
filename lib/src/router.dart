@@ -1,6 +1,8 @@
 import 'package:elevo/src/core/dto/category_props_dto.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/ui/pages/dashboard/dashboard_page.dart';
+import 'package:elevo/src/ui/pages/dashboard/expenses_dashboard_page.dart';
+import 'package:elevo/src/ui/pages/dashboard/incomes_dashboard_page.dart';
 import 'package:elevo/src/ui/pages/deleted_page.dart';
 import 'package:elevo/src/ui/pages/empty_page.dart';
 import 'package:elevo/src/ui/pages/historic/historic_detail_page.dart';
@@ -62,6 +64,18 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
+      path: AppRouter.INCOMES_DASHBOARD_PAGE_ROUTER,
+      builder: (context, state) {
+        return IncomesDashboardPage();
+      },
+    ),
+    GoRoute(
+      path: AppRouter.EXPENSES_DASHBOARD_PAGE_ROUTER,
+      builder: (context, state) {
+        return ExpensesDashboardPage();
+      },
+    ),
+    GoRoute(
       path: AppRouter.HISTORIC_DETAIL_PAGE_ROUTER,
       builder: (context, state) {
         final args = state.extra as Map<String, dynamic>;
@@ -85,4 +99,6 @@ class AppRouter {
   static const String HISTORIC_PAGE_ROUTER = '/historic';
   static const String HISTORIC_DETAIL_PAGE_ROUTER = '/historic-detail';
   static const String DASHBOARD_PAGE_ROUTER = '/dashboard';
+  static const String INCOMES_DASHBOARD_PAGE_ROUTER = '/dashboard-incomes';
+  static const String EXPENSES_DASHBOARD_PAGE_ROUTER = '/dashboard-expenses';
 }

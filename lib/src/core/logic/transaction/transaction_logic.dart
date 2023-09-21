@@ -80,7 +80,7 @@ class TransactionLogic extends Reducer {
     checkTransactionStatus();
 
     /// Stop the loading state [isLoadingState]
-    isLoadingState.value = false;
+    stopLoadingAction.call();
   }
 
   Future<void> getById() async {
@@ -135,7 +135,7 @@ class TransactionLogic extends Reducer {
     );
 
     /// Stop the loading state [isLoadingState]
-    startLoadingAction.call();
+    stopLoadingAction.call();
   }
 
   void checkTransactionStatus() {
