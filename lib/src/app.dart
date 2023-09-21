@@ -15,7 +15,13 @@ class _ElevoState extends State<Elevo> {
   @override
   void initState() {
     super.initState();
+
+    // Watches for changes to the `isEmptyTransactionState` value.
+    // When the value changes, the `effect` callback is executed.
     rxObserver(() => isEmptyTransactionState.value, effect: (value) {
+      // If the `isEmptyTransactionState` value is true, navigate to the
+      // `EMPTY_PAGE_ROUTER` route. Otherwise, navigate to the
+      // `HOME_PAGE_ROUTER` route.
       if (value!) {
         router.go(AppRouter.EMPTY_PAGE_ROUTER);
       } else {
