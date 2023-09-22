@@ -12,6 +12,8 @@ abstract class ITransactionRepository {
   /// Retrieves all transactions.
   Future<Result<List<TransactionEntity>, Exception>> getAllTransactions();
 
+  Future<Result<List<TransactionEntity>, Exception>> getTransactionsByProperty(String property, String value);
+
   /// Retrieves a single transaction by its ID.
   Future<Result<TransactionEntity, Exception>> getTransaction(String id);
 
@@ -113,6 +115,20 @@ class SQLTransactionRepositoryImpl implements ITransactionRepository {
       return Success(updatedTransaction);
     } on SQLException catch (e) {
       log(e.toString());
+      return Failure(e);
+    }
+  }
+
+  @override
+  Future<Result<List<TransactionEntity>, Exception>> getTransactionsByProperty(String property, String value) async {
+    try {
+      final data = await _database.getByPropQuery(property, value);
+      final transaction = List.generate(data.length, (i) => TransactionEntity.fromMap(data[i]));
+      return Success(transaction);
+    } on SQLException catch (e) {
+      if (e.message[e] == SQLError.notFound) {
+        return const Success([]);
+      }
       return Failure(e);
     }
   }
