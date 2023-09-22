@@ -111,6 +111,7 @@ class _ExpensesDashboardPageState extends State<ExpensesDashboardPage> {
                           ),
                           const Gap(height: 24),
                           PieChartDashboardWidget(
+                            label: "Expenses",
                             icon: const Icon(Icons.trending_down_rounded, color: kErrorColor),
                             svgPath: null,
                             colorIcon: null,
@@ -132,7 +133,9 @@ class _ExpensesDashboardPageState extends State<ExpensesDashboardPage> {
                           ),
                           const Gap(height: 32),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              context.pushReplacement(AppRouter.HISTORIC_PAGE_ROUTER);
+                            },
                             borderRadius: BorderRadius.circular(99),
                             child: Container(
                               width: double.infinity,

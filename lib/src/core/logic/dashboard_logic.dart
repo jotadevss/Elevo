@@ -106,7 +106,7 @@ class DashboardLogic extends Reducer {
       final totalAmount = transactions.fold(0.0, (previousValue, transaction) => previousValue + transaction.value).roundToDouble();
 
       // Gets the color for the current incomes category.
-      final color = chartColors[index];
+      final color = chartIncomesColor[index];
 
       // Creates a PieChartDTO object for the current incomes category.
       final pieChartDto = PieChartDTO(
@@ -144,7 +144,7 @@ class DashboardLogic extends Reducer {
       final totalAmount = transactions.fold(0.0, (previousValue, transaction) => previousValue + transaction.value).roundToDouble();
 
       // Gets the color for the current expenses category.
-      final color = chartColors[index];
+      final color = chartExpenseColors[index];
 
       // Creates a PieChartDTO object for the current expenses category.
       final pieChartDto = PieChartDTO(

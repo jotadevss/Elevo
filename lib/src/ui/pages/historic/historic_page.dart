@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/logic/app_logic.dart';
@@ -33,11 +31,9 @@ class _HistoricPageState extends State<HistoricPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final isLoading = context.select(() => isLoadingState.value);
     final listOfAllTransactions = context.select(() => transactions);
     final listOfAllCategories = context.select(() => getAllCategories);
-    log(size.height.toString());
 
     return Scaffold(
       body: (isLoading)
@@ -65,7 +61,6 @@ class _HistoricPageState extends State<HistoricPage> {
                     Expanded(
                       child: ListView.builder(
                         itemCount: listOfAllTransactions.length,
-                        itemExtent: size.height / 3.8,
                         itemBuilder: (context, index) {
                           final item = listOfAllTransactions.reversed.toList()[index];
 

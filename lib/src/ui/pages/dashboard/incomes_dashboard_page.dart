@@ -111,6 +111,7 @@ class _IncomesDashboardPageState extends State<IncomesDashboardPage> {
                           ),
                           const Gap(height: 24),
                           PieChartDashboardWidget(
+                            label: "Incomes",
                             icon: const Icon(Icons.trending_up_rounded, color: kPrimaryColor),
                             colorIcon: null,
                             svgPath: null,
@@ -131,7 +132,9 @@ class _IncomesDashboardPageState extends State<IncomesDashboardPage> {
                           ),
                           const Gap(height: 32),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              context.pushReplacement(AppRouter.HISTORIC_PAGE_ROUTER);
+                            },
                             borderRadius: BorderRadius.circular(99),
                             child: Container(
                               width: double.infinity,

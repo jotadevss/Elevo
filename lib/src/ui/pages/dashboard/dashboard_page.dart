@@ -53,6 +53,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     const HeaderTransactionInfo(),
                     const Gap(height: 24),
                     PieChartDashboardWidget(
+                      label: "Overview",
                       svgPath: 'lib/assets/icons/wallet-money.svg',
                       colorIcon: kPrimaryColor,
                       icon: null,

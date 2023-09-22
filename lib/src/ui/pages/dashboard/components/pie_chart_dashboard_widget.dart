@@ -15,6 +15,7 @@ class PieChartDashboardWidget extends StatelessWidget {
     this.svgPath,
     this.colorIcon,
     required this.dashboard,
+    required this.label,
   });
 
   final Widget dashboard;
@@ -23,6 +24,7 @@ class PieChartDashboardWidget extends StatelessWidget {
   final String? svgPath;
   final Color? colorIcon;
   final double value;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +41,10 @@ class PieChartDashboardWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Overview',
+              Text(
+                label,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 19,
                   color: Colors.black,
                   fontWeight: FontWeight.w600,
