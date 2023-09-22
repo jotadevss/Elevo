@@ -13,10 +13,16 @@ class PieChartDashboardWidget extends StatelessWidget {
     required this.sections,
     required this.dtos,
     required this.value,
+    this.icon,
+    this.svgPath,
+    this.colorIcon,
   });
 
   final List<PieChartSectionData> sections;
   final List<PieChartDTO> dtos;
+  final Icon? icon;
+  final String? svgPath;
+  final Color? colorIcon;
   final double value;
 
   @override
@@ -76,10 +82,13 @@ class PieChartDashboardWidget extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                      'lib/assets/icons/wallet-money.svg',
-                      height: 28,
-                    ),
+                    icon != null
+                        ? icon!
+                        : SvgPicture.asset(
+                            svgPath ?? 'lib/assets/icons/wallet-money.svg',
+                            height: 24,
+                            colorFilter: ColorFilter.mode(colorIcon ?? Colors.black, BlendMode.srcIn),
+                          ),
                     Text(
                       '\$' + CurrencyFormatter.format(value.toString()),
                       textAlign: TextAlign.center,

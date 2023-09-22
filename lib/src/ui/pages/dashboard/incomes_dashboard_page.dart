@@ -46,6 +46,9 @@ class _IncomesDashboardPageState extends State<IncomesDashboardPage> {
                     ),
                     const Gap(height: 24),
                     PieChartDashboardWidget(
+                      icon: const Icon(Icons.trending_up_rounded, color: kPrimaryColor),
+                      colorIcon: null,
+                      svgPath: null,
                       sections: sections,
                       dtos: dtos,
                       value: IncomesTransactions.totalCurrentMonthIncomesValue,
@@ -56,7 +59,7 @@ class _IncomesDashboardPageState extends State<IncomesDashboardPage> {
                       borderRadius: BorderRadius.circular(99),
                       child: Container(
                         width: double.infinity,
-                        padding: EdgeInsets.all(18),
+                        padding: const EdgeInsets.all(18),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(99),
                           border: Border.all(color: kGrayColor.withOpacity(0.2)),

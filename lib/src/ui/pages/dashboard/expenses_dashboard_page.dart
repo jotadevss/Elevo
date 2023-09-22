@@ -46,6 +46,9 @@ class _ExpensesDashboardPageState extends State<ExpensesDashboardPage> {
                     ),
                     const Gap(height: 24),
                     PieChartDashboardWidget(
+                      icon: const Icon(Icons.trending_down_rounded, color: kErrorColor),
+                      svgPath: null,
+                      colorIcon: null,
                       sections: sections,
                       dtos: dtos,
                       value: ExpensesTransactions.totalCurrentMonthExpensesValue,
