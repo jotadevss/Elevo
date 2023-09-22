@@ -60,7 +60,7 @@ class InputInsertAmount extends StatelessWidget {
                 onChanged: onChanged,
               ),
             ),
-            Gap(),
+            const Gap(),
           ],
         ),
       ],

@@ -19,6 +19,7 @@ class ErrorPage extends StatelessWidget {
             const Gap(height: 20),
             const Text(
               'Oops! An error has\noccurred...',
+              key: const Key("error-title"),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 22,
@@ -29,6 +30,7 @@ class ErrorPage extends StatelessWidget {
             const Gap(height: 20),
             const Text(
               'An unknown error occurred\nplease try again',
+              key: const Key("error-description"),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
@@ -38,6 +40,7 @@ class ErrorPage extends StatelessWidget {
             ),
             const Gap(height: 25),
             ButtonWidget(
+              key: const Key('button-try'),
               iconAssetName: 'lib/assets/icons/refresh-2.svg',
               title: 'Try Again',
               color: kPrimaryColor,

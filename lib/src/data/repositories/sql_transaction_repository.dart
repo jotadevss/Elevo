@@ -80,7 +80,7 @@ class SQLTransactionRepositoryImpl implements ITransactionRepository {
       return Success(transactions);
     } on SQLException catch (e) {
       if (e.message[e] == SQLError.notFound) {
-        return Success([]);
+        return const Success([]);
       }
       return Failure(e);
     }
