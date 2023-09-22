@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:asp/asp.dart';
 import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/dto/pie_chart_dto.dart';
@@ -13,23 +15,49 @@ import 'package:flutter/material.dart';
 // Atoms
 final overviewSectionsAtom = Atom<List<PieChartSectionData>>([]);
 final overviewDtoAtom = Atom<List<PieChartDTO>>([]);
+final overviewTouchedIndexAtom = Atom<int>(-1);
 
 final incomesSectionsAtom = Atom<List<PieChartSectionData>>([]);
 final incomesDtoAtom = Atom<List<PieChartDTO>>([]);
+final incomesTouchedIndexAtom = Atom<int>(-1);
 
 final expensesSectionAtom = Atom<List<PieChartSectionData>>([]);
 final expensesDtosAtom = Atom<List<PieChartDTO>>([]);
+final expensesTouchedIndexAtom = Atom<int>(-1);
 
 // Actions
 final loadOverviewDashboardAction = Atom.action();
 final loadIncomesDashboardAction = Atom.action();
 final loadExpensesDashboardAction = Atom.action();
+final touchIndexOverviewAction = Atom<int>(-1);
+final touchedIndexIncomesAction = Atom<int>(-1);
+final touchedIndexExpensesAction = Atom<int>(-1);
 
 class DashboardLogic extends Reducer {
   DashboardLogic() {
     on(() => [loadOverviewDashboardAction], loadOverviewDashboard);
     on(() => [loadIncomesDashboardAction], loadIncomesDashboard);
     on(() => [loadExpensesDashboardAction], loadExpensesDashboard);
+    on(() => [touchIndexOverviewAction], touchIndexOverview);
+    on(() => [touchedIndexExpensesAction], touchIndexExpenses);
+    on(() => [touchedIndexIncomesAction], touchIndexIncomes);
+  }
+
+  void touchIndexOverview() {
+    overviewTouchedIndexAtom.value = touchIndexOverviewAction.value;
+
+    log(overviewTouchedIndexAtom.value.toString());
+    loadOverviewDashboard();
+  }
+
+  void touchIndexExpenses() {
+    expensesTouchedIndexAtom.value = touchedIndexExpensesAction.value;
+    loadExpensesDashboard();
+  }
+
+  void touchIndexIncomes() {
+    incomesTouchedIndexAtom.value = touchedIndexIncomesAction.value;
+    loadIncomesDashboard();
   }
 
   void _generateOverviewDtos() {
@@ -157,12 +185,23 @@ class DashboardLogic extends Reducer {
           final updatedValue = overviewDtoAtom.value[index].copyWith(percent: value.round());
           overviewDtoAtom.value[index] = updatedValue;
 
+          final isTouched = index == overviewTouchedIndexAtom.value;
+
           // Creates a PieChartSectionData object for the PieChartDTO object.
           final section = PieChartSectionData(
             color: data.color,
-            radius: 12,
-            titleStyle: TextStyle(color: Colors.transparent),
+            radius: isTouched ? 18 : 12,
+            titleStyle: const TextStyle(color: Colors.transparent),
             value: value.toDouble(),
+            badgeWidget: isTouched
+                ? CircleAvatar(
+                    backgroundColor: data.color,
+                    child: Text(
+                      value.toString() + "%",
+                      style: const TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                  )
+                : null,
           );
           return MapEntry(index, section);
         })
@@ -176,10 +215,9 @@ class DashboardLogic extends Reducer {
     stopLoadingAction.call();
   }
 
-  void loadIncomesDashboard() {
+  void loadIncomesDashboard() async {
     // Starts the loading indicator.
     startLoadingAction.call();
-
     // Generates a list of PieChartDTO objects for the incomes dashboard.
     _generateIncomesDtos();
 
@@ -190,12 +228,23 @@ class DashboardLogic extends Reducer {
           // Gets the percentage of the total incomes for the given income category.
           final value = data.percent;
 
+          final isTouched = index == incomesTouchedIndexAtom.value;
+
           // Creates a PieChartSectionData object for the PieChartDTO object.
           final section = PieChartSectionData(
             color: data.color,
-            radius: 12,
-            titleStyle: TextStyle(color: Colors.transparent),
+            radius: isTouched ? 18 : 12,
+            titleStyle: const TextStyle(color: Colors.transparent),
             value: value.toDouble(),
+            badgeWidget: isTouched
+                ? CircleAvatar(
+                    backgroundColor: data.color,
+                    child: Text(
+                      value.toString() + "%",
+                      style: const TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                  )
+                : null,
           );
           return MapEntry(index, section);
         })
@@ -223,12 +272,23 @@ class DashboardLogic extends Reducer {
           // Gets the percentage of the total expenses for the given expense category.
           final value = data.percent;
 
+          final isTouched = index == expensesTouchedIndexAtom.value;
+
           // Creates a PieChartSectionData object for the PieChartDTO object.
           final section = PieChartSectionData(
             color: data.color,
-            radius: 12,
-            titleStyle: TextStyle(color: Colors.transparent),
+            radius: isTouched ? 18 : 12,
+            titleStyle: const TextStyle(color: Colors.transparent),
             value: value.toDouble(),
+            badgeWidget: isTouched
+                ? CircleAvatar(
+                    backgroundColor: data.color,
+                    child: Text(
+                      value.toString() + "%",
+                      style: const TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                  )
+                : null,
           );
           return MapEntry(index, section);
         })

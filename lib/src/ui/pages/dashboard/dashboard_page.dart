@@ -8,6 +8,7 @@ import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/ui/pages/dashboard/components/card_navigator_dashboard_widget.dart';
 import 'package:elevo/src/ui/pages/dashboard/components/pie_chart_dashboard_widget.dart';
 import 'package:elevo/src/ui/pages/historic/components/header_transaction_info.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,9 +56,20 @@ class _DashboardPageState extends State<DashboardPage> {
                       svgPath: 'lib/assets/icons/wallet-money.svg',
                       colorIcon: kPrimaryColor,
                       icon: null,
-                      sections: sections,
                       dtos: dtos,
                       value: totalTransactionsValue,
+                      dashboard: PieChart(PieChartData(
+                        sections: sections,
+                        pieTouchData: PieTouchData(
+                          touchCallback: (event, response) {
+                            if (!event.isInterestedForInteractions && response == null && response?.touchedSection == null) {
+                              touchIndexOverviewAction.value = -1;
+                              return;
+                            }
+                            touchIndexOverviewAction.value = response!.touchedSection!.touchedSectionIndex;
+                          },
+                        ),
+                      )),
                     ),
                     const Gap(height: 44),
                     const Row(

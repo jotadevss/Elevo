@@ -3,22 +3,21 @@ import 'package:elevo/src/core/dto/pie_chart_dto.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/ui/pages/dashboard/components/indicator_item_widget.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class PieChartDashboardWidget extends StatelessWidget {
   const PieChartDashboardWidget({
     super.key,
-    required this.sections,
     required this.dtos,
     required this.value,
     this.icon,
     this.svgPath,
     this.colorIcon,
+    required this.dashboard,
   });
 
-  final List<PieChartSectionData> sections;
+  final Widget dashboard;
   final List<PieChartDTO> dtos;
   final Icon? icon;
   final String? svgPath;
@@ -74,11 +73,7 @@ class PieChartDashboardWidget extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                PieChart(
-                  PieChartData(
-                    sections: sections,
-                  ),
-                ),
+                dashboard,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

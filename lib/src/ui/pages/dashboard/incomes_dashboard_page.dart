@@ -8,6 +8,7 @@ import 'package:elevo/src/ui/common/components/appbar.dart';
 import 'package:elevo/src/ui/common/components/button.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:elevo/src/ui/pages/dashboard/components/pie_chart_dashboard_widget.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -113,9 +114,20 @@ class _IncomesDashboardPageState extends State<IncomesDashboardPage> {
                             icon: const Icon(Icons.trending_up_rounded, color: kPrimaryColor),
                             colorIcon: null,
                             svgPath: null,
-                            sections: sections,
                             dtos: dtos,
                             value: IncomesTransactions.totalCurrentMonthIncomesValue,
+                            dashboard: PieChart(PieChartData(
+                              sections: sections,
+                              pieTouchData: PieTouchData(
+                                touchCallback: (event, response) {
+                                  if (!event.isInterestedForInteractions && response == null || response?.touchedSection == null) {
+                                    touchedIndexIncomesAction.value = -1;
+                                    return;
+                                  }
+                                  touchedIndexIncomesAction.value = response!.touchedSection!.touchedSectionIndex;
+                                },
+                              ),
+                            )),
                           ),
                           const Gap(height: 32),
                           InkWell(
