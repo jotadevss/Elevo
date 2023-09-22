@@ -12,17 +12,4 @@ class SQLConfig {
       frequency TEXT,
       description TEXT
       ''';
-
-  static const String scheduleTransactionTableName = "";
-  static const String scheduleTransactionDatabaseName = "";
-  static const String scheduleTransactionProperty = //
-      '''
-      id TEXT, 
-      value FLOAT, 
-      type TEXT, 
-      category TEXT, 
-      createAt INTEGER, 
-      frequency TEXT,
-      description TEXT
-      ''';
 }
