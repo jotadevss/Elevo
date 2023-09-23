@@ -19,6 +19,7 @@ dependencies:
   flutter_svg: ^2.0.7
   intl: ^0.18.1
   fl_chart: ^0.63.0
+  lottie: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,10 @@ flutter:
     - lib/assets/icons/sun.svg
     - lib/assets/icons/chart.svg
     - lib/assets/icons/arrow-left.svg
+    # Lottlie Animation
+    - lib/assets/animation/splash.json
+    - lib/assets/animation/animation_lmvyx38b.json
+    - lib/assets/animation/animation_lmvyxn2z.json
 
   fonts:
     - family: Qanelas

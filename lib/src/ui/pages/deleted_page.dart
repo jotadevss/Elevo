@@ -5,9 +5,9 @@ import 'package:elevo/src/domain/entity/transaction.dart';
 import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 class DeletedPage extends StatelessWidget {
   const DeletedPage({super.key, required this.transaction});
@@ -22,7 +22,8 @@ class DeletedPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset('lib/assets/icons/trash.svg'),
+            Lottie.asset("lib/assets/animation/animation_lmvyxn2z.json", fit: BoxFit.cover, width: 120),
+            //SvgPicture.asset('lib/assets/icons/trash.svg'),
             const Gap(height: 20),
             const Text(
               'Are you sure you want to\ndelete this item?',
@@ -45,7 +46,7 @@ class DeletedPage extends StatelessWidget {
             ),
             const Gap(height: 26),
             ButtonWidget(
-              iconAssetName: 'lib/assets/icons/home.svg',
+              iconAssetName: 'lib/assets/icons/trash.svg',
               title: 'Yes, permanent delete',
               color: kErrorColor,
               onTap: () {

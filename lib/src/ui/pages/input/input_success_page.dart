@@ -3,8 +3,8 @@ import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/button.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 class InputSuccessPage extends StatelessWidget {
   const InputSuccessPage({super.key});
@@ -17,7 +17,7 @@ class InputSuccessPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset('lib/assets/icons/tick-circle.svg'),
+            Lottie.asset("lib/assets/animation/animation_lmvyx38b.json", repeat: false, height: 128),
             const Gap(height: 20),
             const Text(
               'Transaction added\nsuccessfully!',

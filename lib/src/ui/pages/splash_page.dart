@@ -1,8 +1,6 @@
-import 'package:elevo/src/constants.dart';
 import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
-import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -14,8 +12,13 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    getAllTransactionAction();
+    startApplication();
     super.initState();
+  }
+
+  void startApplication() async {
+    await Future.delayed(const Duration(seconds: 8));
+    getAllTransactionAction();
   }
 
   @override
@@ -24,14 +27,7 @@ class _SplashPageState extends State<SplashPage> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset('lib/assets/icons/logo.svg', height: 50),
-              const Gap(height: 80),
-              const CircularProgressIndicator(color: kPrimaryColor),
-            ],
-          ),
+          child: Lottie.asset("lib/assets/animation/splash.json"),
         ),
       ),
     );
