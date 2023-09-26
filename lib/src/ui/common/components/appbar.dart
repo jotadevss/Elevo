@@ -49,7 +49,7 @@ class ElevoAppBar extends StatelessWidget {
             SvgPicture.asset('lib/assets/icons/logo.svg'),
             const Gap(width: 10),
             const Text(
-              'SureControl',
+              "",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 22,
@@ -57,7 +57,7 @@ class ElevoAppBar extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            Gap(width: (isCenter) ? 0 : ((size.width / 2.5) - kMarginHorizontal)),
+            Gap(width: (isCenter) ? 0 : ((size.width / 2.5))),
           ],
         ),
       ],

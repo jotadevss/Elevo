@@ -56,9 +56,10 @@ class _DashboardPageState extends State<DashboardPage> {
                       label: "Overview",
                       svgPath: 'lib/assets/icons/wallet-money.svg',
                       colorIcon: kPrimaryColor,
+                      description: "Total Balance",
                       icon: null,
                       dtos: dtos,
-                      value: totalTransactionsValue,
+                      value: totalBalance,
                       dashboard: PieChart(PieChartData(
                         sections: sections,
                         pieTouchData: PieTouchData(

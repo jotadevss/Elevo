@@ -17,8 +17,9 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void startApplication() async {
-    await Future.delayed(const Duration(seconds: 8));
-    getAllTransactionAction();
+    await Future.delayed(const Duration(seconds: 5), () {
+      getAllTransactionAction();
+    });
   }
 
   @override

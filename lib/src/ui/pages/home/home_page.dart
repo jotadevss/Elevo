@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       const ElevoAppBar(enableAction: false, isCenter: true),
-                      const Gap(height: 32),
+                      const Gap(height: 24),
                       CardTotalBalance(
                         isVisible: isVisible,
                         value: balance,

@@ -16,6 +16,7 @@ class PieChartDashboardWidget extends StatelessWidget {
     this.colorIcon,
     required this.dashboard,
     required this.label,
+    this.description,
   });
 
   final Widget dashboard;
@@ -25,6 +26,7 @@ class PieChartDashboardWidget extends StatelessWidget {
   final Color? colorIcon;
   final double value;
   final String label;
+  final String? description;
 
   @override
   Widget build(BuildContext context) {
@@ -95,10 +97,10 @@ class PieChartDashboardWidget extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const Text(
-                      'Total added',
+                    Text(
+                      description ?? 'Total added',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: kGrayColor,
                         fontWeight: FontWeight.w500,
