@@ -1,5 +1,7 @@
 import 'package:asp/asp.dart';
-import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/core/logic/app_logic.dart';
+import 'package:elevo/src/core/logic/auth_logic.dart';
+import 'package:elevo/src/utils/constants.dart';
 import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
 import 'package:elevo/src/router.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +18,12 @@ class _ElevoState extends State<Elevo> {
   void initState() {
     super.initState();
 
-    // Watches for changes to the `isEmptyTransactionState` value.
-    // When the value changes, the `effect` callback is executed.
-    rxObserver(() => isEmptyTransactionState.value, effect: (value) {
-      // If the `isEmptyTransactionState` value is true, navigate to the
-      // `EMPTY_PAGE_ROUTER` route. Otherwise, navigate to the
-      // `HOME_PAGE_ROUTER` route.
-      if (value!) {
-        router.go(AppRouter.EMPTY_PAGE_ROUTER);
+    rxObserver(() => [isAuthenticatedAtom.value, isEmptyTransactionState.value, isFirstTimeInAppState.value], effect: (states) {
+      final [authState as AuthState, transactionState as bool, isFirstTimeInApp as bool] = states!;
+      if (authState == AuthState.logged) {
+        (transactionState) ? router.go(AppRouter.EMPTY_PAGE_ROUTER) : router.go(AppRouter.HOME_PAGE_ROUTER);
       } else {
-        router.go(AppRouter.HOME_PAGE_ROUTER);
+        (isFirstTimeInApp) ? router.go(AppRouter.AUTH_REGISTER_PAGE_ROUTER) : router.go(AppRouter.AUTH_SIGN_IN_PAGE_ROUTER);
       }
     });
   }

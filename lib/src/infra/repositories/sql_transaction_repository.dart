@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:elevo/src/domain/entity/transaction.dart';
-import 'package:elevo/src/data/sql/sql_config.dart';
-import 'package:elevo/src/data/sql/sql_helper.dart';
+import 'package:elevo/src/infra/sql/sql_config.dart';
+import 'package:elevo/src/infra/sql/sql_helper.dart';
 import 'package:elevo/src/domain/enums/sql_error_enums.dart';
 import 'package:elevo/src/domain/exception/sql_exception.dart';
 import 'package:result_dart/result_dart.dart';

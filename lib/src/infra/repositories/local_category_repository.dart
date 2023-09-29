@@ -1,4 +1,4 @@
-import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/utils/constants.dart';
 import 'package:elevo/src/domain/entity/category.dart';
 import 'package:elevo/src/domain/exception/custom_exception.dart';
 import 'package:result_dart/result_dart.dart';

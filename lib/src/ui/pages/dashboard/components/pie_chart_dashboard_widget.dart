@@ -1,4 +1,4 @@
-import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/utils/constants.dart';
 import 'package:elevo/src/core/dto/pie_chart_dto.dart';
 import 'package:elevo/src/core/formatters/currency_formatter.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';

@@ -1,5 +1,5 @@
 import 'package:asp/asp.dart';
-import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/utils/constants.dart';
 import 'package:elevo/src/ui/pages/input/controller/fixed_toggle_switch_controller.dart';
 import 'package:flutter/material.dart';
 

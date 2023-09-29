@@ -1,4 +1,4 @@
-import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/utils/constants.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

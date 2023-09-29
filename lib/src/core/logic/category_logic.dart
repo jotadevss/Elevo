@@ -1,7 +1,7 @@
 // Atoms
 import 'package:asp/asp.dart';
 import 'package:elevo/src/core/logic/app_logic.dart';
-import 'package:elevo/src/data/repositories/local_category_repository.dart';
+import 'package:elevo/src/infra/repositories/local_category_repository.dart';
 import 'package:elevo/src/domain/entity/category.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';
 

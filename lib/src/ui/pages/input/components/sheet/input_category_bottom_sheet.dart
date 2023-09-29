@@ -4,7 +4,7 @@ import 'package:elevo/src/core/logic/input_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/utils/constants.dart';
 import 'package:elevo/src/domain/entity/category.dart';
 import 'package:elevo/src/router.dart';
 import 'package:elevo/src/ui/common/components/gap.dart';

@@ -3,7 +3,7 @@ import 'package:asp/asp.dart';
 import 'package:elevo/src/core/dto/input_transaction_dto.dart';
 import 'package:elevo/src/core/logic/app_logic.dart';
 import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
-import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
+import 'package:elevo/src/infra/repositories/sql_transaction_repository.dart';
 import 'package:elevo/src/domain/entity/category.dart';
 import 'package:elevo/src/domain/enums/frequency_enum.dart';
 import 'package:elevo/src/domain/enums/type_enum.dart';

@@ -12,7 +12,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../constants.dart';
+import '../../../utils/constants.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});

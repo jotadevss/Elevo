@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:asp/asp.dart';
-import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/utils/constants.dart';
 import 'package:elevo/src/core/dto/pie_chart_dto.dart';
 import 'package:elevo/src/core/logic/app_logic.dart';
 import 'package:elevo/src/core/logic/category_logic.dart';

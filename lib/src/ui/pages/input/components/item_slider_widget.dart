@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/utils/constants.dart';
 
 class ItemSlider extends StatelessWidget {
   const ItemSlider({

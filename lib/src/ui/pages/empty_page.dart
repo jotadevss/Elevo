@@ -5,7 +5,7 @@ import 'package:elevo/src/ui/common/components/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:elevo/src/constants.dart';
+import 'package:elevo/src/utils/constants.dart';
 import 'package:go_router/go_router.dart';
 
 class EmptyPage extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:asp/asp.dart';
 import 'package:elevo/src/core/logic/app_logic.dart';
 import 'package:elevo/src/core/logic/transaction/expenses_logic.dart';
 import 'package:elevo/src/core/logic/transaction/incomes_logic.dart';
-import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
+import 'package:elevo/src/infra/repositories/sql_transaction_repository.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
 
 // Atoms
@@ -47,6 +47,7 @@ bool get isNegative {
 final getAllTransactionAction = Atom.action();
 final getByIdTransactionAction = Atom<String?>(null);
 final deleteTransactionAction = Atom<String?>(null);
+final checkTransactionStatusAction = Atom.action();
 
 class TransactionLogic extends Reducer {
   final ITransactionRepository repository;
@@ -56,6 +57,7 @@ class TransactionLogic extends Reducer {
     on(() => [getAllTransactionAction], getAll);
     on(() => [getByIdTransactionAction], getById);
     on(() => [deleteTransactionAction], delete);
+    on(() => [checkTransactionStatusAction], checkTransactionStatus);
   }
 
   // This function loads all added transactions
@@ -78,6 +80,8 @@ class TransactionLogic extends Reducer {
     // checks the status of the app, where it checks whether
     // the app has empty data or not
     checkTransactionStatus();
+
+    print("check transaction - Sucess...");
 
     /// Stop the loading state [isLoadingState]
     stopLoadingAction.call();

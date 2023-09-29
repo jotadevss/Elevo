@@ -1,5 +1,7 @@
 import 'package:elevo/src/core/dto/category_props_dto.dart';
 import 'package:elevo/src/domain/entity/transaction.dart';
+import 'package:elevo/src/ui/pages/auth/login_page.dart';
+import 'package:elevo/src/ui/pages/auth/register_page.dart';
 import 'package:elevo/src/ui/pages/dashboard/dashboard_page.dart';
 import 'package:elevo/src/ui/pages/dashboard/expenses_dashboard_page.dart';
 import 'package:elevo/src/ui/pages/dashboard/incomes_dashboard_page.dart';
@@ -26,6 +28,18 @@ final GoRouter router = GoRouter(
       path: AppRouter.HOME_PAGE_ROUTER,
       builder: (context, state) {
         return const HomePage();
+      },
+    ),
+    GoRoute(
+      path: AppRouter.AUTH_REGISTER_PAGE_ROUTER,
+      pageBuilder: (context, state) {
+        return buildSlideTransaction(const Offset(0, 1), const RegisterPage());
+      },
+    ),
+    GoRoute(
+      path: AppRouter.AUTH_SIGN_IN_PAGE_ROUTER,
+      pageBuilder: (context, state) {
+        return buildSlideTransaction(const Offset(1, 0), const LoginPage());
       },
     ),
     GoRoute(
@@ -120,6 +134,8 @@ CustomTransitionPage<dynamic> buildSlideTransaction(Offset begin, Widget child) 
 
 class AppRouter {
   static const String SPLASH_PAGE_ROUTER = '/';
+  static const String AUTH_SIGN_IN_PAGE_ROUTER = "/sign-in";
+  static const String AUTH_REGISTER_PAGE_ROUTER = "/register";
   static const String EMPTY_PAGE_ROUTER = '/empty';
   static const String HOME_PAGE_ROUTER = '/home';
   static const String DELETED_PAGE_ROUTER = '/deleted';

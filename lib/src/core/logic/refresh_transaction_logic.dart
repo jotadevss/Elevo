@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:elevo/src/core/logic/transaction/transaction_logic.dart';
-import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
+import 'package:elevo/src/infra/repositories/sql_transaction_repository.dart';
 
 // This class is responsible for fetching transactions
 // through a forced update.

@@ -2,7 +2,7 @@
 import 'package:cron/cron.dart';
 import 'package:result_dart/result_dart.dart';
 
-import 'package:elevo/src/data/repositories/sql_transaction_repository.dart';
+import 'package:elevo/src/infra/repositories/sql_transaction_repository.dart';
 import 'package:elevo/src/domain/enums/frequency_enum.dart';
 
 class SchedulerTransaction {
